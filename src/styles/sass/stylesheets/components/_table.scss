@@ -1,0 +1,76 @@
+table td a {
+    color: $ipay-color;
+}
+
+table td .fa-external-link {
+    display: none;
+}
+
+table tr td:hover .fa-external-link {
+    display: inline;
+}
+
+.verification-block {
+    border-right: 1px solid #cdd0d4;
+    height: 280px;
+}
+
+table {
+    caption {
+        font-size: 1.5em;
+        line-height: 1.75em;
+        border-bottom: 1px solid #DDDDDD;
+        padding: 8px 18px;
+        &.success {
+            color: #fff;
+            background-color: #00B2A2;
+            span.badge {
+                background-color: #00D3C0;
+            }
+        }
+        &.info {
+            color: #fff;
+            background-color: #3598DC;
+            span.badge {
+                background-color: lighten(#3598DC, 15%);
+            }
+        }
+        &.danger {
+            color: #fff;
+            background-color: #E7505A;
+            span.badge {
+                background-color: lighten(#E7505A, 15%);
+            }
+        }
+    }
+
+    &.success {
+        > tbody {
+            + tbody {
+                border-top: 2px solid #00B2A2 !important;
+            }
+        }
+    }
+
+    &.info {
+        > tbody {
+            + tbody {
+                border-top: 2px solid #3598DC !important;
+            }
+        }
+    }
+
+    &.danger {
+        > tbody {
+            + tbody {
+                &:nth-child(odd) {
+                    border-top: 2px solid #E7505A !important;
+                }
+                &:nth-child(even) {
+                    border-top: 1px solid #DDDDDD !important;
+                }
+            }
+        }
+    }
+
+}

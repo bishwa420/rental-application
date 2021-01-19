@@ -1,0 +1,15 @@
+.menu-header {
+    @include set-background($ipay-color);
+    @include set-pointer();
+    margin: 0;
+    @include set-font(#ffffff, 'Abril Fatface', center, none, 0px, large);
+    min-height: 50px;
+    padding-top: 3%;
+    padding: 0;
+}
+
+.menu-expansion {
+    background-color: #1bb1a2;
+    border: 0px;
+    position: relative;
+}

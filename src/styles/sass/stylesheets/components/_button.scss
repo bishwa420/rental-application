@@ -1,0 +1,169 @@
+.button-search {
+    @include button-bg(#5191d5);
+}
+
+.button-search[disabled] {
+    cursor: not-allowed;
+    opacity: 0.65;
+    box-shadow: none;
+}
+
+.button-reset {
+    @include button-bg(#d56351);
+}
+
+.button-reset[disabled] {
+    cursor: not-allowed;
+    opacity: 0.65;
+    box-shadow: none;
+}
+
+.button-edit {
+    @include button-bg(#757070);
+    font-size: 10px;
+    width: 60px;
+    height: 25px;
+    padding: 5px 10px 5px 10px;
+}
+
+.button-edit[disabled] {
+    cursor: not-allowed;
+    opacity: 0.65;
+    box-shadow: none;
+}
+
+.button-banner-label-text {
+    @include button-bg(#5191d5);
+    font-size: 10px;
+    width: 81px;
+    height: 25px;
+    border-radius: 2px;
+    padding: 5px 10px 5px 10px;
+    cursor: not-allowed;
+}
+
+.button-banner {
+    @include button-bg(#5191d5);
+    font-size: 10px;
+    width: 81px;
+    height: 25px;
+    border-radius: 2px;
+    padding: 5px 10px 5px 10px;
+}
+
+.button-banner[disabled] {
+    cursor: not-allowed;
+    opacity: 0.65;
+    box-shadow: none;
+}
+
+.button-small-edit {
+    @include button-bg(#757070);
+    font-size: 10px;
+    width: 40px;
+    height: 15px;
+    padding: 0px 0px;
+
+}
+
+.button-small-edit[disabled] {
+    cursor: not-allowed;
+    opacity: 0.65;
+    box-shadow: none;
+}
+
+.button-small-verify {
+    @include button-bg($ipay-color);
+    font-size: 10px;
+    width: 40px;
+    height: 15px;
+    padding: 0px 0px;
+
+}
+
+.button-small-verify[disabled] {
+    cursor: not-allowed;
+    opacity: 0.65;
+    box-shadow: none;
+}
+
+.button-md-edit {
+    @include button-bg(#c9c6c6);
+    width: 70px;
+    height: 30px;
+    padding: 0px 0px;
+
+}
+
+.button-md-edit[disabled] {
+    cursor: not-allowed;
+    opacity: 0.65;
+    box-shadow: none;
+}
+
+.button-md-verify {
+    @include button-bg($ipay-color);
+    width: 70px;
+    height: 30px;
+    padding: 0px 0px;
+
+}
+
+.button-md-verify[disabled] {
+    cursor: not-allowed;
+    opacity: 0.65;
+    box-shadow: none;
+}
+
+.button-md-balance {
+    @include button-bg($ipay-color);
+    width: 200px;
+    height: 30px;
+    padding: 0px 0px;
+}
+
+.button-md-balance[disabled] {
+    cursor: not-allowed;
+    opacity: 0.65;
+    box-shadow: none;
+}
+
+.btn-active-til {
+    background-color: #019889;
+    color: #fff;
+}
+
+.button-md-update {
+    background-color: #1bb1a2;
+    border: none;
+    color: white;
+    padding: 5px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    width: 80px;
+    height: 30px;
+    padding: 0px 0px;
+}
+
+.button-md-update[disabled] {
+    cursor: not-allowed;
+    opacity: 0.65;
+    box-shadow: none;
+}
+
+.user-creation-span {
+    display: inline-block;
+    width: 5px;
+}
+
+input[type="radio"] {
+    margin-top: 2px;
+    width: 16px;
+    height: 16px;
+}

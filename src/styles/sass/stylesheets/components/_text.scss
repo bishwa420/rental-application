@@ -1,0 +1,128 @@
+.banner-text {
+    color: $ipay-color;
+}
+
+.black-text {
+    color: black;
+}
+
+.small-text {
+    @include set-font-size(12px)
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-ash {
+    @include set-font-color(#aca5a5)
+}
+
+.padding-1 {
+    padding: 1px;
+}
+
+.padding-2 {
+    padding: 2px;
+}
+
+.padding-3 {
+    padding: 3px;
+}
+
+.padding-4 {
+    padding: 4px;
+}
+
+.padding-5 {
+    padding: 5px;
+}
+
+.margin-1 {
+    margin: 1px;
+
+}
+
+.margin-2 {
+    margin: 2px;
+
+}
+
+.margin-3 {
+    margin: 3px;
+
+}
+
+.margin-4 {
+    margin: 4px;
+
+}
+
+.margin-5 {
+    margin: 5px;
+
+}
+
+.margin-10 {
+    margin: 10px;
+}
+
+.margin-top-10 {
+    margin-top: 10px;
+}
+
+.margin-left-1 {
+    margin-left: 1px;
+}
+
+.margin-left-2 {
+    margin-left: 2px;
+
+}
+
+.margin-left-3 {
+    margin-left: 3px;
+
+}
+
+.margin-left-4 {
+    margin-left: 4px;
+
+}
+
+.margin-left-5 {
+    margin-left: 5px;
+
+}
+
+.margin-left-15 {
+    margin-left: 15px;
+}
+
+.margin-bottom-5 {
+    margin-left: 5px;
+}
+
+.margin-top-20 {
+    margin-top: 20px;
+}
+
+.margin-top-rem {
+    margin-top: 0.2rem;
+}
+
+.row {
+    margin: 0 !important;
+}
+
+.break-word {
+    word-wrap: break-word;
+}
+
+.user-designation-style {
+    align-items: flex-start;
+}

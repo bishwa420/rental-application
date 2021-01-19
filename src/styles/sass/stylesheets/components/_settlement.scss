@@ -1,0 +1,99 @@
+.scale {
+  font-size: 12pt;
+  position: relative;
+  height: 500px;
+  left: 200px; }
+
+.scale .amount {
+  font-size: 1em;
+  font-weight: bold; }
+
+.scale img {
+  width: 500px;
+  height: 450px; }
+
+.scale .slabel {
+  margin-bottom: 5px;
+  font-size: 1em; }
+
+.scale .bati {
+  position: relative;
+  z-index: 1;
+  width: 150px;
+  text-align: center; }
+
+.scale-balanced .bati.left {
+  top: -178px;
+  left: 42px; }
+
+.scale-balanced .bati.right {
+  top: -228px;
+  left: 321px; }
+
+.scale-left .bati.left {
+  top: -129px;
+  left: 33px; }
+
+.scale-left .bati.right {
+  top: -251px;
+  left: 320px; }
+
+.scale-right .bati.left {
+  top: -199px;
+  left: 33px; }
+
+.scale-right .bati.right {
+  top: -178px;
+  left: 321px; }
+
+.scale .bati.delta {
+  top: -419px;
+  left: 175px; }
+
+  .signlabel{
+    position: relative;
+    top: 24px;
+    left: 15px;
+    font-size: 2.5em;
+
+  }
+  .padding-top-10{
+    padding-top: 10px;
+  }
+
+  .ipayHiglightColor {
+      color: #14a498;
+  }
+
+  .loader_container {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 250px;
+      right: 0;
+      z-index: 999999;
+      background: rgba(0, 0, 0, 0.3);
+  }
+
+  .loader_container > img {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+  }
+  .table-font-12{
+    font-size: 12px;
+  }
+
+  .span-right{
+    float: right;
+    top: 0px;
+    z-index: 1000001;
+  }
+
+  .input-height-30{
+    height: 30px;
+  }
+
+  .margin-top-bottom-10 {
+    margin: 10px 0 10px 0;
+  }

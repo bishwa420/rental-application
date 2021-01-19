@@ -1,0 +1,26 @@
+.dropdown {
+    height: 30px;
+    width: 50px;
+}
+
+ul li ul.dropdown-hover {
+    min-width: 100%; /* Set width of the dropdown */
+    background: #181717;
+    display: none;
+    position: absolute;
+    z-index: 999;
+    left: 0;
+}
+
+ul li img .user-menu:hover ul.dropdown-hover {
+    display: block; /* Display the dropdown */
+}
+
+ul li ul.dropdown-hover li {
+    display: block;
+}
+
+ul li img .user-menu:hover {
+    color: #fff;
+    background: #939393;
+}

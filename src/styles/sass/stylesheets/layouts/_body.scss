@@ -1,0 +1,21 @@
+body {
+    @include set-background(#ffffff);
+    margin: 0;
+    word-spacing: 3px;
+}
+
+.advanced-search {
+    display: inline-block;
+    width: 10px;
+}
+
+.user-profile-header {
+    padding-bottom: 30px;
+    padding-top: 30px;
+    min-height: 490px;
+}
+
+.user-info-block {
+    min-height: 490px;
+    margin-left: 15px;
+}

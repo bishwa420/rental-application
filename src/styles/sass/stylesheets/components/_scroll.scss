@@ -1,0 +1,19 @@
+.custom-scrollable {
+    max-height: 1000px;
+    overflow: hidden;
+}
+
+.slider:hover {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+// Enable scrollable blocks of code
+.small-scrollable {
+    max-height: $small-scrollable-max-height;
+    overflow: hidden;
+}
+
+.small-scrollable:hover {
+    overflow-y: scroll;
+}

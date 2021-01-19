@@ -1,0 +1,36 @@
+input[type=text] {
+    @include input-box();
+}
+
+input[type=number] {
+    @include input-box();
+}
+
+input[type=email] {
+    @include input-box();
+}
+
+input[type=email] {
+    @include input-box();
+}
+
+input[type=password] {
+    @include input-box();
+}
+
+input[type=date] {
+    @include input-box();
+    line-height: inherit !important;
+}
+
+.input-sm {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    width: 70% !important;
+}
+
+.user-name-field {
+    width: 220px;
+    height: 35px;
+}
+

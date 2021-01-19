@@ -1,0 +1,79 @@
+.red {
+    color: red;
+}
+
+.white {
+    color: white;
+}
+
+.blue {
+    color: blue;
+}
+
+.green {
+    color: green;
+}
+
+.yellow {
+    color: yellow;
+}
+
+.black {
+    color: black;
+}
+
+.loadmore-color {
+    color: #31b0d5;
+}
+
+.inprogress-color {
+    color: #eb9316;
+}
+
+.verified-color {
+    color: #5BC43C;
+}
+
+.alert-color {
+    color: greenyellow;
+}
+
+/* Text Color */
+.text-info {
+    color: #3598dc;
+}
+
+.text-success {
+    color: #00B2A2;
+}
+
+.text-warning {
+    color: #f4d03f;
+}
+
+.text-error {
+    color: #e7505a;
+}
+
+.badge {
+
+    &.badge-info {
+        background-color: #3598dc;
+    }
+
+    &.badge-success {
+        background-color: #00B2A2;
+    }
+
+    &.badge-warning {
+        background-color: #f4d03f;
+    }
+
+    &.badge-error {
+        background-color: #e7505a;
+    }
+
+    &.badge-primary {
+        background-color: #9C27B0;
+    }
+}
