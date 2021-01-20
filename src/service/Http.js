@@ -3,7 +3,8 @@ import axios from 'axios'
 const API_BASE_URL = 'http://localhost:8080/'
 const HEADERS = {
     'Content-Type': 'application/json',
-    'Accept': 'application/json'
+    'Accept': 'application/json',
+    'Access-Control-Allow-Origin': '*'
 }
 
 const routes = {

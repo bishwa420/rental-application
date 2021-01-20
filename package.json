@@ -17,7 +17,8 @@
     "sass-loader": "^10.1.1",
     "style-loader": "^2.0.0",
     "axios": "^0.21.1",
-    "react-notifications": "^1.7.2"
+    "react-notifications": "^1.7.2",
+    "react-fontawesome": "^1.7.1"
   },
   "scripts": {
     "start": "react-scripts start",
