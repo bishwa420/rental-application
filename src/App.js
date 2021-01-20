@@ -4,6 +4,19 @@ import {isTokenExpired} from './service/Util'
 import PublicLayout from "./component/PublicLayout"
 import PrivateLayout from "./component/PrivateLayout"
 import Login from './component/Login'
+import User from './component/User'
+
+const PrivateRoute = ({component: Component, ...rest}) => {
+
+    const token = JSON.parse(localStorage.getItem('token'))
+    return token ? (
+        <Route {...rest} render = { matchProps => (
+            <PrivateLayout>
+                <Component {...matchProps} />
+            </PrivateLayout>
+        )}/>
+    ) : <Redirect to="/login"/>
+}
 
 const PublicRoute = ({component: Component, ...rest}) => {
 
@@ -31,6 +44,7 @@ class App extends Component {
                   </Route>
 
                   <PublicRoute path="/login" component={Login}/>
+                  <PrivateRoute path="/app/user" component={User}/>
               </Switch>
           </Router>
       )

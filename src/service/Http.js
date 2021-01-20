@@ -7,7 +7,8 @@ const HEADERS = {
 }
 
 const routes = {
-    login: API_BASE_URL + 'login'
+    login: API_BASE_URL + 'login',
+    get_users: API_BASE_URL + 'user'
 }
 
 const encodeQueryData = data => {
@@ -32,9 +33,16 @@ const updateTokenInHeader = () => {
     if(token.local && (!token.header || token.local !== token.header)) {
         axios.defaults.headers.common['token'] = token.local
     }
+
 }
 
 const Http = {
+
+    GET: (key, params = '') => {
+        updateTokenInHeader()
+        params = typeof params === 'object' ? encodeQueryData(params) : params
+        return axios.get(routes[key] + params)
+    },
 
     POST: (key, params) => {
         updateTokenInHeader()

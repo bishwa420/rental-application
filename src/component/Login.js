@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import logo from '../image/avatar.png'
 import Http from '../service/Http'
 import {NotificationContainer, NotificationManager} from 'react-notifications'
+import {Redirect} from "react-router-dom";
 
 class Login extends Component {
 
@@ -13,7 +14,8 @@ class Login extends Component {
             error: {
                 email: false,
                 password: false
-            }
+            },
+            redirectTo: false
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleValidation = this.handleValidation.bind(this)
@@ -66,6 +68,11 @@ class Login extends Component {
 
         Http.POST('login', reqBody).then(({data}) => {
                 NotificationManager.success('Login success!')
+                localStorage.removeItem('token')
+                localStorage.setItem('token', JSON.stringify(data.token))
+                this.setState({
+                    redirectTo: '/app/user'
+                })
             }).catch((error) => {
 
                 if(error && error.response) {
@@ -77,6 +84,11 @@ class Login extends Component {
     }
 
     render() {
+
+        if(this.state.redirectTo) {
+            return <Redirect to = {this.state.redirectTo} />
+        }
+
         return (
             <div className="row">
 
