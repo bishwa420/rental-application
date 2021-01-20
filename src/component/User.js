@@ -10,14 +10,15 @@ class User extends Component {
         this.state = {
             users: '',
             filter: {
-                name: '',
-                email: '',
-                role: 'ALL'
+                filterName: '',
+                filterEmail: '',
+                filterRole: 'ALL'
             }
         }
 
         this.getUsers = this.getUsers.bind(this)
         this.handleFilteringChange = this.handleFilteringChange.bind(this)
+        this.filterBusinessRules = this.filterBusinessRules.bind(this)
     }
 
     componentDidMount() {
@@ -30,6 +31,8 @@ class User extends Component {
         const {target} = event
         const value = target.type === 'checkbox' ? target.checked : target.value
         const {name} = target
+
+        console.log('name: ', name, ' value: ', value)
 
         this.setState( {
             filter: {
@@ -55,30 +58,47 @@ class User extends Component {
             })
     }
 
+    filterBusinessRules(event) {
+
+        event.preventDefault()
+
+        let reqParam = {
+            'nameLike': this.state.filter.filterName ? this.state.filter.filterName : '',
+            'emailLike': this.state.filter.filterEmail ? this.state.filter.filterEmail : '',
+            'role': this.state.filter.filterRole !== 'ALL' ? this.state.filter.filterRole : ''
+        }
+
+        this.getUsers(reqParam)
+    }
+
     render() {
 
         return (
             <div>
                 <div className="row">
 
-                    <form className="filtering-form row">
+                    <form className="filtering-form row" onSubmit={this.filterBusinessRules}>
 
                         <div className="col-md-3">
 
-                            <label for="filterName">NAME</label>
-                            <input className="form-control" id="filterName" value={this.state.filter.name}
+                            <label htmlFor="filterName">NAME</label>
+                            <input className="form-control" name="filterName"
+                                   value={this.state.filter.filterName} id="filterName"
                                 onChange={this.handleFilteringChange}/>
                         </div>
 
                         <div className="col-md-3">
-                            <label for="filterEmail">EMAIL</label>
-                            <input className="form-control" value={this.state.filter.email}
+                            <label htmlFor="filterEmail">EMAIL</label>
+                            <input className="form-control" name="filterEmail"
+                                   value={this.state.filter.filterEmail} id="filterEmail"
                                 onChange={this.handleFilteringChange}/>
                         </div>
 
                         <div className="col-md-3">
-                            <label for="filterRole">ROLE</label>
-                            <select value={this.state.filter.role}>
+                            <label htmlFor="filterRole">ROLE</label>
+                            <select value={this.state.filter.filterRole}
+                                name="filterRole" id="filterRole"
+                                onChange={this.handleFilteringChange}>
                                 <option value="ALL">ALL</option>
                                 <option value="ADMIN">ADMIN</option>
                                 <option value="REALTOR">REALTOR</option>
@@ -87,7 +107,8 @@ class User extends Component {
                         </div>
 
                         <div className="col-md-2">
-                            <button className="btn btn-md btn-info filtering-form-button">Search</button>
+                            <button className="btn btn-md btn-info filtering-form-button"
+                                onClick={this.filterBusinessRules}>Search</button>
                             <button className="btn btn-md btn-danger filtering-form-button">Reset</button>
                         </div>
                     </form>
