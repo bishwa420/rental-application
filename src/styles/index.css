@@ -104,6 +104,27 @@ h1 {
     margin-right: 0.5em;
 }
 
+.center-content {
+    justify-content: center;
+}
+
+.ReactTable {
+    margin-top: 3em;
+}
+
+.rt-td {
+    white-space: unset !important;
+}
+
+.rt-tr {
+    text-align: left !important;
+}
+
+.rt-thead {
+    background: #54738061;
+    font-weight: bold;
+}
+
 .modal:before {
     content: '';
     display: inline-block;

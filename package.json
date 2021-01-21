@@ -18,7 +18,8 @@
     "style-loader": "^2.0.0",
     "axios": "^0.21.1",
     "react-notifications": "^1.7.2",
-    "react-fontawesome": "^1.7.1"
+    "react-fontawesome": "^1.7.1",
+    "react-table": "^6.11.4"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -45,6 +46,7 @@
     ]
   },
   "devDependencies": {
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "react-table-6": "^6.11.0"
   }
 }
