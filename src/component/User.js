@@ -12,16 +12,20 @@ class User extends Component {
         super(props)
         this.state = {
             users: [],
+            pages: 0,
             filter: {
                 filterName: '',
                 filterEmail: '',
-                filterRole: 'ALL'
-            }
+                filterRole: 'ALL',
+                pageSize: 10,
+                requestingPage: 1
+            },
+            loading: true
         }
 
         this.getUsers = this.getUsers.bind(this)
         this.handleFilteringChange = this.handleFilteringChange.bind(this)
-        this.filterBusinessRules = this.filterBusinessRules.bind(this)
+        this.filterUsers = this.filterUsers.bind(this)
     }
 
     componentDidMount() {
@@ -47,15 +51,20 @@ class User extends Component {
 
     getUsers(params) {
 
+        this.setState({
+            loading: true
+        })
+
         Http.GET('get_users', params)
             .then((response) => {
 
                 console.log('response: ', JSON.stringify(response, null, 2))
                 NotificationManager.success('Received users list from server')
                 this.setState({
-                    users: response.data.userList
+                    users: response.data.userList,
+                    pages: response.data.page.totalPages,
+                    loading: false
                 })
-                console.log('response: ', JSON.stringify(response))
             })
             .catch((error) => {
                 if(error && error.response) {
@@ -63,17 +72,24 @@ class User extends Component {
                 } else {
                     NotificationManager.error('Could not connect to server')
                 }
+                this.setState({
+                    loading: false
+                })
             })
     }
 
-    filterBusinessRules(event) {
+    filterUsers(event) {
 
-        event.preventDefault()
+        if(event !== undefined) {
+            event.preventDefault()
+        }
 
         let reqParam = {
-            'nameLike': this.state.filter.filterName ? this.state.filter.filterName : '',
-            'emailLike': this.state.filter.filterEmail ? this.state.filter.filterEmail : '',
-            'role': this.state.filter.filterRole !== 'ALL' ? this.state.filter.filterRole : ''
+            nameLike: this.state.filter.filterName ? this.state.filter.filterName : '',
+            emailLike: this.state.filter.filterEmail ? this.state.filter.filterEmail : '',
+            role: this.state.filter.filterRole !== 'ALL' ? this.state.filter.filterRole : '',
+            page: this.state.filter.requestingPage,
+            limit: this.state.filter.pageSize
         }
 
         this.getUsers(reqParam)
@@ -88,13 +104,14 @@ class User extends Component {
 
                 <div className="row">
 
-                    <form className="filtering-form row" onSubmit={this.filterBusinessRules}>
+                    <form className="filtering-form row" onSubmit={e => e.preventDefault()}>
 
                         <div className="col-md-3 offset-md-1">
 
                             <label htmlFor="filterName">NAME</label>
                             <input className="form-control" name="filterName"
                                    value={this.state.filter.filterName} id="filterName"
+                                   placeholder="name"
                                 onChange={this.handleFilteringChange}/>
                         </div>
 
@@ -102,6 +119,7 @@ class User extends Component {
                             <label htmlFor="filterEmail">EMAIL</label>
                             <input className="form-control" name="filterEmail"
                                    value={this.state.filter.filterEmail} id="filterEmail"
+                                   placeholder="email"
                                 onChange={this.handleFilteringChange}/>
                         </div>
 
@@ -119,8 +137,9 @@ class User extends Component {
 
                         <div className="col-md-2">
                             <button className="btn btn-md btn-info filtering-form-button"
-                                onClick={this.filterBusinessRules}>Search</button>
-                            <button className="btn btn-md btn-danger filtering-form-button">Reset</button>
+                                onClick={this.filterUsers}>Search</button>
+                            <button className="btn btn-md btn-danger filtering-form-button"
+                                onClick={this.getUsers}>Reset</button>
                         </div>
                     </form>
                 </div>
@@ -128,7 +147,9 @@ class User extends Component {
                 <div className="row center-content">
 
                     <ReactTable
-                        data={this.state.users}
+                        data = {this.state.users}
+                        pages = {this.state.pages}
+                        defaultPageSize = {this.state.filter.pageSize}
                         columns = {
                             [
                                 {
@@ -169,7 +190,17 @@ class User extends Component {
                                 }
                             ]
                         }
+                        loading={this.state.loading}
+                        manual
+                        onFetchData = {(state, instance) => {
+                            this.state.filter.requestingPage = state.page + 1
+                            this.state.filter.pageSize = state.pageSize
+
+                            console.log('state: ', state,  ' filters: ', this.state.filter)
+                            this.filterUsers()
+                        }}
                         minRows = '2'
+                        sortable = {false}
                     />
 
                 </div>
