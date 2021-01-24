@@ -6,6 +6,7 @@ import ReactTable from 'react-table'
 import 'react-table/react-table.css'
 import Title from './Title'
 import Modal from './Modal'
+import UserUI from './UserUI'
 
 class User extends Component {
 
@@ -135,7 +136,7 @@ class User extends Component {
             })
             .catch(error => {
 
-                if( error.response && error.response.data.message)
+                if (error.response && error.response.data.message)
                     NotificationManager.error(error.response.data.message)
                 else
                     NotificationManager.error('User not deleted')
@@ -192,7 +193,7 @@ class User extends Component {
                 setTimeout(this.filterUsers, 2000)
             })
             .catch(error => {
-                if(error.response && error.response.data) {
+                if (error.response && error.response.data) {
                     NotificationManager.error(error.response.data.message)
                 } else {
                     NotificationManager.error('Could not connect to server')
@@ -200,7 +201,7 @@ class User extends Component {
             })
     }
 
-    onCloseUpdateUserModal () {
+    onCloseUpdateUserModal() {
 
         this.setState({
             showUpdateModal: false
@@ -233,207 +234,24 @@ class User extends Component {
             }
         }, () => this.getUsers())
     }
+
     render() {
 
         return (
-            <div>
-
-                <Title value="Users"></Title>
-
-                <div className="row">
-
-                    <form className="filtering-form row" onSubmit={e => e.preventDefault()}>
-
-                        <div className="col-md-3 offset-md-1">
-
-                            <label htmlFor="filterName">NAME</label>
-                            <input className="form-control" name="filterName"
-                                   value={this.state.filter.filterName} id="filterName"
-                                   placeholder="name"
-                                   onChange={this.handleFilteringChange}/>
-                        </div>
-
-                        <div className="col-md-3">
-                            <label htmlFor="filterEmail">EMAIL</label>
-                            <input className="form-control" name="filterEmail"
-                                   value={this.state.filter.filterEmail} id="filterEmail"
-                                   placeholder="email"
-                                   onChange={this.handleFilteringChange}/>
-                        </div>
-
-                        <div className="col-md-2">
-                            <label htmlFor="filterRole">ROLE</label>
-                            <select value={this.state.filter.filterRole}
-                                    name="filterRole" id="filterRole"
-                                    onChange={this.handleFilteringChange}>
-                                <option value="ALL">ALL</option>
-                                <option value="ADMIN">ADMIN</option>
-                                <option value="REALTOR">REALTOR</option>
-                                <option value="CLIENT">CLIENT</option>
-                            </select>
-                        </div>
-
-                        <div className="col-md-2">
-                            <button className="btn btn-md btn-info filtering-form-button"
-                                    onClick={this.filterUsers}>Search
-                            </button>
-                            <button className="btn btn-md btn-danger filtering-form-button"
-                                    onClick={this.resetFilter}>Reset
-                            </button>
-                        </div>
-                    </form>
-                </div>
-
-                <div className="row center-content">
-
-                    <ReactTable
-                        data={this.state.users}
-                        pages={this.state.pages}
-                        defaultPageSize={this.state.filter.pageSize}
-                        columns={
-                            [
-                                {
-                                    Header: 'S/N',
-                                    id: 'row',
-                                    filterable: false,
-                                    Cell: (row) => {
-                                        return <div> {row.index + 1} </div>
-                                    },
-                                    width: 60,
-                                    resizable: false,
-                                    style: {
-                                        textAlign: 'right'
-                                    }
-                                },
-                                {
-                                    Header: 'NAME',
-                                    width: 280,
-                                    accessor: 'name',
-                                    resizable: false,
-                                },
-                                {
-                                    Header: 'EMAIL',
-                                    width: 280,
-                                    accessor: 'email',
-                                    resizable: false,
-                                },
-                                {
-                                    Header: 'ROLE',
-                                    accessor: 'role',
-                                    resizable: false
-                                },
-                                {
-                                    Header: 'STATUS',
-                                    width: 180,
-                                    accessor: 'status',
-                                    resizable: false
-                                },
-                                {
-                                    Header: 'ACTION',
-                                    accessor: 'userId',
-                                    Cell: (row) => {
-                                        return <div style={{textAlign: 'center'}}><i className="fa fa-times"
-                                                                                     style={{color: 'red', cursor: 'pointer'}}
-                                                                                     onClick={e => this.launchDeleteModal(row)}></i>
-                                        </div>
-                                    }
-                                }
-                            ]
-                        }
-                        loading={this.state.loading}
-                        manual
-                        onFetchData={(state, instance) => {
-                            this.state.filter.requestingPage = state.page + 1
-                            this.state.filter.pageSize = state.pageSize
-
-                            console.log('state: ', state, ' filters: ', this.state.filter)
-                            this.filterUsers()
-                        }}
-                        minRows='2'
-                        sortable={false}
-                        getTdProps={(state, rowInfo, column, instance) => {
-                            return {
-                                onClick: (event) => {
-
-                                    if(column.Header === 'ACTION') {
-                                        return
-                                    }
-
-                                    this.launchUpdateModal(rowInfo.original)
-                                },
-                                style: {
-                                    cursor: 'pointer'
-                                }
-                            }
-                        }}
-                    />
-
-                </div>
-
-                <Modal id="DeleteUserModal"
-                    title="Delete User"
-                    show={this.state.showDeleteModal}
-                    action = {
-                        {
-                            confirm: this.onConfirmDeleteModal,
-                            close: this.onCloseDeleteModal
-                        }
-                    }>
-
-                    <div className="row">
-
-                        <span>Are you sure you want to delete user <span style={{fontWeight: 'bold'}}>{this.state.deletingUser.name}</span> (email: <span style={{fontWeight: 'bold'}}>{this.state.deletingUser.email}</span>)?
-                        </span>
-                    </div>
-                </Modal>
-
-                <Modal id="UpdateUserModal"
-                    title="Update User"
-                    show={this.state.showUpdateModal}
-                    action = {
-                        {
-                            confirm: this.onConfirmUpdateUserModal,
-                            close: this.onCloseUpdateUserModal
-                        }
-                    }>
-
-                    <form>
-                        <div className="row form-group">
-                            <label htmlFor="updateUserName">NAME</label>
-                            <input className="form-control"
-                                value={this.state.updatingUser.updateName}
-                                name="updateName"
-                                id="updateUserName"
-                                onChange={this.handleUpdateChange}/>
-                        </div>
-
-                        <div className="row form-group">
-                            <label htmlFor="updateEmail">EMAIL</label>
-                            <input className="form-control"
-                                   value={this.state.updatingUser.updateEmail}
-                                   name="updateEmail"
-                                   id="updateUserEmail"
-                                    onChange={this.handleUpdateChange}/>
-                        </div>
-
-                        <div className="row form-group">
-                            <label>ROLE</label>
-                            <select className="form-control"
-                                value={this.state.updatingUser.updateRole}
-                                name="updateRole"
-                                id="updateUserRole"
-                                onChange={this.handleUpdateChange}>
-
-                                <option value="ADMIN">ADMIN</option>
-                                <option value="REALTOR">REALTOR</option>
-                                <option value="CLIENT">CLIENT</option>
-                            </select>
-                        </div>
-                    </form>
-                </Modal>
-
-                <NotificationContainer/>
-            </div>
+            <UserUI
+                data={this.state}
+                handleFilteringChange={this.handleFilteringChange}
+                getUsers={this.getUsers}
+                filterUsers={this.filterUsers}
+                onConfirmDeleteModal={this.onConfirmDeleteModal}
+                onCloseDeleteModal={this.onCloseDeleteModal}
+                launchDeleteModal={this.launchDeleteModal}
+                launchUpdateModal={this.launchUpdateModal}
+                onConfirmUpdateUserModal={this.onConfirmUpdateUserModal}
+                onCloseUpdateUserModal={this.onCloseUpdateUserModal}
+                handleUpdateChange={this.handleUpdateChange}
+                resetFilter={this.resetFilter}
+            />
         )
     }
 }
