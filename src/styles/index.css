@@ -112,6 +112,10 @@ h1 {
     margin-top: 3em;
 }
 
+.modal-backdrop.fade.in {
+    opacity: 0.5;
+}
+
 .rt-td {
     white-space: unset !important;
 }

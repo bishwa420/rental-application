@@ -5,6 +5,7 @@ import NotificationContainer from 'react-notifications/lib/NotificationContainer
 import ReactTable from 'react-table'
 import 'react-table/react-table.css'
 import Title from './Title'
+import Modal from './Modal'
 
 class User extends Component {
 
@@ -20,12 +21,21 @@ class User extends Component {
                 pageSize: 10,
                 requestingPage: 1
             },
-            loading: true
+            loading: true,
+            showDeleteModal: false,
+            deletingUser: {
+                id: '',
+                name: '',
+                email: ''
+            }
         }
 
         this.getUsers = this.getUsers.bind(this)
         this.handleFilteringChange = this.handleFilteringChange.bind(this)
         this.filterUsers = this.filterUsers.bind(this)
+        this.launchDeleteModal = this.launchDeleteModal.bind(this)
+        this.onConfirmDeleteModal = this.onConfirmDeleteModal.bind(this)
+        this.onCloseDeleteModal = this.onCloseDeleteModal.bind(this)
     }
 
     componentDidMount() {
@@ -41,10 +51,10 @@ class User extends Component {
 
         console.log('name: ', name, ' value: ', value)
 
-        this.setState( {
+        this.setState({
             filter: {
                 ...this.state.filter,
-                [name] : value
+                [name]: value
             }
         })
     }
@@ -63,11 +73,12 @@ class User extends Component {
                 this.setState({
                     users: response.data.userList,
                     pages: response.data.page.totalPages,
+                    requestingPage: response.data.page.number,
                     loading: false
                 })
             })
             .catch((error) => {
-                if(error && error.response) {
+                if (error && error.response) {
                     NotificationManager.error(error.response.data.message)
                 } else {
                     NotificationManager.error('Could not connect to server')
@@ -80,7 +91,7 @@ class User extends Component {
 
     filterUsers(event) {
 
-        if(event !== undefined) {
+        if (event !== undefined) {
             event.preventDefault()
         }
 
@@ -93,6 +104,49 @@ class User extends Component {
         }
 
         this.getUsers(reqParam)
+    }
+
+    onConfirmDeleteModal() {
+
+        let reqBody = {
+            email: this.state.deletingUser.email
+        }
+
+        console.log('Will do request with request body: ', JSON.stringify(reqBody))
+
+        Http.DELETE('delete_user', reqBody)
+            .then((response) => {
+
+                NotificationManager.success('User deleted successfully')
+                this.onCloseDeleteModal()
+                setTimeout(this.filterUsers, 2000)
+            })
+            .catch(error => {
+
+                if( error.response && error.response.data.message)
+                    NotificationManager.error(error.response.data.message)
+                else
+                    NotificationManager.error('User not deleted')
+                this.onCloseDeleteModal()
+            })
+    }
+
+    onCloseDeleteModal() {
+        this.setState({
+            showDeleteModal: false
+        })
+    }
+
+    launchDeleteModal(rowInfo) {
+
+        this.setState({
+            showDeleteModal: true,
+            deletingUser: {
+                name: rowInfo.original.name,
+                email: rowInfo.original.email,
+                id: rowInfo.original.userId
+            }
+        })
     }
 
     render() {
@@ -112,7 +166,7 @@ class User extends Component {
                             <input className="form-control" name="filterName"
                                    value={this.state.filter.filterName} id="filterName"
                                    placeholder="name"
-                                onChange={this.handleFilteringChange}/>
+                                   onChange={this.handleFilteringChange}/>
                         </div>
 
                         <div className="col-md-3">
@@ -120,14 +174,14 @@ class User extends Component {
                             <input className="form-control" name="filterEmail"
                                    value={this.state.filter.filterEmail} id="filterEmail"
                                    placeholder="email"
-                                onChange={this.handleFilteringChange}/>
+                                   onChange={this.handleFilteringChange}/>
                         </div>
 
                         <div className="col-md-2">
                             <label htmlFor="filterRole">ROLE</label>
                             <select value={this.state.filter.filterRole}
-                                name="filterRole" id="filterRole"
-                                onChange={this.handleFilteringChange}>
+                                    name="filterRole" id="filterRole"
+                                    onChange={this.handleFilteringChange}>
                                 <option value="ALL">ALL</option>
                                 <option value="ADMIN">ADMIN</option>
                                 <option value="REALTOR">REALTOR</option>
@@ -137,9 +191,11 @@ class User extends Component {
 
                         <div className="col-md-2">
                             <button className="btn btn-md btn-info filtering-form-button"
-                                onClick={this.filterUsers}>Search</button>
+                                    onClick={this.filterUsers}>Search
+                            </button>
                             <button className="btn btn-md btn-danger filtering-form-button"
-                                onClick={this.getUsers}>Reset</button>
+                                    onClick={this.getUsers}>Reset
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -147,10 +203,10 @@ class User extends Component {
                 <div className="row center-content">
 
                     <ReactTable
-                        data = {this.state.users}
-                        pages = {this.state.pages}
-                        defaultPageSize = {this.state.filter.pageSize}
-                        columns = {
+                        data={this.state.users}
+                        pages={this.state.pages}
+                        defaultPageSize={this.state.filter.pageSize}
+                        columns={
                             [
                                 {
                                     Header: 'S/N',
@@ -187,23 +243,51 @@ class User extends Component {
                                     width: 180,
                                     accessor: 'status',
                                     resizable: false
+                                },
+                                {
+                                    Header: 'ACTION',
+                                    accessor: 'userId',
+                                    Cell: (row) => {
+                                        return <div style={{textAlign: 'center'}}><i className="fa fa-times"
+                                                                                     style={{color: 'red', cursor: 'pointer'}}
+                                                                                     onClick={e => this.launchDeleteModal(row)}></i>
+                                        </div>
+                                    }
                                 }
                             ]
                         }
                         loading={this.state.loading}
                         manual
-                        onFetchData = {(state, instance) => {
+                        onFetchData={(state, instance) => {
                             this.state.filter.requestingPage = state.page + 1
                             this.state.filter.pageSize = state.pageSize
 
-                            console.log('state: ', state,  ' filters: ', this.state.filter)
+                            console.log('state: ', state, ' filters: ', this.state.filter)
                             this.filterUsers()
                         }}
-                        minRows = '2'
-                        sortable = {false}
+                        minRows='2'
+                        sortable={false}
                     />
 
                 </div>
+
+                <Modal id="DeleteUserModal"
+                    title="Delete User"
+                    show={this.state.showDeleteModal}
+                    action = {
+                        {
+                            confirm: this.onConfirmDeleteModal,
+                            close: this.onCloseDeleteModal
+                        }
+                    }>
+
+                    <div className="row">
+
+                        <span>Are you sure you want to delete user <span style={{fontWeight: 'bold'}}>{this.state.deletingUser.name}</span> (email: <span style={{fontWeight: 'bold'}}>{this.state.deletingUser.email}</span>)?
+                        </span>
+                    </div>
+                </Modal>
+
                 <NotificationContainer/>
             </div>
         )
