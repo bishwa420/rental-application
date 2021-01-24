@@ -27,6 +27,13 @@ class User extends Component {
                 id: '',
                 name: '',
                 email: ''
+            },
+            showUpdateModal: false,
+            updatingUser: {
+                id: '',
+                updateName: '',
+                updateEmail: '',
+                updateRole: '',
             }
         }
 
@@ -36,6 +43,11 @@ class User extends Component {
         this.launchDeleteModal = this.launchDeleteModal.bind(this)
         this.onConfirmDeleteModal = this.onConfirmDeleteModal.bind(this)
         this.onCloseDeleteModal = this.onCloseDeleteModal.bind(this)
+        this.launchUpdateModal = this.launchUpdateModal.bind(this)
+        this.onConfirmUpdateUserModal = this.onConfirmUpdateUserModal.bind(this)
+        this.onCloseUpdateUserModal = this.onCloseUpdateUserModal.bind(this)
+        this.handleUpdateChange = this.handleUpdateChange.bind(this)
+        this.resetFilter = this.resetFilter.bind(this)
     }
 
     componentDidMount() {
@@ -149,6 +161,78 @@ class User extends Component {
         })
     }
 
+    launchUpdateModal(user) {
+
+        this.setState({
+            updatingUser: {
+                id: user.userId,
+                updateName: user.name,
+                updateEmail: user.email,
+                updateRole: user.role
+            },
+            showUpdateModal: true
+        })
+    }
+
+    onConfirmUpdateUserModal() {
+
+        let reqBody = {
+            id: this.state.updatingUser.id,
+            name: this.state.updatingUser.updateName,
+            email: this.state.updatingUser.updateEmail,
+            role: this.state.updatingUser.updateRole
+        }
+
+        Http.PUT('update_user', reqBody)
+            .then((response) => {
+
+                NotificationManager.success('User updated successfully')
+
+                this.onCloseUpdateUserModal()
+                setTimeout(this.filterUsers, 2000)
+            })
+            .catch(error => {
+                if(error.response && error.response.data) {
+                    NotificationManager.error(error.response.data.message)
+                } else {
+                    NotificationManager.error('Could not connect to server')
+                }
+            })
+    }
+
+    onCloseUpdateUserModal () {
+
+        this.setState({
+            showUpdateModal: false
+        })
+    }
+
+    handleUpdateChange(event) {
+
+        const {target} = event
+        const value = target.type === 'checkbox' ? target.checked : target.value
+        const {name} = target
+
+        this.setState({
+            updatingUser: {
+                ...this.state.updatingUser,
+                [name]: value
+            }
+        })
+    }
+
+    resetFilter() {
+
+        this.setState({
+            filter: {
+                filterName: '',
+                filterEmail: '',
+                filterRole: 'ALL',
+                pageSize: 10,
+                requestingPage: 1
+            }
+        }, () => this.getUsers())
+    }
     render() {
 
         return (
@@ -194,7 +278,7 @@ class User extends Component {
                                     onClick={this.filterUsers}>Search
                             </button>
                             <button className="btn btn-md btn-danger filtering-form-button"
-                                    onClick={this.getUsers}>Reset
+                                    onClick={this.resetFilter}>Reset
                             </button>
                         </div>
                     </form>
@@ -267,6 +351,21 @@ class User extends Component {
                         }}
                         minRows='2'
                         sortable={false}
+                        getTdProps={(state, rowInfo, column, instance) => {
+                            return {
+                                onClick: (event) => {
+
+                                    if(column.Header === 'ACTION') {
+                                        return
+                                    }
+
+                                    this.launchUpdateModal(rowInfo.original)
+                                },
+                                style: {
+                                    cursor: 'pointer'
+                                }
+                            }
+                        }}
                     />
 
                 </div>
@@ -286,6 +385,51 @@ class User extends Component {
                         <span>Are you sure you want to delete user <span style={{fontWeight: 'bold'}}>{this.state.deletingUser.name}</span> (email: <span style={{fontWeight: 'bold'}}>{this.state.deletingUser.email}</span>)?
                         </span>
                     </div>
+                </Modal>
+
+                <Modal id="UpdateUserModal"
+                    title="Update User"
+                    show={this.state.showUpdateModal}
+                    action = {
+                        {
+                            confirm: this.onConfirmUpdateUserModal,
+                            close: this.onCloseUpdateUserModal
+                        }
+                    }>
+
+                    <form>
+                        <div className="row form-group">
+                            <label htmlFor="updateUserName">NAME</label>
+                            <input className="form-control"
+                                value={this.state.updatingUser.updateName}
+                                name="updateName"
+                                id="updateUserName"
+                                onChange={this.handleUpdateChange}/>
+                        </div>
+
+                        <div className="row form-group">
+                            <label htmlFor="updateEmail">EMAIL</label>
+                            <input className="form-control"
+                                   value={this.state.updatingUser.updateEmail}
+                                   name="updateEmail"
+                                   id="updateUserEmail"
+                                    onChange={this.handleUpdateChange}/>
+                        </div>
+
+                        <div className="row form-group">
+                            <label>ROLE</label>
+                            <select className="form-control"
+                                value={this.state.updatingUser.updateRole}
+                                name="updateRole"
+                                id="updateUserRole"
+                                onChange={this.handleUpdateChange}>
+
+                                <option value="ADMIN">ADMIN</option>
+                                <option value="REALTOR">REALTOR</option>
+                                <option value="CLIENT">CLIENT</option>
+                            </select>
+                        </div>
+                    </form>
                 </Modal>
 
                 <NotificationContainer/>

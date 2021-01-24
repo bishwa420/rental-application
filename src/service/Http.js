@@ -10,7 +10,8 @@ const HEADERS = {
 const routes = {
     login: API_BASE_URL + 'login',
     get_users: API_BASE_URL + 'user',
-    delete_user: API_BASE_URL + 'user'
+    delete_user: API_BASE_URL + 'user',
+    update_user: API_BASE_URL + 'user'
 }
 
 const encodeQueryData = data => {
@@ -51,8 +52,12 @@ const Http = {
         return axios.post(routes[key], params, HEADERS)
     },
 
+    PUT: (key, params) => {
+        updateTokenInHeader()
+        return axios.put(routes[key], params, HEADERS)
+    },
+
     DELETE: (key, reqBody) => {
-        console.log('Requesting for DELETE body: ', JSON.stringify(reqBody))
         updateTokenInHeader()
         return axios.delete(routes[key], {data: reqBody})
     }

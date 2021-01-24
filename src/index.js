@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals'
 import './styles/index.css'
 import './styles/sass/stylesheets/styles.css'
 import 'react-notifications/lib/notifications.css'
+import './styles/animate.css'
 
 ReactDOM.render(
   <React.StrictMode>
