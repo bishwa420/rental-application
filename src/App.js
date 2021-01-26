@@ -5,6 +5,8 @@ import PublicLayout from "./component/PublicLayout"
 import PrivateLayout from "./component/PrivateLayout"
 import Login from './component/Login'
 import User from './component/User'
+import Logout from "./component/Logout"
+import NotFound from './component/NotFound'
 
 const PrivateRoute = ({component: Component, ...rest}) => {
 
@@ -22,7 +24,7 @@ const PublicRoute = ({component: Component, ...rest}) => {
 
     const token = JSON.parse(localStorage.getItem('token'))
 
-    return (token !== null && !isTokenExpired((token)) ? <Redirect to='/app/user'/> :
+    return (token !== null && !isTokenExpired((token)) ? <Redirect to='/app/users'/> :
             <Route {...rest} render={ matchProps => (
                 <PublicLayout>
                     <Component {...matchProps} />
@@ -40,11 +42,13 @@ class App extends Component {
           <Router>
               <Switch>
                   <Route exact path = "/">
-                      <Redirect to = {(token !== null && !isTokenExpired(token) ? '/app/user' : '/login')} />
+                      <Redirect to = {(token !== null && !isTokenExpired(token) ? '/app/users' : '/login')} />
                   </Route>
 
                   <PublicRoute path="/login" component={Login}/>
-                  <PrivateRoute path="/app/user" component={User}/>
+                  <PrivateRoute path="/app/users" component={User}/>
+                  <PrivateRoute path="/app/logout" component={Logout}/>
+                  <Route component = {NotFound}/>
               </Switch>
           </Router>
       )

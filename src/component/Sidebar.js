@@ -5,6 +5,9 @@ class Sidebar extends Component {
 
     constructor(props) {
         super(props)
+        this.state = {
+            activeTab: window.location.pathname
+        }
     }
 
     render() {
@@ -20,17 +23,25 @@ class Sidebar extends Component {
 
                 <ul className="list-unstyled components">
 
-                    <li>
+                    <li className={this.state.activeTab === '/app/users' ? 'active' : ''}>
                         <Link to="/app/users">
                             <i className="fa fa-user"/>
                             Users
                         </Link>
                     </li>
 
-                    <li>
-                        <Link to="/app/apartment">
+                    <li className={this.state.activeTab === '/app/apartments' ? 'active' : ''}>
+                        <Link to="/app/apartments">
                             <i className="fa fa-home"/>
                             Apartments
+                        </Link>
+                    </li>
+
+                    <li>
+                        <Link to="/app/logout">
+                            <button className="btn btn-lg" style={{width: '100%'}}>
+                                Logout
+                            </button>
                         </Link>
                     </li>
 
