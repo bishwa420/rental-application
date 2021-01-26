@@ -14,9 +14,8 @@ export default function UserUI(props) {
 
             <div className="row">
 
-                <div className="col-md-3 offset-md-9" style={{textAlign: 'right'}}>
+                <div className="col-md-3 offset-md-9" style={{textAlign: 'right', paddingRight: '3em'}}>
                     <button className="btn btn-md btn-success"
-                            style={{marginRight: '1.5em'}}
                             onClick={props.launchCreateModal}>
                         <i className="fa fa-plus"></i> Create User
                     </button>
