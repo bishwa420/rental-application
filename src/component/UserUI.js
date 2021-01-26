@@ -1,8 +1,9 @@
 import React from 'react'
-import Title from "./Title";
-import ReactTable from "react-table";
-import Modal from "./Modal";
-import NotificationContainer from "react-notifications/lib/NotificationContainer";
+import Title from "./Title"
+import ReactTable from "react-table"
+import Modal from "./Modal"
+import NotificationContainer from "react-notifications/lib/NotificationContainer"
+
 
 export default function UserUI(props) {
 
@@ -12,6 +13,14 @@ export default function UserUI(props) {
             <Title value="Users"></Title>
 
             <div className="row">
+
+                <div className="col-md-3 offset-md-9" style={{textAlign: 'right'}}>
+                    <button className="btn btn-md btn-success"
+                            style={{marginRight: '1.5em'}}
+                            onClick={props.launchCreateModal}>
+                        <i className="fa fa-plus"></i> Create User
+                    </button>
+                </div>
 
                 <form className="filtering-form row" onSubmit={e => e.preventDefault()}>
 
@@ -197,6 +206,93 @@ export default function UserUI(props) {
                             <option value="REALTOR">REALTOR</option>
                             <option value="CLIENT">CLIENT</option>
                         </select>
+                    </div>
+                </form>
+            </Modal>
+
+            <Modal  id="CreateUserModal"
+                    title="Create User"
+                    show={props.data.showCreateModal}
+                    action = {
+                        {
+                            confirm: props.onConfirmAddUserModal,
+                            close: props.onCloseAddUserModal
+                        }
+                    }>
+
+                <form>
+                    <div className="row form-group">
+                        <label htmlFor="createName" className="react-label">NAME <span className="help-block text-danger">*</span></label>
+                        <input className="form-control"
+                               type="text"
+                               placeholder="name"
+                               value={props.data.creatingUser.createName}
+                               name="createName"
+                               id="createName"
+                               onChange={props.handleAddChange}
+                               onBlur={props.validateCreateName}
+                               required/>
+                        {
+                            props.data.creatingUserError.createNameError ? <span id="helpCreateName"
+                                                              className="help-block text-danger">
+                                    <small>{props.data.creatingUserError.createNameError}</small>
+                                </span> : null
+                        }
+                    </div>
+
+                    <div className="row form-group">
+                        <label htmlFor="createEmail">EMAIL <span className="help-block text-danger">*</span></label>
+                        <input className="form-control"
+                               value={props.data.creatingUser.createEmail}
+                               name="createEmail"
+                               id="createEmail"
+                               onChange={props.handleAddChange}
+                               onBlur={props.validateCreateEmail}/>
+                        {
+                            props.data.creatingUserError.createEmailError ? <span id="helpCreateEmail"
+                                                                                 className="help-block text-danger">
+                                    <small>{props.data.creatingUserError.createEmailError}</small>
+                                </span> : null
+                        }
+                    </div>
+
+                    <div className="row form-group">
+                        <label htmlFor="createPassword">PASSWORD <span className="help-block text-danger">*</span></label>
+                        <input className="form-control"
+                               type="password"
+                               value={props.data.creatingUser.createPassword}
+                               name="createPassword"
+                               id="createPassword"
+                               onChange={props.handleAddChange}
+                               onBlur={props.validateCreatePassword}/>
+                        {
+                            props.data.creatingUserError.createPasswordError ? <span id="helpCreatePassword"
+                                                                                  className="help-block text-danger">
+                                    <small>{props.data.creatingUserError.createPasswordError}</small>
+                                </span> : null
+                        }
+                    </div>
+
+                    <div className="row form-group">
+                        <label>ROLE <span className="help-block text-danger">*</span></label>
+                        <select className="form-control"
+                                value={props.data.creatingUser.createRole}
+                                name="createRole"
+                                id="createRole"
+                                onChange={props.handleAddChange}
+                                onBlur={props.validateCreateRole}>
+
+                            <option value="ADMIN">ADMIN</option>
+                            <option value="REALTOR">REALTOR</option>
+                            <option value="CLIENT">CLIENT</option>
+                        </select>
+
+                        {
+                            props.data.creatingUserError.createRoleError ? <span id="helpCreateRole"
+                                                                                  className="help-block text-danger">
+                                    <small>{props.data.creatingUserError.createRoleError}</small>
+                                </span> : null
+                        }
                     </div>
                 </form>
             </Modal>

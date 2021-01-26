@@ -120,6 +120,14 @@ h1 {
     padding-bottom: 1em !important;
 }
 
+.react-label {
+    width: 100%
+}
+
+.form-group > div {
+    width: 100%
+}
+
 .rt-td {
     white-space: unset !important;
 }

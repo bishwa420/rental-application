@@ -1,12 +1,28 @@
 import React, {Component} from 'react'
 import Http from '../service/Http'
 import NotificationManager from 'react-notifications/lib/NotificationManager'
-import NotificationContainer from 'react-notifications/lib/NotificationContainer'
-import ReactTable from 'react-table'
 import 'react-table/react-table.css'
-import Title from './Title'
-import Modal from './Modal'
 import UserUI from './UserUI'
+
+const isEmailValid = (email) => {
+
+    if(email.trim() === '')
+        return false
+    return !/^[A-Za-z0-9][A-Za-z0-9._-]*@[A-Za-z0-9][A-Za-z0-9._-]*\.([A-Za-z0-9][A-Za-z0-9_-]\.)*[A-Za-z]{2,}$/.test(email);
+
+}
+
+const validateName = (props) => {
+
+    console.log('validateName, props: ', JSON.stringify(props, null, 2))
+
+
+}
+
+const isRoleValid = (role) => {
+
+    return role === 'ADMIN' && role === 'REALTOR' && role === 'CLIENT'
+}
 
 class User extends Component {
 
@@ -35,7 +51,20 @@ class User extends Component {
                 updateName: '',
                 updateEmail: '',
                 updateRole: '',
-            }
+            },
+            creatingUser: {
+                createName: '',
+                createEmail: '',
+                createPassword: '',
+                createRole: 'CLIENT',
+            },
+            creatingUserError: {
+                createNameError: false,
+                createEmailError: false,
+                createPasswordError: false,
+                createRoleError: false
+            },
+            showCreateModal: false
         }
 
         this.getUsers = this.getUsers.bind(this)
@@ -49,6 +78,16 @@ class User extends Component {
         this.onCloseUpdateUserModal = this.onCloseUpdateUserModal.bind(this)
         this.handleUpdateChange = this.handleUpdateChange.bind(this)
         this.resetFilter = this.resetFilter.bind(this)
+        this.onConfirmAddUserModal = this.onConfirmAddUserModal.bind(this)
+        this.onCloseAddUserModal = this.onCloseAddUserModal.bind(this)
+        this.handleAddChange = this.handleAddChange.bind(this)
+        this.launchCreateModal = this.launchCreateModal.bind(this)
+        this.isCreateUserFormValid = this.isCreateUserFormValid.bind(this)
+        this.updateCreateUserError = this.updateCreateUserError.bind(this)
+        this.validateCreateName = this.validateCreateName.bind(this)
+        this.validateCreateEmail = this.validateCreateEmail.bind(this)
+        this.validateCreatePassword = this.validateCreatePassword.bind(this)
+        this.validateCreateRole = this.validateCreateRole.bind(this)
     }
 
     componentDidMount() {
@@ -235,23 +274,156 @@ class User extends Component {
         }, () => this.getUsers())
     }
 
+    onConfirmAddUserModal() {
+
+        if(!this.validateCreateName() || !this.validateCreateEmail() || !this.validateCreateRole()) {
+            return;
+        }
+
+        let reqBody = {
+            name: this.state.creatingUser.createName,
+            email: this.state.creatingUser.createEmail,
+            role: this.state.creatingUser.createRole,
+            password: this.state.creatingUser.createPassword
+        }
+
+        console.log('Request body: ', JSON.stringify(reqBody, null, 2))
+
+        Http.POST('create_user', reqBody)
+            .then((response) => {
+
+                NotificationManager.success("User created successfully")
+                this.onCloseAddUserModal()
+                setTimeout(this.filterUsers, 2000)
+            })
+            .catch(error => {
+
+                console.log('error: ', JSON.stringify(error, null, 2))
+                if(error && error.response) {
+                    NotificationManager.error(error.response.data.message)
+                } else {
+                    NotificationManager.error("Could not connect to server")
+                }
+            })
+    }
+
+    onCloseAddUserModal() {
+
+        this.setState({
+            showCreateModal: false
+        })
+    }
+
+    handleAddChange(event) {
+
+        const {target} = event
+        const value = target.type === 'checkbox' ? target.checked : target.value
+        const {name} = target
+
+        this.setState({
+            creatingUser: {
+                ...this.state.creatingUser,
+                [name]: value
+            }
+        })
+    }
+
+    launchCreateModal() {
+        this.setState({
+            showCreateModal: true
+        })
+    }
+
+    isCreateUserFormValid() {
+
+        const {createName, createEmail, createRole} = this.state
+        return createName.trim() !== '' && isEmailValid(createEmail) && isRoleValid(createRole)
+    }
+
+    updateCreateUserError(name, value) {
+
+        this.setState({
+            creatingUserError: {
+                ...this.state.creatingUserError,
+                [name]: value
+            }
+        })
+    }
+
+    validateCreateName() {
+        if(this.state.creatingUser.createName.length < 1) {
+            this.updateCreateUserError('createNameError', 'Name is required')
+            return false
+        } else {
+            this.updateCreateUserError('createNameError', false)
+            return true
+        }
+    }
+
+    validateCreateEmail() {
+        if(this.state.creatingUser.createEmail.length < 1) {
+            this.updateCreateUserError('createEmailError', 'Email is required')
+            return false
+        } else if(isEmailValid(this.state.creatingUser.createEmail)) {
+            this.updateCreateUserError('createEmailError', 'Email is invalid')
+            return false
+        } else {
+            this.updateCreateUserError('createEmailError', false)
+            return true
+        }
+    }
+
+    validateCreatePassword() {
+
+        if(this.state.creatingUser.createPassword.length < 1) {
+            this.updateCreateUserError('createPasswordError', 'Password is required')
+            return false
+        } else {
+            this.updateCreateUserError('createPasswordError', false)
+            return true
+        }
+    }
+
+    validateCreateRole() {
+        if(this.state.creatingUser.createRole.length < 1) {
+            this.updateCreateUserError('createRoleError', 'Role is required')
+            return false
+        } else {
+            this.updateCreateUserError('createRoleError', false)
+            return true
+        }
+    }
+
+
     render() {
 
         return (
-            <UserUI
-                data={this.state}
-                handleFilteringChange={this.handleFilteringChange}
-                getUsers={this.getUsers}
-                filterUsers={this.filterUsers}
-                onConfirmDeleteModal={this.onConfirmDeleteModal}
-                onCloseDeleteModal={this.onCloseDeleteModal}
-                launchDeleteModal={this.launchDeleteModal}
-                launchUpdateModal={this.launchUpdateModal}
-                onConfirmUpdateUserModal={this.onConfirmUpdateUserModal}
-                onCloseUpdateUserModal={this.onCloseUpdateUserModal}
-                handleUpdateChange={this.handleUpdateChange}
-                resetFilter={this.resetFilter}
-            />
+            <div>
+
+                <UserUI
+                    data = {this.state}
+                    handleFilteringChange = {this.handleFilteringChange}
+                    getUsers = {this.getUsers}
+                    filterUsers = {this.filterUsers}
+                    onConfirmDeleteModal = {this.onConfirmDeleteModal}
+                    onCloseDeleteModal = {this.onCloseDeleteModal}
+                    launchDeleteModal = {this.launchDeleteModal}
+                    launchUpdateModal = {this.launchUpdateModal}
+                    onConfirmUpdateUserModal = {this.onConfirmUpdateUserModal}
+                    onCloseUpdateUserModal = {this.onCloseUpdateUserModal}
+                    handleUpdateChange = {this.handleUpdateChange}
+                    resetFilter = {this.resetFilter}
+                    onConfirmAddUserModal = {this.onConfirmAddUserModal}
+                    onCloseAddUserModal = {this.onCloseAddUserModal}
+                    handleAddChange = {this.handleAddChange}
+                    launchCreateModal = {this.launchCreateModal}
+                    isEmailValid = {isEmailValid}
+                    validateCreateName = {this.validateCreateName}
+                    validateCreateEmail = {this.validateCreateEmail}
+                    validateCreateRole = {this.validateCreateRole}
+                    validateCreatePassword = {this.validateCreatePassword}
+                />
+            </div>
         )
     }
 }

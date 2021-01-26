@@ -11,7 +11,8 @@ const routes = {
     login: API_BASE_URL + 'login',
     get_users: API_BASE_URL + 'user',
     delete_user: API_BASE_URL + 'user',
-    update_user: API_BASE_URL + 'user'
+    update_user: API_BASE_URL + 'user',
+    create_user: API_BASE_URL + 'user/create'
 }
 
 const encodeQueryData = data => {
