@@ -22,7 +22,7 @@ const PublicRoute = ({component: Component, ...rest}) => {
 
     const token = JSON.parse(localStorage.getItem('token'))
 
-    return (token !== null && !isTokenExpired((token)) ? <Redirect to='/app/home'/> :
+    return (token !== null && !isTokenExpired((token)) ? <Redirect to='/app/user'/> :
             <Route {...rest} render={ matchProps => (
                 <PublicLayout>
                     <Component {...matchProps} />
@@ -40,7 +40,7 @@ class App extends Component {
           <Router>
               <Switch>
                   <Route exact path = "/">
-                      <Redirect to = {(token !== null && !isTokenExpired(token) ? '/app/home' : '/login')} />
+                      <Redirect to = {(token !== null && !isTokenExpired(token) ? '/app/user' : '/login')} />
                   </Route>
 
                   <PublicRoute path="/login" component={Login}/>
