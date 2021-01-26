@@ -51,6 +51,7 @@ class User extends Component {
                 updateName: '',
                 updateEmail: '',
                 updateRole: '',
+                updateSuspendStatus: ''
             },
             creatingUser: {
                 createName: '',
@@ -208,7 +209,8 @@ class User extends Component {
                 id: user.userId,
                 updateName: user.name,
                 updateEmail: user.email,
-                updateRole: user.role
+                updateRole: user.role,
+                updateSuspendStatus: user.isSuspended
             },
             showUpdateModal: true
         })
@@ -220,7 +222,8 @@ class User extends Component {
             id: this.state.updatingUser.id,
             name: this.state.updatingUser.updateName,
             email: this.state.updatingUser.updateEmail,
-            role: this.state.updatingUser.updateRole
+            role: this.state.updatingUser.updateRole,
+            doSuspend: this.state.updatingUser.updateSuspendStatus
         }
 
         Http.PUT('update_user', reqBody)

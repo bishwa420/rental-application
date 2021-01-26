@@ -87,7 +87,7 @@ export default function UserUI(props) {
                             },
                             {
                                 Header: 'NAME',
-                                width: 280,
+                                width: 250,
                                 accessor: 'name',
                                 resizable: false,
                             },
@@ -103,18 +103,21 @@ export default function UserUI(props) {
                                 resizable: false
                             },
                             {
-                                Header: 'STATUS',
-                                width: 180,
+                                Header: 'VERIFIED',
+                                width: 160,
                                 accessor: 'status',
                                 resizable: false
                             },
                             {
-                                Header: 'ACTION',
-                                accessor: 'userId',
+                                Header: 'STATUS',
+                                accessor: 'isSuspended',
                                 Cell: (row) => {
-                                    return <div style={{textAlign: 'center'}}><i className="fa fa-times"
-                                                                                 style={{color: 'red', cursor: 'pointer'}}
-                                                                                 onClick={e => props.launchDeleteModal(row)}></i>
+                                    console.log('row: ', JSON.stringify(row.original.isSuspended, null, 2))
+                                    return <div style={{textAlign: 'center'}}>
+
+                                        <i className={row.original.isSuspended ? "fa fa-pause" : "fa fa-check"}
+                                             style={row.original.isSuspended ? {color: 'red'} : {color: 'green'}}
+                                             onClick={e => props.launchDeleteModal(row)}></i>
                                     </div>
                                 }
                             }
@@ -205,6 +208,19 @@ export default function UserUI(props) {
                             <option value="ADMIN">ADMIN</option>
                             <option value="REALTOR">REALTOR</option>
                             <option value="CLIENT">CLIENT</option>
+                        </select>
+                    </div>
+
+                    <div className="row form-group">
+                        <label>SUSPEND STATUS</label>
+                        <select className="form-control"
+                                value={props.data.updatingUser.updateSuspendStatus}
+                                name="updateSuspendStatus"
+                                id="updateUserSuspendStatus"
+                                onChange={props.handleUpdateChange}>
+
+                            <option value="true">SUSPENDED</option>
+                            <option value="false">ACTIVE</option>
                         </select>
                     </div>
                 </form>
