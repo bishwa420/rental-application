@@ -71,7 +71,7 @@ class Login extends Component {
                 localStorage.removeItem('token')
                 localStorage.setItem('token', JSON.stringify(data.token))
                 this.setState({
-                    redirectTo: '/app/user'
+                    redirectTo: '/app/users'
                 })
             }).catch((error) => {
 
