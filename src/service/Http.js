@@ -12,7 +12,8 @@ const routes = {
     get_users: API_BASE_URL + 'user',
     delete_user: API_BASE_URL + 'user',
     update_user: API_BASE_URL + 'user',
-    create_user: API_BASE_URL + 'user/create'
+    create_user: API_BASE_URL + 'user/create',
+    get_apartments: API_BASE_URL + 'apartment'
 }
 
 const encodeQueryData = data => {
@@ -43,6 +44,7 @@ const updateTokenInHeader = () => {
 const Http = {
 
     GET: (key, params = '') => {
+
         updateTokenInHeader()
         params = typeof params === 'object' ? encodeQueryData(params) : params
         return axios.get(routes[key] + params)
