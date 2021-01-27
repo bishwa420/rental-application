@@ -7,6 +7,7 @@ import Login from './component/Login'
 import User from './component/User'
 import Logout from "./component/Logout"
 import NotFound from './component/NotFound'
+import Apartment from './component/Apartment'
 
 const PrivateRoute = ({component: Component, ...rest}) => {
 
@@ -47,6 +48,7 @@ class App extends Component {
 
                   <PublicRoute path="/login" component={Login}/>
                   <PrivateRoute path="/app/users" component={User}/>
+                  <PrivateRoute path="/app/apartments" component={Apartment}/>
                   <PrivateRoute path="/app/logout" component={Logout}/>
                   <Route component = {NotFound}/>
               </Switch>

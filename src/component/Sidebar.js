@@ -10,7 +10,14 @@ class Sidebar extends Component {
         }
     }
 
+
     render() {
+
+        if(this.state.activeTab !== window.location.pathname) {
+            this.setState({
+                activeTab: window.location.pathname
+            })
+        }
 
         return (
             <nav id="sidebar">
