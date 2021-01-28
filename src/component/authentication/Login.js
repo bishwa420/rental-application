@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
-import logo from '../image/avatar.png'
-import Http from '../service/Http'
+import logo from '../../image/avatar.png'
+import Http from '../../service/Http'
 import {NotificationContainer, NotificationManager} from 'react-notifications'
 import {Redirect} from "react-router-dom";
 

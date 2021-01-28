@@ -1,7 +1,9 @@
 import React from "react"
-import Title from "./Title";
+import Title from "../common/Title";
 import ReactTable from "react-table";
 import {NotificationContainer, NotificationManager} from "react-notifications/lib"
+import MapContainer from "./MapContainer"
+import Modal from "../common/Modal"
 
 export default function ApartmentUI(props) {
 
@@ -59,8 +61,12 @@ export default function ApartmentUI(props) {
                                 accessor: 'latitude',
                                 Cell: (row) => {
                                     return (
-                                        <div>
-                                            loc
+                                        <div style={{textAlign: 'center'}}>
+                                            <a style={{cursor: 'pointer'}}>
+                                                <i className="fa fa-map-marker fa-2x"
+                                                   style={{color: '#2ddd8a'}}
+                                                   onClick={() => props.launchMap(row)}></i>
+                                            </a>
                                         </div>
                                     )
                                 }
@@ -79,6 +85,27 @@ export default function ApartmentUI(props) {
                 />
 
             </div>
+
+            <Modal
+                id="LocationModal"
+                title={props.data.loadedApartmentName}
+                show={props.data.showLocationModal}
+                action = {
+                    {
+                        confirm: props.closeLocationModal,
+                        close: props.closeLocationModal
+                    }
+                }
+                hideConfirmButton = {true}
+                isMapModal = {true}>
+
+                <MapContainer
+                    data = { {
+                        latitude: props.data.loadedApartmentLatitude,
+                        longitude: props.data.loadedApartmentLongitude
+                    }}
+                />
+            </Modal>
 
             <NotificationContainer/>
         </div>

@@ -2,7 +2,7 @@
 // The image is free as can be seen in the aforementioned location
 
 import React, {Component} from "react"
-import not_found from '../image/not-found.png'
+import not_found from '../../image/not-found.png'
 
 class NotFound extends Component {
 

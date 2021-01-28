@@ -1,6 +1,6 @@
 import React, {Component} from "react"
 
-import spinner from '../image/ajax-loader.gif'
+import spinner from '../../image/ajax-loader.gif'
 import {Redirect} from "react-router-dom";
 
 class Logout extends Component {

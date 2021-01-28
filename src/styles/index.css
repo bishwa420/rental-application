@@ -128,6 +128,18 @@ h1 {
     width: 100%
 }
 
+.map-modal > div {
+    margin-left: -1em;
+}
+
+.modal-dialog {
+    max-width: 750px !important;
+}
+
+.map-modal {
+    height: 450px;
+}
+
 
 element {
 

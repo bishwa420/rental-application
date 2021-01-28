@@ -1,13 +1,13 @@
 import React, {Component} from 'react'
 import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom'
 import {isTokenExpired} from './service/Util'
-import PublicLayout from "./component/PublicLayout"
-import PrivateLayout from "./component/PrivateLayout"
-import Login from './component/Login'
-import User from './component/User'
-import Logout from "./component/Logout"
-import NotFound from './component/NotFound'
-import Apartment from './component/Apartment'
+import PublicLayout from "./component/common/PublicLayout"
+import PrivateLayout from "./component/common/PrivateLayout"
+import Login from './component/authentication/Login'
+import User from './component/user/User'
+import Logout from "./component/authentication/Logout"
+import NotFound from './component/common/NotFound'
+import Apartment from './component/apartment/Apartment'
 
 const PrivateRoute = ({component: Component, ...rest}) => {
 

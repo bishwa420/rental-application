@@ -1,7 +1,7 @@
 import React from 'react'
-import Title from "./Title"
+import Title from "../common/Title"
 import ReactTable from "react-table"
-import Modal from "./Modal"
+import Modal from "../common/Modal"
 import NotificationContainer from "react-notifications/lib/NotificationContainer"
 
 

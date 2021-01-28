@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import Http from '../service/Http'
+import Http from '../../service/Http'
 import NotificationManager from 'react-notifications/lib/NotificationManager'
 import 'react-table/react-table.css'
 import UserUI from './UserUI'
@@ -12,12 +12,6 @@ const isEmailValid = (email) => {
 
 }
 
-const validateName = (props) => {
-
-    console.log('validateName, props: ', JSON.stringify(props, null, 2))
-
-
-}
 
 const isRoleValid = (role) => {
 

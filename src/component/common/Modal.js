@@ -1,5 +1,5 @@
 import React from 'react'
-import spinner from '../image/ajax-loader.gif'
+import spinner from '../../image/ajax-loader.gif'
 
 const Modal = props => {
 
@@ -9,9 +9,11 @@ const Modal = props => {
              role="dialog"
              aria-labelledby="ModalLabel" style={{visibility: props.show ? 'visible' : 'hidden', bottom: ''}}>
 
-            <div className="modal-dialog" style={{width: '80%'}}
+            <div className="modal-dialog"
+                 style={props.isMapModal ? {width: '750px'} : {width: '80%'}}
                 role="document">
-                <div className="modal-content">
+                <div className="modal-content"
+                    style={props.isMapModal ? {paddingLeft: '1em', paddingRight: '1em'} : {}}>
                     <div className="modal-header">
 
                         <h4 className="modal-title" id="ModalLabel" style={{lineHeight: '0.5'}}>{props.title}</h4>
@@ -23,7 +25,8 @@ const Modal = props => {
                     </div>
 
                     {props.fixedHeight === true ?
-                        (<div className="modal-body" style={{
+                        (<div className={props.isMapModal ? "map-modal modal-body" : "modal-body"}
+                              style={{
                             maxHeight: 500,
                             overflowY: 'auto',
                             maxWidth: 580,
@@ -32,7 +35,7 @@ const Modal = props => {
                             {props.children}
                         </div>)
                         :
-                        (<div className="modal-body">
+                        (<div className={props.isMapModal ? "map-modal modal-body" : "modal-body"}>
                             {props.children}
 
                         </div>)}
@@ -44,11 +47,14 @@ const Modal = props => {
                             marginRight: 10
                         }} alt = "Ajax loader" /> : null}
 
-                        <button type="button" className="btn btn-success"
-                            disabled={props.show && props.isLoading}
-                            onClick={() => props.action.confirm()}>
-                            {props.confirmButtonName ? props.confirmButtonName : 'Confirm'}
-                        </button>
+                        {
+                            props.hideConfirmButton ? null
+                                : <button type="button" className="btn btn-success"
+                                        disabled={props.show && props.isLoading}
+                                        onClick={() => props.action.confirm()}>
+                                    {props.confirmButtonName ? props.confirmButtonName : 'Confirm'}
+                                </button>
+                        }
                         <button type="button" className="btn btn-link"
                             data-dismiss="modal"
                             onClick={() => props.action.close()} style={{color: '#333'}}>

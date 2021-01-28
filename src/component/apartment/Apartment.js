@@ -1,6 +1,6 @@
 import React, {Component} from "react"
 import ApartmentUI from "./ApartmentUI"
-import Http from "../service/Http"
+import Http from "../../service/Http"
 import NotificationManager from "react-notifications/lib/NotificationManager";
 
 
@@ -21,14 +21,26 @@ class Apartment extends Component {
                 pageSize: 10,
                 requestingPage: 1
             },
-            pages: 0
+            pages: 0,
+            loadedApartmentName: '',
+            loadedApartmentLatitude: '',
+            loadedApartmentLongitude: '',
+            showLocationModal: false
         }
         this.filterApartments = this.filterApartments.bind(this)
         this.getApartments = this.getApartments.bind(this)
+        this.launchMap = this.launchMap.bind(this)
+        this.closeLocationModal = this.closeLocationModal.bind(this)
     }
 
     componentDidMount() {
         this.getApartments()
+    }
+
+    closeLocationModal() {
+        this.setState({
+            showLocationModal: false
+        })
     }
 
     filterApartments() {
@@ -82,11 +94,24 @@ class Apartment extends Component {
             })
     }
 
+    launchMap(rowInfo) {
+
+        console.log('rowInfo: ', JSON.stringify(rowInfo, null, 2))
+
+        this.setState({
+            loadedApartmentLatitude: rowInfo.original.latitude,
+            loadedApartmentLongitude: rowInfo.original.longitude,
+            showLocationModal: true
+        })
+    }
+
     render() {
         return (
             <ApartmentUI
                 data = {this.state}
                 filterApartments = {this.filterApartments}
+                launchMap = {this.launchMap}
+                closeLocationModal = {this.closeLocationModal}
             />
         )
     }
