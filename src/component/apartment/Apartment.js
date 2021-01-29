@@ -1,7 +1,8 @@
-import React, {Component} from "react"
+import React, {Component, createContext} from "react"
 import ApartmentUI from "./ApartmentUI"
 import Http from "../../service/Http"
-import NotificationManager from "react-notifications/lib/NotificationManager";
+import NotificationManager from "react-notifications/lib/NotificationManager"
+import {apartmentInfo, ApartmentContext} from "./ApartmentContext"
 
 
 class Apartment extends Component {
@@ -23,6 +24,8 @@ class Apartment extends Component {
             },
             pages: 0,
             loadedApartmentName: '',
+
+            loadedApartmentInfo: apartmentInfo,
             loadedApartmentLatitude: '',
             loadedApartmentLongitude: '',
             showLocationModal: false
@@ -65,7 +68,6 @@ class Apartment extends Component {
             loading: true
         })
 
-        console.log('calling get_apartments with params: ', params)
 
         Http.GET('get_apartments', params)
             .then((response) => {
@@ -96,23 +98,29 @@ class Apartment extends Component {
 
     launchMap(rowInfo) {
 
-        console.log('rowInfo: ', JSON.stringify(rowInfo, null, 2))
-
         this.setState({
-            loadedApartmentLatitude: rowInfo.original.latitude,
-            loadedApartmentLongitude: rowInfo.original.longitude,
+
+            loadedApartmentInfo: {
+                name: rowInfo.original.name,
+                latitude: rowInfo.original.latitude,
+                longitude: rowInfo.original.longitude
+            },
             showLocationModal: true
-        })
+        }, () => console.log('launching map: ',
+            JSON.stringify(this.state.loadedApartmentInfo, null, 2)))
     }
 
     render() {
         return (
-            <ApartmentUI
-                data = {this.state}
-                filterApartments = {this.filterApartments}
-                launchMap = {this.launchMap}
-                closeLocationModal = {this.closeLocationModal}
-            />
+            <ApartmentContext.Provider value={this.state.loadedApartmentInfo}>
+                <ApartmentUI
+                    data = {this.state}
+                    filterApartments = {this.filterApartments}
+                    launchMap = {this.launchMap}
+                    closeLocationModal = {this.closeLocationModal}
+                />
+            </ApartmentContext.Provider>
+
         )
     }
 }

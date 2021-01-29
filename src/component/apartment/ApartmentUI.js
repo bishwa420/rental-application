@@ -99,12 +99,7 @@ export default function ApartmentUI(props) {
                 hideConfirmButton = {true}
                 isMapModal = {true}>
 
-                <MapContainer
-                    data = { {
-                        latitude: props.data.loadedApartmentLatitude,
-                        longitude: props.data.loadedApartmentLongitude
-                    }}
-                />
+                <MapContainer/>
             </Modal>
 
             <NotificationContainer/>
