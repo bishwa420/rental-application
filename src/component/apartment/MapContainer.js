@@ -19,7 +19,6 @@ export class MapContainer extends Component {
 
     onMarkerClick = (props, marker, e) => {
 
-        console.log('onMarkerClick, props: ', JSON.stringify(props), ' marker: ', marker)
         this.setState({
             selectedPlace: props,
             activeMarker: marker,
@@ -61,7 +60,7 @@ export class MapContainer extends Component {
                     }}/>
                 <InfoWindow
                     onClose={this.onClose()}
-                    visible={this.state.showInfoWindow}
+                    visible={true}
                     marker={this.state.activeMarker}>
                     <div>
                         <h4>{loadedApartmentInfo.name}</h4>
