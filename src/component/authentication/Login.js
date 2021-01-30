@@ -2,7 +2,8 @@ import React, {Component} from 'react'
 import logo from '../../image/avatar.png'
 import Http from '../../service/Http'
 import {NotificationContainer, NotificationManager} from 'react-notifications'
-import {Redirect} from "react-router-dom";
+import {Redirect} from "react-router-dom"
+import {GoogleLogin} from "react-google-login"
 
 class Login extends Component {
 
@@ -21,6 +22,8 @@ class Login extends Component {
         this.handleValidation = this.handleValidation.bind(this)
         this.isFormValid = this.isFormValid.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.onSuccessGoogleResponse = this.onSuccessGoogleResponse.bind(this)
+        this.onFailureGoogleResponse = this.onFailureGoogleResponse.bind(this)
     }
 
     handleChange(event) {
@@ -81,6 +84,36 @@ class Login extends Component {
                     NotificationManager.error('Could not connect to server')
                 }
             })
+    }
+
+    onSuccessGoogleResponse(response) {
+        console.log('response: ', response)
+
+        let reqBody = {
+            token: response.tokenId
+        }
+
+        Http.POST('login_google', reqBody)
+            .then((response) => {
+                localStorage.removeItem('token')
+                localStorage.setItem('token', JSON.stringify(response.data.token))
+                this.setState({
+                    redirectTo: '/app/users'
+                })
+            })
+            .catch(error => {
+
+                if(error && error.response) {
+                    NotificationManager.error(error.response.data.message)
+                } else {
+                    NotificationManager.error('Could not connect to server')
+                }
+            })
+    }
+
+    onFailureGoogleResponse(response) {
+
+        NotificationManager.error('Could not proceed with Google login')
     }
 
     render() {
@@ -144,6 +177,20 @@ class Login extends Component {
                                     disabled={this.isFormValid()}>
                                 Login
                             </button>
+                            <GoogleLogin
+                                clientId={"758898908443-kvlhgb8bpbtfs0jam1kq6i9m4bc1vst5.apps.googleusercontent.com"}
+                                onSuccess={this.onSuccessGoogleResponse}
+                                onFailure={this.onFailureGoogleResponse}
+                                buttonText={"Login with Google"}
+                                cookiePolicy={"single_host_origin"}
+                                render={props => (
+                                    <button className="btn btn-md btn-danger"
+                                            onClick={props.onClick}
+                                            style={{marginTop: '1em', width: '50%'}}>
+                                        <i className="fa fa-google"></i> Login
+                                    </button>
+                                )}
+                            />
                         </form>
                     </div>
                 </div>

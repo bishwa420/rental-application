@@ -13,7 +13,8 @@ const routes = {
     delete_user: API_BASE_URL + 'user',
     update_user: API_BASE_URL + 'user',
     create_user: API_BASE_URL + 'user/create',
-    get_apartments: API_BASE_URL + 'apartment'
+    get_apartments: API_BASE_URL + 'apartment',
+    login_google: API_BASE_URL + 'login/google'
 }
 
 const encodeQueryData = data => {
@@ -51,6 +52,7 @@ const Http = {
     },
 
     POST: (key, params) => {
+
         updateTokenInHeader()
         return axios.post(routes[key], params, HEADERS)
     },
