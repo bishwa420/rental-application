@@ -4,6 +4,8 @@ import ReactTable from "react-table";
 import {NotificationContainer, NotificationManager} from "react-notifications/lib"
 import MapContainer from "./MapContainer"
 import Modal from "../common/Modal"
+import {Slider, Rail, Handles, Tracks} from "react-compound-slider"
+import {sliderStyle, railStyle, Handle, Track} from "../../service/SlideStyle"
 
 export default function ApartmentUI(props) {
 
@@ -11,6 +13,72 @@ export default function ApartmentUI(props) {
         <div>
 
             <Title value="Apartments"></Title>
+
+            <form className="filtering-form row" onSubmit={e => e.preventDefault()}>
+
+                <div className="col-md-3 offset-md-1">
+
+                    <label htmlFor="filterName" className="range-label">PRICE</label>
+                    <Slider
+                        values={[props.data.filter.filterMinPrice, props.data.filter.filterMaxPrice]}
+                        step={100}
+                        mode={2}
+                        domain={[100,10000]}
+                        rootStyle={sliderStyle}
+                        onChange={props.handleFilteringChange}>
+
+                        <Rail>
+                            {({ getRailProps }) => (
+                                <div style={railStyle} {...getRailProps()} />
+                            )}
+                        </Rail>
+                        <Handles>
+                            {
+                                ({handles, getHandleProps}) => (
+                                    <div className="slider-handles">
+                                        {
+                                            handles.map(handle => (
+                                                <Handle
+                                                    key={handle.id}
+                                                    handle={handle}
+                                                    getHandleProps={getHandleProps}
+                                                />
+                                            ))
+                                        }
+                                    </div>
+                                )
+                            }
+                        </Handles>
+
+                        <Tracks right={false}>
+                            {({tracks, getTrackProps}) => (
+                                <div className="slider-tracks">
+                                    {
+                                        tracks.map(({id, source, target}) => (
+                                            <Track
+                                                key={id}
+                                                source={source}
+                                                target={target}
+                                                getTrackProps={getTrackProps}
+                                            />
+                                        ))
+                                    }
+                                </div>
+                            )}
+                        </Tracks>
+                    </Slider>
+
+                </div>
+
+                <div className="col-md-12 slider-submit-section">
+                    <button className="btn btn-lg btn-info slider-submit-button"
+                            onClick={props.filterApartments}>Search
+                    </button>
+                    <button className="btn btn-lg btn-danger slider-submit-button"
+                            onClick={props.resetFilter}>Reset
+                    </button>
+                </div>
+            </form>
 
             <div className="row center-content">
 
@@ -88,7 +156,7 @@ export default function ApartmentUI(props) {
 
             <Modal
                 id="LocationModal"
-                title={props.data.loadedApartmentName}
+                title={props.data.loadedApartmentInfo.name}
                 show={props.data.showLocationModal}
                 action = {
                     {

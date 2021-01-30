@@ -15,29 +15,54 @@ class Apartment extends Component {
             filter: {
                 filterMinArea: 0,
                 filterMaxArea: 10000000,
-                filterMinPrice: 0,
-                filterMaxPrice: 1000000000,
+                filterMinPrice: 100,
+                filterMaxPrice: 2000,
                 filterMinRooms: 0,
                 filterMaxRooms: 10000000,
                 pageSize: 10,
                 requestingPage: 1
             },
             pages: 0,
-            loadedApartmentName: '',
-
             loadedApartmentInfo: apartmentInfo,
-            loadedApartmentLatitude: '',
-            loadedApartmentLongitude: '',
             showLocationModal: false
         }
         this.filterApartments = this.filterApartments.bind(this)
         this.getApartments = this.getApartments.bind(this)
         this.launchMap = this.launchMap.bind(this)
         this.closeLocationModal = this.closeLocationModal.bind(this)
+        this.handlePriceFilteringChange = this.handlePriceFilteringChange.bind(this)
+        this.resetFilter = this.resetFilter.bind(this)
     }
 
     componentDidMount() {
         this.getApartments()
+    }
+
+    resetFilter() {
+
+        this.setState({
+            filter: {
+                filterMinArea: 0,
+                filterMaxArea: 10000000,
+                filterMinPrice: 100,
+                filterMaxPrice: 2000,
+                filterMinRooms: 0,
+                filterMaxRooms: 10000000,
+                pageSize: 10,
+                requestingPage: 1
+            }
+        }, () => this.getApartments())
+    }
+
+    handlePriceFilteringChange(value) {
+
+        this.setState({
+            filter: {
+                ...this.state.filter,
+                filterMinPrice: value[0],
+                filterMaxPrice: value[1]
+            }
+        })
     }
 
     closeLocationModal() {
@@ -118,6 +143,8 @@ class Apartment extends Component {
                     filterApartments = {this.filterApartments}
                     launchMap = {this.launchMap}
                     closeLocationModal = {this.closeLocationModal}
+                    handleFilteringChange = {this.handlePriceFilteringChange}
+                    resetFilter = {this.resetFilter}
                 />
             </ApartmentContext.Provider>
 

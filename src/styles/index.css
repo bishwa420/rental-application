@@ -140,6 +140,20 @@ h1 {
     height: 450px;
 }
 
+.slider-submit-section {
+    padding-top: 5em;
+    padding-left: 3em !important;
+    text-align: center;
+}
+
+.slider-submit-button {
+    margin-right: 2em;
+}
+
+.range-label {
+    font-size: 18px;
+}
+
 
 element {
 
