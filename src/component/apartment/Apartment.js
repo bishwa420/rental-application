@@ -3,6 +3,7 @@ import ApartmentUI from "./ApartmentUI"
 import Http from "../../service/Http"
 import NotificationManager from "react-notifications/lib/NotificationManager"
 import {apartmentInfo, ApartmentContext} from "./ApartmentContext"
+import {removeAllNotifications} from "../../service/Util";
 
 
 class Apartment extends Component {
@@ -97,7 +98,8 @@ class Apartment extends Component {
         Http.GET('get_apartments', params)
             .then((response) => {
 
-                NotificationManager.success('Apartment fetched successfully')
+                removeAllNotifications()
+                NotificationManager.success('Apartment fetched successfully', 'Success')
                 this.setState({
                     loading: false,
                     apartments: response.data.apartmentList,

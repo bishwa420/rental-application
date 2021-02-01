@@ -1,3 +1,5 @@
+import NotificationManager from "react-notifications/lib/NotificationManager"
+
 const isTokenExpired = (token) => {
 
     let base64Url = token.split('.')[1]
@@ -21,6 +23,10 @@ const isTokenExpired = (token) => {
         return true
 
     return exp*1000 <= new Date().getTime()
+}
+
+export const removeAllNotifications = () => {
+    NotificationManager.listNotify.forEach(n => NotificationManager.remove({ id: n.id }));
 }
 
 export {isTokenExpired}

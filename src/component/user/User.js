@@ -3,6 +3,7 @@ import Http from '../../service/Http'
 import NotificationManager from 'react-notifications/lib/NotificationManager'
 import 'react-table/react-table.css'
 import UserUI from './UserUI'
+import {removeAllNotifications} from '../../service/Util'
 
 const isEmailValid = (email) => {
 
@@ -116,7 +117,9 @@ class User extends Component {
             .then((response) => {
 
                 console.log('response: ', JSON.stringify(response, null, 2))
-                NotificationManager.success('Received users list from server')
+
+                removeAllNotifications()
+                NotificationManager.success('Received users list from server', 'Success')
                 this.setState({
                     users: response.data.userList,
                     pages: response.data.page.totalPages,
