@@ -5,6 +5,7 @@ import {NotificationContainer, NotificationManager} from 'react-notifications'
 import {Redirect} from "react-router-dom"
 import {GoogleLogin} from "react-google-login"
 import FacebookLogin from "react-facebook-login"
+import {removeAllNotifications} from "../../service/Util";
 
 class Login extends Component {
 
@@ -72,14 +73,15 @@ class Login extends Component {
         }
 
         Http.POST('login', reqBody).then(({data}) => {
-                NotificationManager.success('Login success!')
                 localStorage.removeItem('token')
                 localStorage.setItem('token', JSON.stringify(data.token))
+                console.log('user role: ', data.role)
                 this.setState({
-                    redirectTo: '/app/users'
+                    redirectTo: data.role === 'ADMIN' ? '/app/users' : '/app/apartments'
                 })
             }).catch((error) => {
 
+                removeAllNotifications()
                 if(error && error.response) {
                     NotificationManager.error(error.response.data.message, '')
                 } else {
@@ -100,11 +102,12 @@ class Login extends Component {
                 localStorage.removeItem('token')
                 localStorage.setItem('token', JSON.stringify(response.data.token))
                 this.setState({
-                    redirectTo: '/app/users'
+                    redirectTo: response.data.role === 'ADMIN' ? '/app/users' : '/app/apartments'
                 })
             })
             .catch(error => {
 
+                removeAllNotifications()
                 if(error && error.response) {
                     NotificationManager.error(error.response.data.message)
                 } else {
@@ -121,7 +124,8 @@ class Login extends Component {
     facebookCallbackResponse(response) {
 
         console.log('facebook callback response: ', response)
-        if(response.accessToken) {
+        if(!response.accessToken) {
+            removeAllNotifications()
            NotificationManager.error("Facebook login failed")
            return
         }
@@ -135,10 +139,11 @@ class Login extends Component {
                 localStorage.removeItem('token')
                 localStorage.setItem('token', JSON.stringify(response.data.token))
                 this.setState({
-                    redirectTo: '/app/users'
+                    redirectTo: response.data.role === 'ADMIN' ? '/app/users' : '/app/apartments'
                 })
             })
             .catch(error => {
+                removeAllNotifications()
                 if(error && error.response) {
                     NotificationManager.error(error.response.data.message)
                 } else {

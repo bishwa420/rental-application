@@ -1,12 +1,14 @@
 import React, {Component} from 'react'
-import {Link} from "react-router-dom";
+import {Link} from "react-router-dom"
+import {getUserRole} from '../../service/Util'
 
 class Sidebar extends Component {
 
     constructor(props) {
         super(props)
         this.state = {
-            activeTab: window.location.pathname
+            activeTab: window.location.pathname,
+            role: getUserRole()
         }
     }
 
@@ -30,12 +32,14 @@ class Sidebar extends Component {
 
                 <ul className="list-unstyled components">
 
+                    {this.state.role === 'ADMIN' ?
+
                     <li className={this.state.activeTab === '/app/users' ? 'active' : ''}>
                         <Link to="/app/users">
                             <i className="fa fa-user"/>
                             Users
                         </Link>
-                    </li>
+                    </li> : null}
 
                     <li className={this.state.activeTab === '/app/apartments' ? 'active' : ''}>
                         <Link to="/app/apartments">
