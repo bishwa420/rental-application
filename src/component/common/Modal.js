@@ -4,7 +4,7 @@ import spinner from '../../image/ajax-loader.gif'
 const Modal = props => {
 
     return (
-        <div className={props.show ? 'modal animated fadeInRight show' : 'modal fade'}
+        <div className={props.show ? 'modal animated zoomInUp show' : 'modal fade'}
              id={props.id} tabIndex="-1"
              role="dialog"
              aria-labelledby="ModalLabel" style={{visibility: props.show ? 'visible' : 'hidden', bottom: ''}}>

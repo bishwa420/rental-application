@@ -93,6 +93,7 @@ h1 {
 .modal {
     text-align: center;
     padding: 0 !important;
+    background: #42262682;
 }
 
 .filtering-form {
