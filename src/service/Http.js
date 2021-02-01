@@ -14,7 +14,8 @@ const routes = {
     update_user: API_BASE_URL + 'user',
     create_user: API_BASE_URL + 'user/create',
     get_apartments: API_BASE_URL + 'apartment',
-    login_google: API_BASE_URL + 'login/google'
+    login_google: API_BASE_URL + 'login/google',
+    login_facebook: API_BASE_URL + 'login/facebook'
 }
 
 const encodeQueryData = data => {

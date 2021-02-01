@@ -4,6 +4,7 @@ import Http from '../../service/Http'
 import {NotificationContainer, NotificationManager} from 'react-notifications'
 import {Redirect} from "react-router-dom"
 import {GoogleLogin} from "react-google-login"
+import FacebookLogin from "react-facebook-login"
 
 class Login extends Component {
 
@@ -24,6 +25,7 @@ class Login extends Component {
         this.handleSubmit = this.handleSubmit.bind(this)
         this.onSuccessGoogleResponse = this.onSuccessGoogleResponse.bind(this)
         this.onFailureGoogleResponse = this.onFailureGoogleResponse.bind(this)
+        this.facebookCallbackResponse = this.facebookCallbackResponse.bind(this)
     }
 
     handleChange(event) {
@@ -116,6 +118,35 @@ class Login extends Component {
         NotificationManager.error('Could not proceed with Google login')
     }
 
+    facebookCallbackResponse(response) {
+
+        console.log('facebook callback response: ', response)
+        if(response.accessToken) {
+           NotificationManager.error("Facebook login failed")
+           return
+        }
+
+        let reqBody = {
+            token: response.accessToken
+        }
+
+        Http.POST('login_facebook', reqBody)
+            .then((response) => {
+                localStorage.removeItem('token')
+                localStorage.setItem('token', JSON.stringify(response.data.token))
+                this.setState({
+                    redirectTo: '/app/users'
+                })
+            })
+            .catch(error => {
+                if(error && error.response) {
+                    NotificationManager.error(error.response.data.message)
+                } else {
+                    NotificationManager.error('Could not connect to server')
+                }
+            })
+    }
+
     render() {
 
         if(this.state.redirectTo) {
@@ -177,20 +208,39 @@ class Login extends Component {
                                     disabled={this.isFormValid()}>
                                 Login
                             </button>
-                            <GoogleLogin
-                                clientId={"758898908443-kvlhgb8bpbtfs0jam1kq6i9m4bc1vst5.apps.googleusercontent.com"}
-                                onSuccess={this.onSuccessGoogleResponse}
-                                onFailure={this.onFailureGoogleResponse}
-                                buttonText={"Login with Google"}
-                                cookiePolicy={"single_host_origin"}
-                                render={props => (
-                                    <button className="btn btn-md btn-danger"
-                                            onClick={props.onClick}
-                                            style={{marginTop: '1em', width: '50%'}}>
-                                        <i className="fa fa-google"></i> Login
-                                    </button>
-                                )}
-                            />
+
+                            <div className="row">
+
+                                <div className="col-md-6" style={{paddingLeft: 0}}>
+                                    <GoogleLogin
+                                        clientId={"758898908443-kvlhgb8bpbtfs0jam1kq6i9m4bc1vst5.apps.googleusercontent.com"}
+                                        onSuccess={this.onSuccessGoogleResponse}
+                                        onFailure={this.onFailureGoogleResponse}
+                                        buttonText={"Login with Google"}
+                                        cookiePolicy={"single_host_origin"}
+                                        render={props => (
+                                            <button className="btn btn-md btn-danger"
+                                                    onClick={props.onClick}
+                                                    style={{marginTop: '1em', width: '100%', fontWeight: 'bold'}}>
+                                                <i className="fa fa-google"></i> LOGIN
+                                            </button>
+                                        )}
+                                    />
+                                </div>
+
+                                <div className="col-md-6" style={{paddingLeft: 0, paddingRight: 0}}>
+                                    <FacebookLogin
+                                        appId="1530092413856847"
+                                        clientToken={"28ea6d92b96d8459717aced13cddc0cd"}
+                                        autoLoad={false}
+                                        fields="name,email"
+                                        callback={this.facebookCallbackResponse}
+                                        icon={<i className="fa fa-facebook-square"></i>}
+                                        textButton="Login"/>
+                                </div>
+                            </div>
+
+
                         </form>
                     </div>
                 </div>
