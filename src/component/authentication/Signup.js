@@ -83,9 +83,11 @@ class Signup extends Component {
         const value = target.type === 'checkbox' ? target.checked : target.value
         const {name} = target
 
+        console.log('name: ', name, ' value: ', value)
+
         this.setState({
             [name]: value
-        })
+        }, () => console.log('state: ', this.state))
     }
 
     isFormValid() {
@@ -111,6 +113,8 @@ class Signup extends Component {
             password: this.state.password,
             role: this.state.role
         }
+
+        console.log('reqBody: ', reqBody)
 
         Http.POST('signup', reqBody)
             .then((response) => {
@@ -219,9 +223,10 @@ class Signup extends Component {
                                 </span> : null
                             }
 
-                            <select className="form-control" name="role" onChange={this.handleChange}>
-                                <option value={this.state.role} selected={this.state.role === 'REALTOR'}>REALTOR</option>
-                                <option value={this.state.role} selected={this.state.role === 'CLIENT'}>CLIENT</option>
+                            <select className="form-control" name="role" onChange={this.handleChange}
+                                value={this.state.role}>
+                                <option value="REALTOR" selected={this.state.role === 'REALTOR'}>REALTOR</option>
+                                <option value="CLIENT" selected={this.state.role === 'CLIENT'}>CLIENT</option>
                             </select>
 
                             <button className="btn btn-lg btn-success btn-block"
