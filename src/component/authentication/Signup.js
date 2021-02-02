@@ -32,11 +32,17 @@ class Signup extends Component {
         this.onSuccessGoogleResponse = this.onSuccessGoogleResponse.bind(this)
         this.onFailureGoogleResponse = this.onFailureGoogleResponse.bind(this)
         this.facebookCallbackResponse = this.facebookCallbackResponse.bind(this)
+        this.submit = this.submit.bind(this)
     }
 
     onSuccessGoogleResponse(response) {
 
-        notifySuccess('Google signup is successful')
+        let reqBody = {
+            role : this.state.role,
+            token: response.tokenId
+        }
+
+        this.submit('signup_google', reqBody)
     }
 
     onFailureGoogleResponse(response) {
@@ -44,8 +50,31 @@ class Signup extends Component {
         notifyFailure('Google signup failed')
     }
 
+    submit(uri, reqBody) {
+
+        Http.POST(uri, reqBody)
+            .then((response) => {
+
+                notifyInfo('Please follow the link on your email')
+                setTimeout(this.onSuccessfulSignup, 3000)
+            })
+            .catch(error => {
+
+                if(error.response && error.response.data) {
+                    notifyFailure(error.response.data.message)
+                } else {
+                    notifyFailure('Could not connect to server')
+                }
+            })
+    }
+
     facebookCallbackResponse(response) {
-        notifySuccess('Facebook signup')
+
+        let reqBody = {
+            role : this.state.role,
+            token: response.accessToken
+        }
+        this.submit('signup_facebook', reqBody)
     }
 
     handleChange(event) {
@@ -86,7 +115,7 @@ class Signup extends Component {
         Http.POST('signup', reqBody)
             .then((response) => {
 
-                notifySuccess('Please follow the link on your email')
+                notifyInfo('Please follow the link on your email')
                 setTimeout(this.onSuccessfulSignup, 3000)
             })
             .catch(error => {

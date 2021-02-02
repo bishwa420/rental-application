@@ -16,7 +16,9 @@ const routes = {
     get_apartments: API_BASE_URL + 'apartment',
     login_google: API_BASE_URL + 'login/google',
     login_facebook: API_BASE_URL + 'login/facebook',
-    signup: API_BASE_URL + 'signup'
+    signup: API_BASE_URL + 'signup',
+    signup_google: API_BASE_URL + 'signup/google',
+    signup_facebook: API_BASE_URL + 'signup/facebook'
 }
 
 const encodeQueryData = data => {
