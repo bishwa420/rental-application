@@ -48,8 +48,23 @@ export const getUserRole = () => {
     return JSON.parse(window.atob(base64)).role
 }
 
-export const removeAllNotifications = () => {
+const removeAllNotifications = () => {
     NotificationManager.listNotify.forEach(n => NotificationManager.remove({ id: n.id }));
+}
+
+export const notifySuccess = (message) => {
+    removeAllNotifications()
+    NotificationManager.success(message)
+}
+
+export const notifyFailure = (message) => {
+    removeAllNotifications()
+    NotificationManager.error(message)
+}
+
+export const notifyInfo = (message) => {
+    removeAllNotifications()
+    NotificationManager.info(message)
 }
 
 export {isTokenExpired}

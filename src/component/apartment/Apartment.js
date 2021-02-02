@@ -1,9 +1,8 @@
 import React, {Component, createContext} from "react"
 import ApartmentUI from "./ApartmentUI"
 import Http from "../../service/Http"
-import NotificationManager from "react-notifications/lib/NotificationManager"
 import {apartmentInfo, ApartmentContext} from "./ApartmentContext"
-import {removeAllNotifications} from "../../service/Util";
+import {notifyFailure, notifySuccess} from "../../service/Util";
 
 
 class Apartment extends Component {
@@ -98,8 +97,7 @@ class Apartment extends Component {
         Http.GET('get_apartments', params)
             .then((response) => {
 
-                removeAllNotifications()
-                NotificationManager.success('Apartment fetched successfully', 'Success')
+                notifySuccess('Apartment fetched successfully', 'Success')
                 this.setState({
                     loading: false,
                     apartments: response.data.apartmentList,
@@ -113,9 +111,9 @@ class Apartment extends Component {
             .catch(error => {
 
                 if(error.response && error.response.data) {
-                    NotificationManager.error(error.response.data.message)
+                    notifyFailure(error.response.data.message)
                 } else {
-                    NotificationManager.error('Could not connect to server')
+                    notifyFailure('Could not connect to server')
                 }
                 this.setState({
                     loading: false

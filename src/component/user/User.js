@@ -1,9 +1,8 @@
 import React, {Component} from 'react'
 import Http from '../../service/Http'
-import NotificationManager from 'react-notifications/lib/NotificationManager'
 import 'react-table/react-table.css'
 import UserUI from './UserUI'
-import {removeAllNotifications} from '../../service/Util'
+import {notifyFailure, notifySuccess} from '../../service/Util'
 
 const isEmailValid = (email) => {
 
@@ -118,8 +117,7 @@ class User extends Component {
 
                 console.log('response: ', JSON.stringify(response, null, 2))
 
-                removeAllNotifications()
-                NotificationManager.success('Received users list from server', 'Success')
+                notifySuccess('Received users list from server')
                 this.setState({
                     users: response.data.userList,
                     pages: response.data.page.totalPages,
@@ -129,9 +127,9 @@ class User extends Component {
             })
             .catch((error) => {
                 if (error && error.response) {
-                    NotificationManager.error(error.response.data.message)
+                    notifyFailure(error.response.data.message)
                 } else {
-                    NotificationManager.error('Could not connect to server')
+                    notifyFailure('Could not connect to server')
                 }
                 this.setState({
                     loading: false
@@ -167,16 +165,16 @@ class User extends Component {
         Http.DELETE('delete_user', reqBody)
             .then((response) => {
 
-                NotificationManager.success('User deleted successfully')
+                notifySuccess('User deleted successfully')
                 this.onCloseDeleteModal()
                 setTimeout(this.filterUsers, 2000)
             })
             .catch(error => {
 
                 if (error.response && error.response.data.message)
-                    NotificationManager.error(error.response.data.message)
+                    notifyFailure(error.response.data.message)
                 else
-                    NotificationManager.error('User not deleted')
+                    notifyFailure('User not deleted')
                 this.onCloseDeleteModal()
             })
     }
@@ -226,16 +224,16 @@ class User extends Component {
         Http.PUT('update_user', reqBody)
             .then((response) => {
 
-                NotificationManager.success('User updated successfully')
+                notifySuccess('User updated successfully')
 
                 this.onCloseUpdateUserModal()
                 setTimeout(this.filterUsers, 2000)
             })
             .catch(error => {
                 if (error.response && error.response.data) {
-                    NotificationManager.error(error.response.data.message)
+                    notifyFailure(error.response.data.message)
                 } else {
-                    NotificationManager.error('Could not connect to server')
+                    notifyFailure('Could not connect to server')
                 }
             })
     }
@@ -292,7 +290,7 @@ class User extends Component {
         Http.POST('create_user', reqBody)
             .then((response) => {
 
-                NotificationManager.success("User created successfully")
+                notifySuccess("User created successfully")
                 this.onCloseAddUserModal()
                 setTimeout(this.filterUsers, 2000)
             })
@@ -300,9 +298,9 @@ class User extends Component {
 
                 console.log('error: ', JSON.stringify(error, null, 2))
                 if(error && error.response) {
-                    NotificationManager.error(error.response.data.message)
+                    notifyFailure(error.response.data.message)
                 } else {
-                    NotificationManager.error("Could not connect to server")
+                    notifyFailure("Could not connect to server")
                 }
             })
     }

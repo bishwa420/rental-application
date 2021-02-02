@@ -15,7 +15,8 @@ const routes = {
     create_user: API_BASE_URL + 'user/create',
     get_apartments: API_BASE_URL + 'apartment',
     login_google: API_BASE_URL + 'login/google',
-    login_facebook: API_BASE_URL + 'login/facebook'
+    login_facebook: API_BASE_URL + 'login/facebook',
+    signup: API_BASE_URL + 'signup'
 }
 
 const encodeQueryData = data => {
@@ -54,6 +55,7 @@ const Http = {
 
     POST: (key, params) => {
 
+        console.log('POST called for routes: ', routes[key], ' params: ', JSON.stringify(params, null, 2))
         updateTokenInHeader()
         return axios.post(routes[key], params, HEADERS)
     },

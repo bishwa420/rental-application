@@ -96,6 +96,17 @@ h1 {
     background: #42262682;
 }
 
+.wrapper-box-signup {
+    margin-top: 30px;
+}
+
+.signup-invitation {
+    margin-top: 1em;
+    text-align: center;
+    font-weight: bold;
+    color: gray;
+}
+
 .filtering-form {
     width: 100%;
 }

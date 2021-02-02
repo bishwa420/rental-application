@@ -1,32 +1,51 @@
-import React, {Component} from 'react'
-import logo from '../../image/avatar.png'
-import Http from '../../service/Http'
-import {NotificationContainer} from 'react-notifications'
-import {Redirect} from "react-router-dom"
+import React, {Component} from "react"
+import logo from "../../image/avatar.png"
 import {GoogleLogin} from "react-google-login"
 import FacebookLogin from "react-facebook-login"
-import {notifySuccess, notifyFailure} from "../../service/Util";
+import {NotificationContainer} from "react-notifications"
+import Http from "../../service/Http"
+import {Redirect} from "react-router-dom"
+import {notifySuccess, notifyFailure, notifyInfo} from "../../service/Util"
 
-class Login extends Component {
+class Signup extends Component {
 
     constructor(props) {
         super(props)
         this.state = {
             email: '',
             password: '',
+            name: '',
+            role: 'CLIENT',
             error: {
-                email: false,
-                password: false
+                name: '',
+                email: '',
+                password: '',
+                role: ''
             },
             redirectTo: false
         }
+        this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
         this.handleValidation = this.handleValidation.bind(this)
         this.isFormValid = this.isFormValid.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
+        this.onSuccessfulSignup = this.onSuccessfulSignup.bind(this)
         this.onSuccessGoogleResponse = this.onSuccessGoogleResponse.bind(this)
         this.onFailureGoogleResponse = this.onFailureGoogleResponse.bind(this)
         this.facebookCallbackResponse = this.facebookCallbackResponse.bind(this)
+    }
+
+    onSuccessGoogleResponse(response) {
+
+        notifySuccess('Google signup is successful')
+    }
+
+    onFailureGoogleResponse(response) {
+
+        notifyFailure('Google signup failed')
+    }
+
+    facebookCallbackResponse(response) {
+        notifySuccess('Facebook signup')
     }
 
     handleChange(event) {
@@ -38,6 +57,47 @@ class Login extends Component {
         this.setState({
             [name]: value
         })
+    }
+
+    isFormValid() {
+
+        const {email, password, name, role} = this.state
+        return !(email && password && name && role)
+    }
+
+    onSuccessfulSignup() {
+
+        this.setState({
+            redirectTo: 'login'
+        })
+    }
+
+    handleSubmit(event) {
+
+        event.preventDefault()
+
+        let reqBody = {
+            name: this.state.name,
+            email: this.state.email,
+            password: this.state.password,
+            role: this.state.role
+        }
+
+        Http.POST('signup', reqBody)
+            .then((response) => {
+
+                notifySuccess('Please follow the link on your email')
+                setTimeout(this.onSuccessfulSignup, 3000)
+            })
+            .catch(error => {
+
+                if(error.response && error.response.data) {
+                    notifyFailure(error.response.data.message)
+                } else {
+                    notifyFailure('Could not connect to server')
+                }
+            })
+
     }
 
     handleValidation(event) {
@@ -55,100 +115,6 @@ class Login extends Component {
         }))
     }
 
-    isFormValid() {
-
-        const {email, password} = this.state
-        return !(email && password)
-    }
-
-    handleSubmit(event) {
-
-        event.preventDefault()
-
-        const {email, password} = this.state
-
-        let reqBody = {
-            email: email,
-            password: password
-        }
-
-        Http.POST('login', reqBody).then(({data}) => {
-                localStorage.removeItem('token')
-                localStorage.setItem('token', JSON.stringify(data.token))
-                console.log('user role: ', data.role)
-                this.setState({
-                    redirectTo: data.role === 'ADMIN' ? '/app/users' : '/app/apartments'
-                })
-            }).catch((error) => {
-
-                if(error && error.response) {
-                    notifyFailure(error.response.data.message)
-                } else {
-                    notifyFailure('Could not connect to server')
-                }
-            })
-    }
-
-    onSuccessGoogleResponse(response) {
-        console.log('response: ', response)
-
-        let reqBody = {
-            token: response.tokenId
-        }
-
-        Http.POST('login_google', reqBody)
-            .then((response) => {
-                localStorage.removeItem('token')
-                localStorage.setItem('token', JSON.stringify(response.data.token))
-                this.setState({
-                    redirectTo: response.data.role === 'ADMIN' ? '/app/users' : '/app/apartments'
-                })
-            })
-            .catch(error => {
-
-                if(error && error.response) {
-                    notifyFailure(error.response.data.message)
-                } else {
-                    notifyFailure('Could not connect to server')
-                }
-            })
-    }
-
-    onFailureGoogleResponse(response) {
-
-        notifyFailure('Could not proceed with Google login')
-    }
-
-    facebookCallbackResponse(response) {
-
-        console.log('facebook callback response: ', response)
-        if(!response.accessToken) {
-           notifyFailure("Facebook login failed")
-           return
-        }
-
-        let reqBody = {
-            token: response.accessToken
-        }
-
-        Http.POST('login_facebook', reqBody)
-            .then((response) => {
-                localStorage.removeItem('token')
-                localStorage.setItem('token', JSON.stringify(response.data.token))
-                this.setState({
-                    redirectTo: response.data.role === 'ADMIN' ? '/app/users' : '/app/apartments'
-                })
-            })
-            .catch(error => {
-
-                if(error && error.response) {
-                    notifyFailure(error.response.data.message)
-                } else {
-                    notifyFailure('Could not connect to server')
-                }
-            })
-    }
-
     render() {
 
         if(this.state.redirectTo) {
@@ -159,13 +125,32 @@ class Login extends Component {
             <div className="row">
 
                 <div className="col-md-4 offset-md-4">
-                    <div className="wrapper-box">
+                    <div className="wrapper-box-signup">
 
                         <form className="form-signin" onSubmit={this.handleSubmit}>
                             <h2 className="form-signin-heading">Apartment Rental App</h2>
 
                             <img src={logo} alt="profile-img"
-                                className="profile-img-card"/>
+                                 className="profile-img-card"/>
+
+                            <input
+                                type="text"
+                                name="name"
+                                placeholder="Name"
+                                className="form-control"
+                                value={this.state.name}
+                                onChange={this.handleChange}
+                                onBlur = {this.handleValidation}
+                                aria-describedby="helpName"
+                                style={ this.state.error.name ? {marginBottom: '2px'} : {}}
+                            />
+
+                            {
+                                this.state.error.name ? <span id="helpName"
+                                                               className="help-block text-danger">
+                                    <small>Name is required</small>
+                                </span> : null
+                            }
 
                             <input
                                 type="text"
@@ -181,7 +166,7 @@ class Login extends Component {
 
                             {
                                 this.state.error.email ? <span id="helpEmail"
-                                className="help-block text-danger">
+                                                               className="help-block text-danger">
                                     <small>Email address is required</small>
                                 </span> : null
                             }
@@ -200,15 +185,20 @@ class Login extends Component {
 
                             {
                                 this.state.error.password ? <span id="helpPassword"
-                                                               className="help-block text-danger">
+                                                                  className="help-block text-danger">
                                     <small>Password is required</small>
                                 </span> : null
                             }
 
+                            <select className="form-control" name="role" onChange={this.handleChange}>
+                                <option value={this.state.role} selected={this.state.role === 'REALTOR'}>REALTOR</option>
+                                <option value={this.state.role} selected={this.state.role === 'CLIENT'}>CLIENT</option>
+                            </select>
+
                             <button className="btn btn-lg btn-success btn-block"
                                     type="submit"
                                     disabled={this.isFormValid()}>
-                                Login
+                                SIGNUP
                             </button>
 
                             <div className="row">
@@ -224,7 +214,7 @@ class Login extends Component {
                                             <button className="btn btn-md btn-danger"
                                                     onClick={props.onClick}
                                                     style={{marginTop: '1em', width: '100%', fontWeight: 'bold'}}>
-                                                <i className="fa fa-google"></i> LOGIN
+                                                <i className="fa fa-google"></i> SIGNUP
                                             </button>
                                         )}
                                     />
@@ -238,13 +228,13 @@ class Login extends Component {
                                         fields="name,email"
                                         callback={this.facebookCallbackResponse}
                                         icon={<i className="fa fa-facebook-square"></i>}
-                                        textButton="Login"/>
+                                        textButton="SIGNUP"/>
                                 </div>
                             </div>
-
                             <span className="signup-invitation">
-                                Don't have an account? <a href={"/signup"} style={{color: '#4d4fd2'}}>Signup</a>
+                                Already have an account? <a href="/login" style={{color: '#4d4fd2'}}>Login</a>
                             </span>
+
                         </form>
                     </div>
                 </div>
@@ -255,4 +245,4 @@ class Login extends Component {
     }
 }
 
-export default Login
+export default Signup
