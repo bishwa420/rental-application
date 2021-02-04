@@ -5,7 +5,7 @@ import {NotificationContainer} from 'react-notifications'
 import {Redirect} from "react-router-dom"
 import {GoogleLogin} from "react-google-login"
 import FacebookLogin from "react-facebook-login"
-import {notifySuccess, notifyFailure} from "../../service/Util";
+import {notifyFailure} from "../../service/Util";
 
 class Login extends Component {
 
@@ -22,7 +22,7 @@ class Login extends Component {
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleValidation = this.handleValidation.bind(this)
-        this.isFormValid = this.isFormValid.bind(this)
+        this.isFormInvalid = this.isFormInvalid.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
         this.onSuccessGoogleResponse = this.onSuccessGoogleResponse.bind(this)
         this.onFailureGoogleResponse = this.onFailureGoogleResponse.bind(this)
@@ -55,7 +55,7 @@ class Login extends Component {
         }))
     }
 
-    isFormValid() {
+    isFormInvalid() {
 
         const {email, password} = this.state
         return !(email && password)
@@ -169,6 +169,7 @@ class Login extends Component {
 
                             <input
                                 type="text"
+                                id="email"
                                 name="email"
                                 placeholder="Email address"
                                 className="form-control"
@@ -187,6 +188,7 @@ class Login extends Component {
                             }
 
                             <input
+                                id="password"
                                 type="password"
                                 name="password"
                                 placeholder="Password"
@@ -207,7 +209,9 @@ class Login extends Component {
 
                             <button className="btn btn-lg btn-success btn-block"
                                     type="submit"
-                                    disabled={this.isFormValid()}>
+                                    id="loginButton"
+                                    disabled={this.isFormInvalid()}
+                                    onClick={this.handleSubmit}>
                                 Login
                             </button>
 
