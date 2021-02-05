@@ -1,5 +1,6 @@
-import {mount} from "enzyme"
+import {mount, shallow} from "enzyme"
 import Login from "../component/authentication/Login"
+import toJson from "enzyme-to-json";
 
 describe("Login tests", () => {
 
@@ -50,6 +51,11 @@ describe("Login tests", () => {
         submitButton.simulate('click')
 
         expect(spyHandleSubmit).toHaveBeenCalledTimes(1)
+    })
+
+    it("Login renders correctly", () => {
+        const tree = shallow(<Login/>)
+        expect(toJson(tree)).toMatchSnapshot()
     })
 
 })
