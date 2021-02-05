@@ -1,9 +1,9 @@
 import {mount} from "enzyme"
 import ApartmentUI from "../component/apartment/ApartmentUI"
 import Apartment from "../component/apartment/Apartment"
-import {data, apartments} from "./data/Apartment"
+import {data, apartments} from "./data/ApartmentData"
 import * as axios from "axios"
-import {act} from "@testing-library/react";
+import {act} from "@testing-library/react"
 
 jest.mock("axios")
 
@@ -17,7 +17,7 @@ describe("Apartment tests", () => {
         expect(wrapper.props().data).toEqual(data)
     });
 
-    it("Apartment UI loads with correct state according to response from server", async () => {
+    it("Apartment loads with correct state according to response from server", async () => {
 
         axios.get.mockImplementation(() => Promise.resolve({status: 200, data: apartments}))
 
@@ -25,7 +25,7 @@ describe("Apartment tests", () => {
 
         await act(async () => {
             await new Promise((resolve) => setTimeout(resolve, 0));
-        });
+        })
 
         wrapper.update()
 
