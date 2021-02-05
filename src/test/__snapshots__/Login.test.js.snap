@@ -1,0 +1,147 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login tests Login renders correctly 1`] = `
+<div
+  className="row"
+>
+  <div
+    className="col-md-4 offset-md-4"
+  >
+    <div
+      className="wrapper-box"
+    >
+      <form
+        className="form-signin"
+        onSubmit={[Function]}
+      >
+        <h2
+          className="form-signin-heading"
+        >
+          Apartment Rental App
+        </h2>
+        <img
+          alt="profile-img"
+          className="profile-img-card"
+          src={Object {}}
+        />
+        <input
+          aria-describedby="helpEmail"
+          className="form-control"
+          id="email"
+          name="email"
+          onBlur={[Function]}
+          onChange={[Function]}
+          placeholder="Email address"
+          style={Object {}}
+          type="text"
+          value=""
+        />
+        <input
+          aria-describedby="helpPassword"
+          className="form-control"
+          id="password"
+          name="password"
+          onBlur={[Function]}
+          onChange={[Function]}
+          placeholder="Password"
+          style={Object {}}
+          type="password"
+          value=""
+        />
+        <button
+          className="btn btn-lg btn-success btn-block"
+          disabled={true}
+          id="loginButton"
+          onClick={[Function]}
+          type="submit"
+        >
+          Login
+        </button>
+        <div
+          className="row"
+        >
+          <div
+            className="col-md-6"
+            style={
+              Object {
+                "paddingLeft": 0,
+              }
+            }
+          >
+            <y
+              accessType="online"
+              buttonText="Login with Google"
+              clientId="758898908443-kvlhgb8bpbtfs0jam1kq6i9m4bc1vst5.apps.googleusercontent.com"
+              cookiePolicy="single_host_origin"
+              disabledStyle={
+                Object {
+                  "opacity": 0.6,
+                }
+              }
+              fetchBasicProfile={true}
+              icon={true}
+              isSignedIn={false}
+              onFailure={[Function]}
+              onRequest={[Function]}
+              onSuccess={[Function]}
+              prompt=""
+              render={[Function]}
+              scope="profile email"
+              tag="button"
+              theme="light"
+              type="button"
+              uxMode="popup"
+            />
+          </div>
+          <div
+            className="col-md-6"
+            style={
+              Object {
+                "paddingLeft": 0,
+                "paddingRight": 0,
+              }
+            }
+          >
+            <t
+              appId="1530092413856847"
+              autoLoad={false}
+              callback={[Function]}
+              clientToken="28ea6d92b96d8459717aced13cddc0cd"
+              cssClass="kep-login-facebook"
+              fields="name,email"
+              icon={
+                <i
+                  className="fa fa-facebook-square"
+                />
+              }
+              size="metro"
+              tag="button"
+              textButton="Login"
+              typeButton="button"
+            />
+          </div>
+        </div>
+        <span
+          className="signup-invitation"
+        >
+          Don't have an account? 
+          <a
+            href="/signup"
+            style={
+              Object {
+                "color": "#4d4fd2",
+              }
+            }
+          >
+            Signup
+          </a>
+        </span>
+      </form>
+    </div>
+  </div>
+  <NotificationContainer
+    enterTimeout={400}
+    leaveTimeout={400}
+  />
+</div>
+`;
