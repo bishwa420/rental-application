@@ -36,9 +36,9 @@ describe("Login tests", () => {
 
     it("When email & password fields are complete, login form is submittable", () => {
 
-        const handleSubmit = jest.fn()
+        Login.prototype.handleSubmit = jest.fn(() => console.log('Mock call to handle submit'))
         const spyHandleSubmit = jest.spyOn(Login.prototype, 'handleSubmit')
-        const wrapper = mount(<Login handleSubmit = {handleSubmit} />)
+        const wrapper = mount(<Login/>)
 
         let email = wrapper.find('#email')
         email.simulate('change', {target : {name: 'email', value: 'test-email@email.com'}})
@@ -46,11 +46,8 @@ describe("Login tests", () => {
         let password = wrapper.find('#password')
         password.simulate('change', {target : {name: 'password', value: 'password'}})
 
-
-
         let submitButton = wrapper.find("#loginButton")
         submitButton.simulate('click')
-
 
         expect(spyHandleSubmit).toHaveBeenCalledTimes(1)
     })
