@@ -3,6 +3,7 @@ import * as axios from "axios"
 import {act} from "@testing-library/react"
 import User from "../component/user/User"
 import {users} from "./data/UserData"
+import toJson from "enzyme-to-json"
 
 jest.mock("axios")
 
@@ -41,5 +42,10 @@ describe("User tests", () =>{
         createUserBtn.simulate('click')
 
         expect(wrapper.find('#CreateUserModal').at(0).props().show).toBeTruthy()
+    })
+
+    it("User renders correctly", () => {
+        const tree = mount(<User/>)
+        expect(toJson(tree)).toMatchSnapshot()
     })
 })
