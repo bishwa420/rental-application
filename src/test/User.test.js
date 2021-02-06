@@ -8,6 +8,10 @@ jest.mock("axios")
 
 describe("User tests", () =>{
 
+    beforeEach(() => {
+        axios.get.mockImplementation(() => Promise.resolve({status: 200, data: users}))
+    })
+
     it("User loads with correct state according to response from server", async () => {
 
         axios.get.mockImplementation(() => Promise.resolve({status: 200, data: users}))
@@ -24,5 +28,18 @@ describe("User tests", () =>{
         expect(wrapper.instance().state.filter.requestingPage).toEqual(1)
         expect(wrapper.instance().state.pages).toEqual(1)
         expect(wrapper.instance().state.loading).toEqual(false)
+    })
+
+    it("Only after the create user button is clicked, the add user modal launches", () => {
+
+        let wrapper = mount(<User/>)
+        let modal = wrapper.find("#CreateUserModal")
+
+        expect(wrapper.find('#CreateUserModal').at(0).props().show).toBeFalsy()
+
+        let createUserBtn = wrapper.find("#createUserBtn")
+        createUserBtn.simulate('click')
+
+        expect(wrapper.find('#CreateUserModal').at(0).props().show).toBeTruthy()
     })
 })
