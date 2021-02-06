@@ -1,0 +1,2133 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Apartment tests Apartment renders correctly 1`] = `
+<Apartment>
+  <ApartmentUI
+    closeLocationModal={[Function]}
+    data={
+      Object {
+        "apartments": Array [],
+        "filter": Object {
+          "filterMaxArea": 10000000,
+          "filterMaxPrice": 2000,
+          "filterMaxRooms": 10000000,
+          "filterMinArea": 0,
+          "filterMinPrice": 100,
+          "filterMinRooms": 0,
+          "pageSize": 10,
+          "requestingPage": 1,
+        },
+        "loadedApartmentInfo": Object {
+          "latitude": "24",
+          "longitude": "90",
+          "name": "Apartment",
+        },
+        "loading": true,
+        "pages": 0,
+        "showLocationModal": false,
+      }
+    }
+    filterApartments={[Function]}
+    handleFilteringChange={[Function]}
+    launchMap={[Function]}
+    resetFilter={[Function]}
+  >
+    <div>
+      <Title
+        value="Apartments"
+      >
+        <h1
+          className="page-header"
+          style={
+            Object {
+              "margin": "20px 0",
+            }
+          }
+        >
+          Apartments
+        </h1>
+      </Title>
+      <form
+        className="filtering-form row"
+        onSubmit={[Function]}
+      >
+        <div
+          className="col-md-3 offset-md-1"
+        >
+          <label
+            className="range-label"
+            htmlFor="filterName"
+          >
+            PRICE
+          </label>
+          <Slider
+            domain={
+              Array [
+                100,
+                10000,
+              ]
+            }
+            mode={2}
+            onChange={[Function]}
+            rootStyle={
+              Object {
+                "height": "30",
+                "marginTop": "1em",
+                "position": "relative",
+                "width": "100%",
+              }
+            }
+            step={100}
+            values={
+              Array [
+                100,
+                2000,
+              ]
+            }
+          >
+            <div
+              style={
+                Object {
+                  "height": "30",
+                  "marginTop": "1em",
+                  "position": "relative",
+                  "width": "100%",
+                }
+              }
+            >
+              <Rail
+                activeHandleID=""
+                emitKeyboard={[Function]}
+                emitMouse={[Function]}
+                emitTouch={[Function]}
+                getEventData={[Function]}
+                handles={
+                  Array [
+                    Object {
+                      "id": "$$-0",
+                      "percent": 0,
+                      "value": 100,
+                    },
+                    Object {
+                      "id": "$$-1",
+                      "percent": 19.19191919191919,
+                      "value": 2000,
+                    },
+                  ]
+                }
+                key=".0"
+                scale={
+                  LinearScale {
+                    "domain": Array [
+                      100,
+                      10000,
+                    ],
+                    "interpolator": [Function],
+                    "range": Array [
+                      0,
+                      100,
+                    ],
+                  }
+                }
+              >
+                <div
+                  onMouseDown={[Function]}
+                  onTouchStart={[Function]}
+                  style={
+                    Object {
+                      "backgroundColor": "#4564b5",
+                      "borderRadius": 5,
+                      "height": 10,
+                      "marginTop": 35,
+                      "position": "absolute",
+                      "width": "100%",
+                    }
+                  }
+                />
+              </Rail>
+              <Handles
+                activeHandleID=""
+                emitKeyboard={[Function]}
+                emitMouse={[Function]}
+                emitTouch={[Function]}
+                getEventData={[Function]}
+                handles={
+                  Array [
+                    Object {
+                      "id": "$$-0",
+                      "percent": 0,
+                      "value": 100,
+                    },
+                    Object {
+                      "id": "$$-1",
+                      "percent": 19.19191919191919,
+                      "value": 2000,
+                    },
+                  ]
+                }
+                key=".1"
+                scale={
+                  LinearScale {
+                    "domain": Array [
+                      100,
+                      10000,
+                    ],
+                    "interpolator": [Function],
+                    "range": Array [
+                      0,
+                      100,
+                    ],
+                  }
+                }
+              >
+                <div
+                  className="slider-handles"
+                >
+                  <Handle
+                    getHandleProps={[Function]}
+                    handle={
+                      Object {
+                        "id": "$$-0",
+                        "percent": 0,
+                        "value": 100,
+                      }
+                    }
+                    key="$$-0"
+                  >
+                    <div
+                      onKeyDown={[Function]}
+                      onMouseDown={[Function]}
+                      onTouchStart={[Function]}
+                      style={
+                        Object {
+                          "backgroundColor": "#2C4870",
+                          "border": 0,
+                          "borderRadius": "50%",
+                          "color": "#333",
+                          "cursor": "pointer",
+                          "height": 30,
+                          "left": "0%",
+                          "marginLeft": -15,
+                          "marginTop": 25,
+                          "position": "absolute",
+                          "textAlign": "center",
+                          "width": 30,
+                          "zIndex": 2,
+                        }
+                      }
+                    >
+                      <div
+                        style={
+                          Object {
+                            "fontFamily": "Roboto",
+                            "fontSize": 11,
+                            "marginTop": -35,
+                          }
+                        }
+                      >
+                        100
+                      </div>
+                    </div>
+                  </Handle>
+                  <Handle
+                    getHandleProps={[Function]}
+                    handle={
+                      Object {
+                        "id": "$$-1",
+                        "percent": 19.19191919191919,
+                        "value": 2000,
+                      }
+                    }
+                    key="$$-1"
+                  >
+                    <div
+                      onKeyDown={[Function]}
+                      onMouseDown={[Function]}
+                      onTouchStart={[Function]}
+                      style={
+                        Object {
+                          "backgroundColor": "#2C4870",
+                          "border": 0,
+                          "borderRadius": "50%",
+                          "color": "#333",
+                          "cursor": "pointer",
+                          "height": 30,
+                          "left": "19.19191919191919%",
+                          "marginLeft": -15,
+                          "marginTop": 25,
+                          "position": "absolute",
+                          "textAlign": "center",
+                          "width": 30,
+                          "zIndex": 2,
+                        }
+                      }
+                    >
+                      <div
+                        style={
+                          Object {
+                            "fontFamily": "Roboto",
+                            "fontSize": 11,
+                            "marginTop": -35,
+                          }
+                        }
+                      >
+                        2000
+                      </div>
+                    </div>
+                  </Handle>
+                </div>
+              </Handles>
+              <Tracks
+                activeHandleID=""
+                emitKeyboard={[Function]}
+                emitMouse={[Function]}
+                emitTouch={[Function]}
+                getEventData={[Function]}
+                handles={
+                  Array [
+                    Object {
+                      "id": "$$-0",
+                      "percent": 0,
+                      "value": 100,
+                    },
+                    Object {
+                      "id": "$$-1",
+                      "percent": 19.19191919191919,
+                      "value": 2000,
+                    },
+                  ]
+                }
+                key=".2"
+                right={false}
+                scale={
+                  LinearScale {
+                    "domain": Array [
+                      100,
+                      10000,
+                    ],
+                    "interpolator": [Function],
+                    "range": Array [
+                      0,
+                      100,
+                    ],
+                  }
+                }
+              >
+                <div
+                  className="slider-tracks"
+                >
+                  <Track
+                    getTrackProps={[Function]}
+                    key="$-$$-0"
+                    source={
+                      Object {
+                        "id": "$",
+                        "percent": 0,
+                        "value": 100,
+                      }
+                    }
+                    target={
+                      Object {
+                        "id": "$$-0",
+                        "percent": 0,
+                        "value": 100,
+                      }
+                    }
+                  >
+                    <div
+                      onMouseDown={[Function]}
+                      onTouchStart={[Function]}
+                      style={
+                        Object {
+                          "backgroundColor": "#b58488",
+                          "borderRadius": 5,
+                          "cursor": "pointer",
+                          "height": 10,
+                          "left": "0%",
+                          "marginTop": 35,
+                          "position": "absolute",
+                          "width": "0%",
+                          "zIndex": 1,
+                        }
+                      }
+                    />
+                  </Track>
+                  <Track
+                    getTrackProps={[Function]}
+                    key="$$-0-$$-1"
+                    source={
+                      Object {
+                        "id": "$$-0",
+                        "percent": 0,
+                        "value": 100,
+                      }
+                    }
+                    target={
+                      Object {
+                        "id": "$$-1",
+                        "percent": 19.19191919191919,
+                        "value": 2000,
+                      }
+                    }
+                  >
+                    <div
+                      onMouseDown={[Function]}
+                      onTouchStart={[Function]}
+                      style={
+                        Object {
+                          "backgroundColor": "#b58488",
+                          "borderRadius": 5,
+                          "cursor": "pointer",
+                          "height": 10,
+                          "left": "0%",
+                          "marginTop": 35,
+                          "position": "absolute",
+                          "width": "19.19191919191919%",
+                          "zIndex": 1,
+                        }
+                      }
+                    />
+                  </Track>
+                </div>
+              </Tracks>
+            </div>
+          </Slider>
+        </div>
+        <div
+          className="col-md-12 slider-submit-section"
+        >
+          <button
+            className="btn btn-lg btn-info slider-submit-button"
+            onClick={[Function]}
+          >
+            Search
+          </button>
+          <button
+            className="btn btn-lg btn-danger slider-submit-button"
+            onClick={[Function]}
+          >
+            Reset
+          </button>
+        </div>
+      </form>
+      <div
+        className="row center-content"
+      >
+        <ReactTable
+          AggregatedComponent={[Function]}
+          ExpanderComponent={[Function]}
+          FilterComponent={[Function]}
+          LoadingComponent={[Function]}
+          NoDataComponent={[Function]}
+          PadRowComponent={[Function]}
+          PaginationComponent={[Function]}
+          PivotValueComponent={[Function]}
+          ResizerComponent={[Function]}
+          TableComponent={[Function]}
+          TbodyComponent={[Function]}
+          TdComponent={[Function]}
+          TfootComponent={[Function]}
+          ThComponent={[Function]}
+          TheadComponent={[Function]}
+          TrComponent={[Function]}
+          TrGroupComponent={[Function]}
+          aggregatedKey="_aggregated"
+          className=""
+          collapseOnDataChange={true}
+          collapseOnPageChange={true}
+          collapseOnSortingChange={true}
+          column={
+            Object {
+              "Aggregated": undefined,
+              "Cell": undefined,
+              "Expander": undefined,
+              "Filter": undefined,
+              "Footer": undefined,
+              "Header": undefined,
+              "Pivot": undefined,
+              "PivotValue": undefined,
+              "Placeholder": undefined,
+              "aggregate": undefined,
+              "className": "",
+              "filterAll": false,
+              "filterMethod": undefined,
+              "filterable": undefined,
+              "footerClassName": "",
+              "footerStyle": Object {},
+              "getFooterProps": [Function],
+              "getHeaderProps": [Function],
+              "getProps": [Function],
+              "headerClassName": "",
+              "headerStyle": Object {},
+              "minResizeWidth": 11,
+              "minWidth": 100,
+              "resizable": undefined,
+              "show": true,
+              "sortMethod": undefined,
+              "sortable": undefined,
+              "style": Object {},
+            }
+          }
+          columns={
+            Array [
+              Object {
+                "Cell": [Function],
+                "Header": "S/N",
+                "filterable": false,
+                "id": "row",
+                "resizable": false,
+                "style": Object {
+                  "textAlign": "right",
+                },
+                "width": 60,
+              },
+              Object {
+                "Header": "NAME",
+                "accessor": "name",
+                "resizable": false,
+                "width": 250,
+              },
+              Object {
+                "Header": "AREA",
+                "accessor": "floorArea",
+                "resizable": false,
+                "width": 150,
+              },
+              Object {
+                "Header": "PRICE",
+                "accessor": "price",
+                "resizable": false,
+              },
+              Object {
+                "Header": "ROOMS",
+                "accessor": "roomCount",
+                "resizable": false,
+                "width": 100,
+              },
+              Object {
+                "Cell": [Function],
+                "Header": "LOCATION",
+                "accessor": "latitude",
+              },
+            ]
+          }
+          data={Array []}
+          defaultExpanded={Object {}}
+          defaultFilterMethod={[Function]}
+          defaultFiltered={Array []}
+          defaultPage={0}
+          defaultPageSize={10}
+          defaultResized={Array []}
+          defaultSortDesc={false}
+          defaultSortMethod={[Function]}
+          defaultSorted={Array []}
+          expanderDefaults={
+            Object {
+              "filterable": false,
+              "resizable": false,
+              "sortable": false,
+              "width": 35,
+            }
+          }
+          filterable={false}
+          freezeWhenExpanded={false}
+          getLoadingProps={[Function]}
+          getNoDataProps={[Function]}
+          getPaginationProps={[Function]}
+          getProps={[Function]}
+          getResizerProps={[Function]}
+          getTableProps={[Function]}
+          getTbodyProps={[Function]}
+          getTdProps={[Function]}
+          getTfootProps={[Function]}
+          getTfootTdProps={[Function]}
+          getTfootTrProps={[Function]}
+          getTheadFilterProps={[Function]}
+          getTheadFilterThProps={[Function]}
+          getTheadFilterTrProps={[Function]}
+          getTheadGroupProps={[Function]}
+          getTheadGroupThProps={[Function]}
+          getTheadGroupTrProps={[Function]}
+          getTheadProps={[Function]}
+          getTheadThProps={[Function]}
+          getTheadTrProps={[Function]}
+          getTrGroupProps={[Function]}
+          getTrProps={[Function]}
+          groupedByPivotKey="_groupedByPivot"
+          indexKey="_index"
+          loading={true}
+          loadingText="Loading..."
+          manual={true}
+          minRows="2"
+          multiSort={true}
+          nestingLevelKey="_nestingLevel"
+          nextText="Next"
+          noDataText="No rows found"
+          ofText="of"
+          onFetchData={[Function]}
+          originalKey="_original"
+          pageJumpText="jump to page"
+          pageSizeOptions={
+            Array [
+              5,
+              10,
+              20,
+              25,
+              50,
+              100,
+            ]
+          }
+          pageText="Page"
+          pages={0}
+          pivotDefaults={Object {}}
+          pivotIDKey="_pivotID"
+          pivotValKey="_pivotVal"
+          previousText="Previous"
+          resizable={true}
+          resolveData={[Function]}
+          rowsSelectorText="rows per page"
+          rowsText="rows"
+          showPageJump={true}
+          showPageSizeOptions={true}
+          showPagination={true}
+          showPaginationBottom={true}
+          showPaginationTop={false}
+          sortable={false}
+          style={Object {}}
+          subRowsKey="_subRows"
+        >
+          <div
+            className="ReactTable"
+            style={Object {}}
+          >
+            <TableComponent
+              className=""
+            >
+              <div
+                className="rt-table"
+                role="grid"
+              >
+                <Thead
+                  className="-header"
+                  style={
+                    Object {
+                      "minWidth": "760px",
+                    }
+                  }
+                >
+                  <div
+                    className="rt-thead -header"
+                    style={
+                      Object {
+                        "minWidth": "760px",
+                      }
+                    }
+                  >
+                    <TrComponent>
+                      <div
+                        className="rt-tr"
+                        role="row"
+                      >
+                        <ThComponent
+                          className=""
+                          key="0-row"
+                          style={
+                            Object {
+                              "flex": "60 0 auto",
+                              "maxWidth": "60px",
+                              "width": "60px",
+                            }
+                          }
+                          toggleSort={[Function]}
+                        >
+                          <div
+                            className="rt-th"
+                            onClick={[Function]}
+                            role="columnheader"
+                            style={
+                              Object {
+                                "flex": "60 0 auto",
+                                "maxWidth": "60px",
+                                "width": "60px",
+                              }
+                            }
+                            tabIndex="-1"
+                          >
+                            <div
+                              className=""
+                            >
+                              S/N
+                            </div>
+                          </div>
+                        </ThComponent>
+                        <ThComponent
+                          className=""
+                          key="1-name"
+                          style={
+                            Object {
+                              "flex": "250 0 auto",
+                              "maxWidth": "250px",
+                              "width": "250px",
+                            }
+                          }
+                          toggleSort={[Function]}
+                        >
+                          <div
+                            className="rt-th"
+                            onClick={[Function]}
+                            role="columnheader"
+                            style={
+                              Object {
+                                "flex": "250 0 auto",
+                                "maxWidth": "250px",
+                                "width": "250px",
+                              }
+                            }
+                            tabIndex="-1"
+                          >
+                            <div
+                              className=""
+                            >
+                              NAME
+                            </div>
+                          </div>
+                        </ThComponent>
+                        <ThComponent
+                          className=""
+                          key="2-floorArea"
+                          style={
+                            Object {
+                              "flex": "150 0 auto",
+                              "maxWidth": "150px",
+                              "width": "150px",
+                            }
+                          }
+                          toggleSort={[Function]}
+                        >
+                          <div
+                            className="rt-th"
+                            onClick={[Function]}
+                            role="columnheader"
+                            style={
+                              Object {
+                                "flex": "150 0 auto",
+                                "maxWidth": "150px",
+                                "width": "150px",
+                              }
+                            }
+                            tabIndex="-1"
+                          >
+                            <div
+                              className=""
+                            >
+                              AREA
+                            </div>
+                          </div>
+                        </ThComponent>
+                        <ThComponent
+                          className=""
+                          key="3-price"
+                          style={
+                            Object {
+                              "flex": "100 0 auto",
+                              "maxWidth": null,
+                              "width": "100px",
+                            }
+                          }
+                          toggleSort={[Function]}
+                        >
+                          <div
+                            className="rt-th"
+                            onClick={[Function]}
+                            role="columnheader"
+                            style={
+                              Object {
+                                "flex": "100 0 auto",
+                                "maxWidth": null,
+                                "width": "100px",
+                              }
+                            }
+                            tabIndex="-1"
+                          >
+                            <div
+                              className=""
+                            >
+                              PRICE
+                            </div>
+                          </div>
+                        </ThComponent>
+                        <ThComponent
+                          className=""
+                          key="4-roomCount"
+                          style={
+                            Object {
+                              "flex": "100 0 auto",
+                              "maxWidth": "100px",
+                              "width": "100px",
+                            }
+                          }
+                          toggleSort={[Function]}
+                        >
+                          <div
+                            className="rt-th"
+                            onClick={[Function]}
+                            role="columnheader"
+                            style={
+                              Object {
+                                "flex": "100 0 auto",
+                                "maxWidth": "100px",
+                                "width": "100px",
+                              }
+                            }
+                            tabIndex="-1"
+                          >
+                            <div
+                              className=""
+                            >
+                              ROOMS
+                            </div>
+                          </div>
+                        </ThComponent>
+                        <ThComponent
+                          className="rt-resizable-header"
+                          key="5-latitude"
+                          style={
+                            Object {
+                              "flex": "100 0 auto",
+                              "maxWidth": null,
+                              "width": "100px",
+                            }
+                          }
+                          toggleSort={[Function]}
+                        >
+                          <div
+                            className="rt-th rt-resizable-header"
+                            onClick={[Function]}
+                            role="columnheader"
+                            style={
+                              Object {
+                                "flex": "100 0 auto",
+                                "maxWidth": null,
+                                "width": "100px",
+                              }
+                            }
+                            tabIndex="-1"
+                          >
+                            <div
+                              className="rt-resizable-header-content"
+                            >
+                              LOCATION
+                            </div>
+                            <Resizer
+                              onMouseDown={[Function]}
+                              onTouchStart={[Function]}
+                            >
+                              <div
+                                className="rt-resizer"
+                                onMouseDown={[Function]}
+                                onTouchStart={[Function]}
+                              />
+                            </Resizer>
+                          </div>
+                        </ThComponent>
+                      </div>
+                    </TrComponent>
+                  </div>
+                </Thead>
+                <Tbody
+                  className=""
+                  style={
+                    Object {
+                      "minWidth": "760px",
+                    }
+                  }
+                >
+                  <div
+                    className="rt-tbody"
+                    style={
+                      Object {
+                        "minWidth": "760px",
+                      }
+                    }
+                  >
+                    <TrGroupComponent
+                      key="pad-0"
+                    >
+                      <div
+                        className="rt-tr-group"
+                        role="rowgroup"
+                      >
+                        <TrComponent
+                          className="-padRow -odd"
+                          style={Object {}}
+                        >
+                          <div
+                            className="rt-tr -padRow -odd"
+                            role="row"
+                            style={Object {}}
+                          >
+                            <TdComponent
+                              className=""
+                              key="0-row"
+                              style={
+                                Object {
+                                  "flex": "60 0 auto",
+                                  "maxWidth": "60px",
+                                  "textAlign": "right",
+                                  "width": "60px",
+                                }
+                              }
+                            >
+                              <div
+                                className="rt-td"
+                                role="gridcell"
+                                style={
+                                  Object {
+                                    "flex": "60 0 auto",
+                                    "maxWidth": "60px",
+                                    "textAlign": "right",
+                                    "width": "60px",
+                                  }
+                                }
+                              >
+                                <PadRowComponent>
+                                  <span>
+                                     
+                                  </span>
+                                </PadRowComponent>
+                              </div>
+                            </TdComponent>
+                            <TdComponent
+                              className=""
+                              key="1-name"
+                              style={
+                                Object {
+                                  "flex": "250 0 auto",
+                                  "maxWidth": "250px",
+                                  "width": "250px",
+                                }
+                              }
+                            >
+                              <div
+                                className="rt-td"
+                                role="gridcell"
+                                style={
+                                  Object {
+                                    "flex": "250 0 auto",
+                                    "maxWidth": "250px",
+                                    "width": "250px",
+                                  }
+                                }
+                              >
+                                <PadRowComponent>
+                                  <span>
+                                     
+                                  </span>
+                                </PadRowComponent>
+                              </div>
+                            </TdComponent>
+                            <TdComponent
+                              className=""
+                              key="2-floorArea"
+                              style={
+                                Object {
+                                  "flex": "150 0 auto",
+                                  "maxWidth": "150px",
+                                  "width": "150px",
+                                }
+                              }
+                            >
+                              <div
+                                className="rt-td"
+                                role="gridcell"
+                                style={
+                                  Object {
+                                    "flex": "150 0 auto",
+                                    "maxWidth": "150px",
+                                    "width": "150px",
+                                  }
+                                }
+                              >
+                                <PadRowComponent>
+                                  <span>
+                                     
+                                  </span>
+                                </PadRowComponent>
+                              </div>
+                            </TdComponent>
+                            <TdComponent
+                              className=""
+                              key="3-price"
+                              style={
+                                Object {
+                                  "flex": "100 0 auto",
+                                  "maxWidth": null,
+                                  "width": "100px",
+                                }
+                              }
+                            >
+                              <div
+                                className="rt-td"
+                                role="gridcell"
+                                style={
+                                  Object {
+                                    "flex": "100 0 auto",
+                                    "maxWidth": null,
+                                    "width": "100px",
+                                  }
+                                }
+                              >
+                                <PadRowComponent>
+                                  <span>
+                                     
+                                  </span>
+                                </PadRowComponent>
+                              </div>
+                            </TdComponent>
+                            <TdComponent
+                              className=""
+                              key="4-roomCount"
+                              style={
+                                Object {
+                                  "flex": "100 0 auto",
+                                  "maxWidth": "100px",
+                                  "width": "100px",
+                                }
+                              }
+                            >
+                              <div
+                                className="rt-td"
+                                role="gridcell"
+                                style={
+                                  Object {
+                                    "flex": "100 0 auto",
+                                    "maxWidth": "100px",
+                                    "width": "100px",
+                                  }
+                                }
+                              >
+                                <PadRowComponent>
+                                  <span>
+                                     
+                                  </span>
+                                </PadRowComponent>
+                              </div>
+                            </TdComponent>
+                            <TdComponent
+                              className=""
+                              key="5-latitude"
+                              style={
+                                Object {
+                                  "flex": "100 0 auto",
+                                  "maxWidth": null,
+                                  "width": "100px",
+                                }
+                              }
+                            >
+                              <div
+                                className="rt-td"
+                                role="gridcell"
+                                style={
+                                  Object {
+                                    "flex": "100 0 auto",
+                                    "maxWidth": null,
+                                    "width": "100px",
+                                  }
+                                }
+                              >
+                                <PadRowComponent>
+                                  <span>
+                                     
+                                  </span>
+                                </PadRowComponent>
+                              </div>
+                            </TdComponent>
+                          </div>
+                        </TrComponent>
+                      </div>
+                    </TrGroupComponent>
+                    <TrGroupComponent
+                      key="pad-1"
+                    >
+                      <div
+                        className="rt-tr-group"
+                        role="rowgroup"
+                      >
+                        <TrComponent
+                          className="-padRow -even"
+                          style={Object {}}
+                        >
+                          <div
+                            className="rt-tr -padRow -even"
+                            role="row"
+                            style={Object {}}
+                          >
+                            <TdComponent
+                              className=""
+                              key="0-row"
+                              style={
+                                Object {
+                                  "flex": "60 0 auto",
+                                  "maxWidth": "60px",
+                                  "textAlign": "right",
+                                  "width": "60px",
+                                }
+                              }
+                            >
+                              <div
+                                className="rt-td"
+                                role="gridcell"
+                                style={
+                                  Object {
+                                    "flex": "60 0 auto",
+                                    "maxWidth": "60px",
+                                    "textAlign": "right",
+                                    "width": "60px",
+                                  }
+                                }
+                              >
+                                <PadRowComponent>
+                                  <span>
+                                     
+                                  </span>
+                                </PadRowComponent>
+                              </div>
+                            </TdComponent>
+                            <TdComponent
+                              className=""
+                              key="1-name"
+                              style={
+                                Object {
+                                  "flex": "250 0 auto",
+                                  "maxWidth": "250px",
+                                  "width": "250px",
+                                }
+                              }
+                            >
+                              <div
+                                className="rt-td"
+                                role="gridcell"
+                                style={
+                                  Object {
+                                    "flex": "250 0 auto",
+                                    "maxWidth": "250px",
+                                    "width": "250px",
+                                  }
+                                }
+                              >
+                                <PadRowComponent>
+                                  <span>
+                                     
+                                  </span>
+                                </PadRowComponent>
+                              </div>
+                            </TdComponent>
+                            <TdComponent
+                              className=""
+                              key="2-floorArea"
+                              style={
+                                Object {
+                                  "flex": "150 0 auto",
+                                  "maxWidth": "150px",
+                                  "width": "150px",
+                                }
+                              }
+                            >
+                              <div
+                                className="rt-td"
+                                role="gridcell"
+                                style={
+                                  Object {
+                                    "flex": "150 0 auto",
+                                    "maxWidth": "150px",
+                                    "width": "150px",
+                                  }
+                                }
+                              >
+                                <PadRowComponent>
+                                  <span>
+                                     
+                                  </span>
+                                </PadRowComponent>
+                              </div>
+                            </TdComponent>
+                            <TdComponent
+                              className=""
+                              key="3-price"
+                              style={
+                                Object {
+                                  "flex": "100 0 auto",
+                                  "maxWidth": null,
+                                  "width": "100px",
+                                }
+                              }
+                            >
+                              <div
+                                className="rt-td"
+                                role="gridcell"
+                                style={
+                                  Object {
+                                    "flex": "100 0 auto",
+                                    "maxWidth": null,
+                                    "width": "100px",
+                                  }
+                                }
+                              >
+                                <PadRowComponent>
+                                  <span>
+                                     
+                                  </span>
+                                </PadRowComponent>
+                              </div>
+                            </TdComponent>
+                            <TdComponent
+                              className=""
+                              key="4-roomCount"
+                              style={
+                                Object {
+                                  "flex": "100 0 auto",
+                                  "maxWidth": "100px",
+                                  "width": "100px",
+                                }
+                              }
+                            >
+                              <div
+                                className="rt-td"
+                                role="gridcell"
+                                style={
+                                  Object {
+                                    "flex": "100 0 auto",
+                                    "maxWidth": "100px",
+                                    "width": "100px",
+                                  }
+                                }
+                              >
+                                <PadRowComponent>
+                                  <span>
+                                     
+                                  </span>
+                                </PadRowComponent>
+                              </div>
+                            </TdComponent>
+                            <TdComponent
+                              className=""
+                              key="5-latitude"
+                              style={
+                                Object {
+                                  "flex": "100 0 auto",
+                                  "maxWidth": null,
+                                  "width": "100px",
+                                }
+                              }
+                            >
+                              <div
+                                className="rt-td"
+                                role="gridcell"
+                                style={
+                                  Object {
+                                    "flex": "100 0 auto",
+                                    "maxWidth": null,
+                                    "width": "100px",
+                                  }
+                                }
+                              >
+                                <PadRowComponent>
+                                  <span>
+                                     
+                                  </span>
+                                </PadRowComponent>
+                              </div>
+                            </TdComponent>
+                          </div>
+                        </TrComponent>
+                      </div>
+                    </TrGroupComponent>
+                  </div>
+                </Tbody>
+              </div>
+            </TableComponent>
+            <div
+              className="pagination-bottom"
+            >
+              <ReactTablePagination
+                AggregatedComponent={[Function]}
+                ExpanderComponent={[Function]}
+                FilterComponent={[Function]}
+                LoadingComponent={[Function]}
+                NextComponent={[Function]}
+                NoDataComponent={[Function]}
+                PadRowComponent={[Function]}
+                PaginationComponent={[Function]}
+                PivotValueComponent={[Function]}
+                PreviousComponent={[Function]}
+                ResizerComponent={[Function]}
+                TableComponent={[Function]}
+                TbodyComponent={[Function]}
+                TdComponent={[Function]}
+                TfootComponent={[Function]}
+                ThComponent={[Function]}
+                TheadComponent={[Function]}
+                TrComponent={[Function]}
+                TrGroupComponent={[Function]}
+                aggregatedKey="_aggregated"
+                allDecoratedColumns={
+                  Array [
+                    Object {
+                      "Aggregated": undefined,
+                      "Cell": [Function],
+                      "Expander": undefined,
+                      "Filter": undefined,
+                      "Footer": undefined,
+                      "Header": "S/N",
+                      "Pivot": undefined,
+                      "PivotValue": undefined,
+                      "Placeholder": undefined,
+                      "accessor": [Function],
+                      "aggregate": undefined,
+                      "className": "",
+                      "filterAll": false,
+                      "filterMethod": undefined,
+                      "filterable": false,
+                      "footerClassName": "",
+                      "footerStyle": Object {},
+                      "getFooterProps": [Function],
+                      "getHeaderProps": [Function],
+                      "getProps": [Function],
+                      "headerClassName": "",
+                      "headerStyle": Object {},
+                      "id": "row",
+                      "minResizeWidth": 11,
+                      "minWidth": 100,
+                      "resizable": false,
+                      "show": true,
+                      "sortMethod": undefined,
+                      "sortable": undefined,
+                      "style": Object {
+                        "textAlign": "right",
+                      },
+                      "width": 60,
+                    },
+                    Object {
+                      "Aggregated": undefined,
+                      "Cell": undefined,
+                      "Expander": undefined,
+                      "Filter": undefined,
+                      "Footer": undefined,
+                      "Header": "NAME",
+                      "Pivot": undefined,
+                      "PivotValue": undefined,
+                      "Placeholder": undefined,
+                      "accessor": [Function],
+                      "aggregate": undefined,
+                      "className": "",
+                      "filterAll": false,
+                      "filterMethod": undefined,
+                      "filterable": undefined,
+                      "footerClassName": "",
+                      "footerStyle": Object {},
+                      "getFooterProps": [Function],
+                      "getHeaderProps": [Function],
+                      "getProps": [Function],
+                      "headerClassName": "",
+                      "headerStyle": Object {},
+                      "id": "name",
+                      "minResizeWidth": 11,
+                      "minWidth": 100,
+                      "resizable": false,
+                      "show": true,
+                      "sortMethod": undefined,
+                      "sortable": undefined,
+                      "style": Object {},
+                      "width": 250,
+                    },
+                    Object {
+                      "Aggregated": undefined,
+                      "Cell": undefined,
+                      "Expander": undefined,
+                      "Filter": undefined,
+                      "Footer": undefined,
+                      "Header": "AREA",
+                      "Pivot": undefined,
+                      "PivotValue": undefined,
+                      "Placeholder": undefined,
+                      "accessor": [Function],
+                      "aggregate": undefined,
+                      "className": "",
+                      "filterAll": false,
+                      "filterMethod": undefined,
+                      "filterable": undefined,
+                      "footerClassName": "",
+                      "footerStyle": Object {},
+                      "getFooterProps": [Function],
+                      "getHeaderProps": [Function],
+                      "getProps": [Function],
+                      "headerClassName": "",
+                      "headerStyle": Object {},
+                      "id": "floorArea",
+                      "minResizeWidth": 11,
+                      "minWidth": 100,
+                      "resizable": false,
+                      "show": true,
+                      "sortMethod": undefined,
+                      "sortable": undefined,
+                      "style": Object {},
+                      "width": 150,
+                    },
+                    Object {
+                      "Aggregated": undefined,
+                      "Cell": undefined,
+                      "Expander": undefined,
+                      "Filter": undefined,
+                      "Footer": undefined,
+                      "Header": "PRICE",
+                      "Pivot": undefined,
+                      "PivotValue": undefined,
+                      "Placeholder": undefined,
+                      "accessor": [Function],
+                      "aggregate": undefined,
+                      "className": "",
+                      "filterAll": false,
+                      "filterMethod": undefined,
+                      "filterable": undefined,
+                      "footerClassName": "",
+                      "footerStyle": Object {},
+                      "getFooterProps": [Function],
+                      "getHeaderProps": [Function],
+                      "getProps": [Function],
+                      "headerClassName": "",
+                      "headerStyle": Object {},
+                      "id": "price",
+                      "minResizeWidth": 11,
+                      "minWidth": 100,
+                      "resizable": false,
+                      "show": true,
+                      "sortMethod": undefined,
+                      "sortable": undefined,
+                      "style": Object {},
+                    },
+                    Object {
+                      "Aggregated": undefined,
+                      "Cell": undefined,
+                      "Expander": undefined,
+                      "Filter": undefined,
+                      "Footer": undefined,
+                      "Header": "ROOMS",
+                      "Pivot": undefined,
+                      "PivotValue": undefined,
+                      "Placeholder": undefined,
+                      "accessor": [Function],
+                      "aggregate": undefined,
+                      "className": "",
+                      "filterAll": false,
+                      "filterMethod": undefined,
+                      "filterable": undefined,
+                      "footerClassName": "",
+                      "footerStyle": Object {},
+                      "getFooterProps": [Function],
+                      "getHeaderProps": [Function],
+                      "getProps": [Function],
+                      "headerClassName": "",
+                      "headerStyle": Object {},
+                      "id": "roomCount",
+                      "minResizeWidth": 11,
+                      "minWidth": 100,
+                      "resizable": false,
+                      "show": true,
+                      "sortMethod": undefined,
+                      "sortable": undefined,
+                      "style": Object {},
+                      "width": 100,
+                    },
+                    Object {
+                      "Aggregated": undefined,
+                      "Cell": [Function],
+                      "Expander": undefined,
+                      "Filter": undefined,
+                      "Footer": undefined,
+                      "Header": "LOCATION",
+                      "Pivot": undefined,
+                      "PivotValue": undefined,
+                      "Placeholder": undefined,
+                      "accessor": [Function],
+                      "aggregate": undefined,
+                      "className": "",
+                      "filterAll": false,
+                      "filterMethod": undefined,
+                      "filterable": undefined,
+                      "footerClassName": "",
+                      "footerStyle": Object {},
+                      "getFooterProps": [Function],
+                      "getHeaderProps": [Function],
+                      "getProps": [Function],
+                      "headerClassName": "",
+                      "headerStyle": Object {},
+                      "id": "latitude",
+                      "minResizeWidth": 11,
+                      "minWidth": 100,
+                      "resizable": undefined,
+                      "show": true,
+                      "sortMethod": undefined,
+                      "sortable": undefined,
+                      "style": Object {},
+                    },
+                  ]
+                }
+                allVisibleColumns={
+                  Array [
+                    Object {
+                      "Aggregated": undefined,
+                      "Cell": [Function],
+                      "Expander": undefined,
+                      "Filter": undefined,
+                      "Footer": undefined,
+                      "Header": "S/N",
+                      "Pivot": undefined,
+                      "PivotValue": undefined,
+                      "Placeholder": undefined,
+                      "accessor": [Function],
+                      "aggregate": undefined,
+                      "className": "",
+                      "filterAll": false,
+                      "filterMethod": undefined,
+                      "filterable": false,
+                      "footerClassName": "",
+                      "footerStyle": Object {},
+                      "getFooterProps": [Function],
+                      "getHeaderProps": [Function],
+                      "getProps": [Function],
+                      "headerClassName": "",
+                      "headerStyle": Object {},
+                      "id": "row",
+                      "minResizeWidth": 11,
+                      "minWidth": 100,
+                      "resizable": false,
+                      "show": true,
+                      "sortMethod": undefined,
+                      "sortable": undefined,
+                      "style": Object {
+                        "textAlign": "right",
+                      },
+                      "width": 60,
+                    },
+                    Object {
+                      "Aggregated": undefined,
+                      "Cell": undefined,
+                      "Expander": undefined,
+                      "Filter": undefined,
+                      "Footer": undefined,
+                      "Header": "NAME",
+                      "Pivot": undefined,
+                      "PivotValue": undefined,
+                      "Placeholder": undefined,
+                      "accessor": [Function],
+                      "aggregate": undefined,
+                      "className": "",
+                      "filterAll": false,
+                      "filterMethod": undefined,
+                      "filterable": undefined,
+                      "footerClassName": "",
+                      "footerStyle": Object {},
+                      "getFooterProps": [Function],
+                      "getHeaderProps": [Function],
+                      "getProps": [Function],
+                      "headerClassName": "",
+                      "headerStyle": Object {},
+                      "id": "name",
+                      "minResizeWidth": 11,
+                      "minWidth": 100,
+                      "resizable": false,
+                      "show": true,
+                      "sortMethod": undefined,
+                      "sortable": undefined,
+                      "style": Object {},
+                      "width": 250,
+                    },
+                    Object {
+                      "Aggregated": undefined,
+                      "Cell": undefined,
+                      "Expander": undefined,
+                      "Filter": undefined,
+                      "Footer": undefined,
+                      "Header": "AREA",
+                      "Pivot": undefined,
+                      "PivotValue": undefined,
+                      "Placeholder": undefined,
+                      "accessor": [Function],
+                      "aggregate": undefined,
+                      "className": "",
+                      "filterAll": false,
+                      "filterMethod": undefined,
+                      "filterable": undefined,
+                      "footerClassName": "",
+                      "footerStyle": Object {},
+                      "getFooterProps": [Function],
+                      "getHeaderProps": [Function],
+                      "getProps": [Function],
+                      "headerClassName": "",
+                      "headerStyle": Object {},
+                      "id": "floorArea",
+                      "minResizeWidth": 11,
+                      "minWidth": 100,
+                      "resizable": false,
+                      "show": true,
+                      "sortMethod": undefined,
+                      "sortable": undefined,
+                      "style": Object {},
+                      "width": 150,
+                    },
+                    Object {
+                      "Aggregated": undefined,
+                      "Cell": undefined,
+                      "Expander": undefined,
+                      "Filter": undefined,
+                      "Footer": undefined,
+                      "Header": "PRICE",
+                      "Pivot": undefined,
+                      "PivotValue": undefined,
+                      "Placeholder": undefined,
+                      "accessor": [Function],
+                      "aggregate": undefined,
+                      "className": "",
+                      "filterAll": false,
+                      "filterMethod": undefined,
+                      "filterable": undefined,
+                      "footerClassName": "",
+                      "footerStyle": Object {},
+                      "getFooterProps": [Function],
+                      "getHeaderProps": [Function],
+                      "getProps": [Function],
+                      "headerClassName": "",
+                      "headerStyle": Object {},
+                      "id": "price",
+                      "minResizeWidth": 11,
+                      "minWidth": 100,
+                      "resizable": false,
+                      "show": true,
+                      "sortMethod": undefined,
+                      "sortable": undefined,
+                      "style": Object {},
+                    },
+                    Object {
+                      "Aggregated": undefined,
+                      "Cell": undefined,
+                      "Expander": undefined,
+                      "Filter": undefined,
+                      "Footer": undefined,
+                      "Header": "ROOMS",
+                      "Pivot": undefined,
+                      "PivotValue": undefined,
+                      "Placeholder": undefined,
+                      "accessor": [Function],
+                      "aggregate": undefined,
+                      "className": "",
+                      "filterAll": false,
+                      "filterMethod": undefined,
+                      "filterable": undefined,
+                      "footerClassName": "",
+                      "footerStyle": Object {},
+                      "getFooterProps": [Function],
+                      "getHeaderProps": [Function],
+                      "getProps": [Function],
+                      "headerClassName": "",
+                      "headerStyle": Object {},
+                      "id": "roomCount",
+                      "minResizeWidth": 11,
+                      "minWidth": 100,
+                      "resizable": false,
+                      "show": true,
+                      "sortMethod": undefined,
+                      "sortable": undefined,
+                      "style": Object {},
+                      "width": 100,
+                    },
+                    Object {
+                      "Aggregated": undefined,
+                      "Cell": [Function],
+                      "Expander": undefined,
+                      "Filter": undefined,
+                      "Footer": undefined,
+                      "Header": "LOCATION",
+                      "Pivot": undefined,
+                      "PivotValue": undefined,
+                      "Placeholder": undefined,
+                      "accessor": [Function],
+                      "aggregate": undefined,
+                      "className": "",
+                      "filterAll": false,
+                      "filterMethod": undefined,
+                      "filterable": undefined,
+                      "footerClassName": "",
+                      "footerStyle": Object {},
+                      "getFooterProps": [Function],
+                      "getHeaderProps": [Function],
+                      "getProps": [Function],
+                      "headerClassName": "",
+                      "headerStyle": Object {},
+                      "id": "latitude",
+                      "minResizeWidth": 11,
+                      "minWidth": 100,
+                      "resizable": undefined,
+                      "show": true,
+                      "sortMethod": undefined,
+                      "sortable": undefined,
+                      "style": Object {},
+                    },
+                  ]
+                }
+                canNext={false}
+                canPrevious={false}
+                collapseOnDataChange={true}
+                collapseOnPageChange={true}
+                collapseOnSortingChange={true}
+                column={
+                  Object {
+                    "Aggregated": undefined,
+                    "Cell": undefined,
+                    "Expander": undefined,
+                    "Filter": undefined,
+                    "Footer": undefined,
+                    "Header": undefined,
+                    "Pivot": undefined,
+                    "PivotValue": undefined,
+                    "Placeholder": undefined,
+                    "aggregate": undefined,
+                    "className": "",
+                    "filterAll": false,
+                    "filterMethod": undefined,
+                    "filterable": undefined,
+                    "footerClassName": "",
+                    "footerStyle": Object {},
+                    "getFooterProps": [Function],
+                    "getHeaderProps": [Function],
+                    "getProps": [Function],
+                    "headerClassName": "",
+                    "headerStyle": Object {},
+                    "minResizeWidth": 11,
+                    "minWidth": 100,
+                    "resizable": undefined,
+                    "show": true,
+                    "sortMethod": undefined,
+                    "sortable": undefined,
+                    "style": Object {},
+                  }
+                }
+                columns={
+                  Array [
+                    Object {
+                      "Cell": [Function],
+                      "Header": "S/N",
+                      "filterable": false,
+                      "id": "row",
+                      "resizable": false,
+                      "style": Object {
+                        "textAlign": "right",
+                      },
+                      "width": 60,
+                    },
+                    Object {
+                      "Header": "NAME",
+                      "accessor": "name",
+                      "resizable": false,
+                      "width": 250,
+                    },
+                    Object {
+                      "Header": "AREA",
+                      "accessor": "floorArea",
+                      "resizable": false,
+                      "width": 150,
+                    },
+                    Object {
+                      "Header": "PRICE",
+                      "accessor": "price",
+                      "resizable": false,
+                    },
+                    Object {
+                      "Header": "ROOMS",
+                      "accessor": "roomCount",
+                      "resizable": false,
+                      "width": 100,
+                    },
+                    Object {
+                      "Cell": [Function],
+                      "Header": "LOCATION",
+                      "accessor": "latitude",
+                    },
+                  ]
+                }
+                currentlyResizing={false}
+                data={Array []}
+                defaultExpanded={Object {}}
+                defaultFilterMethod={[Function]}
+                defaultFiltered={Array []}
+                defaultPage={0}
+                defaultPageSize={10}
+                defaultResized={Array []}
+                defaultSortDesc={false}
+                defaultSortMethod={[Function]}
+                defaultSorted={Array []}
+                expanded={Object {}}
+                expanderDefaults={
+                  Object {
+                    "filterable": false,
+                    "resizable": false,
+                    "sortable": false,
+                    "width": 35,
+                  }
+                }
+                filterable={false}
+                filtered={Array []}
+                freezeWhenExpanded={false}
+                frozen={false}
+                getLoadingProps={[Function]}
+                getNoDataProps={[Function]}
+                getPaginationProps={[Function]}
+                getProps={[Function]}
+                getResizerProps={[Function]}
+                getTableProps={[Function]}
+                getTbodyProps={[Function]}
+                getTdProps={[Function]}
+                getTfootProps={[Function]}
+                getTfootTdProps={[Function]}
+                getTfootTrProps={[Function]}
+                getTheadFilterProps={[Function]}
+                getTheadFilterThProps={[Function]}
+                getTheadFilterTrProps={[Function]}
+                getTheadGroupProps={[Function]}
+                getTheadGroupThProps={[Function]}
+                getTheadGroupTrProps={[Function]}
+                getTheadProps={[Function]}
+                getTheadThProps={[Function]}
+                getTheadTrProps={[Function]}
+                getTrGroupProps={[Function]}
+                getTrProps={[Function]}
+                groupedByPivotKey="_groupedByPivot"
+                hasHeaderGroups={false}
+                headerGroups={Array []}
+                indexKey="_index"
+                isTop={false}
+                loading={true}
+                loadingText="Loading..."
+                manual={true}
+                minRows="2"
+                multiSort={true}
+                nestingLevelKey="_nestingLevel"
+                nextText="Next"
+                noDataText="No rows found"
+                ofText="of"
+                onFetchData={[Function]}
+                onPageChange={[Function]}
+                onPageSizeChange={[Function]}
+                originalKey="_original"
+                page={0}
+                pageJumpText="jump to page"
+                pageSize={10}
+                pageSizeOptions={
+                  Array [
+                    5,
+                    10,
+                    20,
+                    25,
+                    50,
+                    100,
+                  ]
+                }
+                pageText="Page"
+                pages={0}
+                pivotDefaults={Object {}}
+                pivotIDKey="_pivotID"
+                pivotValKey="_pivotVal"
+                previousText="Previous"
+                renderCurrentPage={[Function]}
+                renderPageJump={[Function]}
+                renderPageSizeOptions={[Function]}
+                renderTotalPagesCount={[Function]}
+                resizable={true}
+                resized={Array []}
+                resolveData={[Function]}
+                resolvedData={Array []}
+                rowsSelectorText="rows per page"
+                rowsText="rows"
+                showPageJump={true}
+                showPageSizeOptions={true}
+                showPagination={true}
+                showPaginationBottom={true}
+                showPaginationTop={false}
+                skipNextSort={false}
+                sortable={false}
+                sorted={Array []}
+                sortedData={Array []}
+                subRowsKey="_subRows"
+              >
+                <div
+                  className="-pagination"
+                >
+                  <div
+                    className="-previous"
+                  >
+                    <defaultButton
+                      disabled={true}
+                      onClick={[Function]}
+                    >
+                      <button
+                        className="-btn"
+                        disabled={true}
+                        onClick={[Function]}
+                        type="button"
+                      >
+                        Previous
+                      </button>
+                    </defaultButton>
+                  </div>
+                  <div
+                    className="-center"
+                  >
+                    <span
+                      className="-pageInfo"
+                    >
+                      Page
+                       
+                      <div
+                        className="-pageJump"
+                      >
+                        <input
+                          aria-label="jump to page"
+                          onBlur={[Function]}
+                          onChange={[Function]}
+                          onKeyPress={[Function]}
+                          type="number"
+                          value={1}
+                        />
+                      </div>
+                       
+                      of
+                       
+                      <span
+                        className="-totalPages"
+                      >
+                        1
+                      </span>
+                    </span>
+                    <span
+                      className="select-wrap -pageSizeOptions"
+                    >
+                      <select
+                        aria-label="rows per page"
+                        onChange={[Function]}
+                        value={10}
+                      >
+                        <option
+                          key="0"
+                          value={5}
+                        >
+                          5 rows
+                        </option>
+                        <option
+                          key="1"
+                          value={10}
+                        >
+                          10 rows
+                        </option>
+                        <option
+                          key="2"
+                          value={20}
+                        >
+                          20 rows
+                        </option>
+                        <option
+                          key="3"
+                          value={25}
+                        >
+                          25 rows
+                        </option>
+                        <option
+                          key="4"
+                          value={50}
+                        >
+                          50 rows
+                        </option>
+                        <option
+                          key="5"
+                          value={100}
+                        >
+                          100 rows
+                        </option>
+                      </select>
+                    </span>
+                  </div>
+                  <div
+                    className="-next"
+                  >
+                    <defaultButton
+                      disabled={true}
+                      onClick={[Function]}
+                    >
+                      <button
+                        className="-btn"
+                        disabled={true}
+                        onClick={[Function]}
+                        type="button"
+                      >
+                        Next
+                      </button>
+                    </defaultButton>
+                  </div>
+                </div>
+              </ReactTablePagination>
+            </div>
+            <NoData>
+              <div
+                className="rt-noData"
+              >
+                No rows found
+              </div>
+            </NoData>
+            <LoadingComponent
+              loading={true}
+              loadingText="Loading..."
+            >
+              <div
+                className="-loading -active"
+              >
+                <div
+                  className="-loading-inner"
+                >
+                  Loading...
+                </div>
+              </div>
+            </LoadingComponent>
+          </div>
+        </ReactTable>
+      </div>
+      <Modal
+        action={
+          Object {
+            "close": [Function],
+            "confirm": [Function],
+          }
+        }
+        hideConfirmButton={true}
+        id="LocationModal"
+        isMapModal={true}
+        show={false}
+        title="Apartment"
+      >
+        <div
+          aria-labelledby="ModalLabel"
+          className="modal fade"
+          id="LocationModal"
+          role="dialog"
+          style={
+            Object {
+              "bottom": "",
+              "visibility": "hidden",
+            }
+          }
+          tabIndex="-1"
+        >
+          <div
+            className="modal-dialog"
+            role="document"
+            style={
+              Object {
+                "width": "750px",
+              }
+            }
+          >
+            <div
+              className="modal-content"
+              style={
+                Object {
+                  "paddingLeft": "1em",
+                  "paddingRight": "1em",
+                }
+              }
+            >
+              <div
+                className="modal-header"
+              >
+                <h4
+                  className="modal-title"
+                  id="ModalLabel"
+                  style={
+                    Object {
+                      "lineHeight": "0.5",
+                    }
+                  }
+                >
+                  Apartment
+                </h4>
+                <button
+                  aria-label="Close"
+                  className="close"
+                  data-dismiss="modal"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  <i
+                    className="fa fa-times"
+                    style={
+                      Object {
+                        "fontSize": "14px",
+                      }
+                    }
+                  />
+                </button>
+              </div>
+              <div
+                className="map-modal modal-body"
+              >
+                <Wrapper>
+                  <DefaultLoadingContainer>
+                    <div>
+                      Loading...
+                    </div>
+                  </DefaultLoadingContainer>
+                </Wrapper>
+              </div>
+              <div
+                className="modal-footer"
+              >
+                <button
+                  className="btn btn-link"
+                  data-dismiss="modal"
+                  onClick={[Function]}
+                  style={
+                    Object {
+                      "color": "#333",
+                    }
+                  }
+                  type="button"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Modal>
+      <NotificationContainer
+        enterTimeout={400}
+        leaveTimeout={400}
+      >
+        <Notifications
+          enterTimeout={400}
+          leaveTimeout={400}
+          notifications={Array []}
+          onRequestHide={[Function]}
+        >
+          <div
+            className="notification-container notification-container-empty"
+          >
+            <TransitionGroup
+              childFactory={[Function]}
+              component="div"
+            >
+              <div />
+            </TransitionGroup>
+          </div>
+        </Notifications>
+      </NotificationContainer>
+    </div>
+  </ApartmentUI>
+</Apartment>
+`;
