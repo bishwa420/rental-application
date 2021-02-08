@@ -1,0 +1,2385 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`User tests User renders correctly 1`] = `
+<User>
+  <div>
+    <UserUI
+      data={
+        Object {
+          "creatingUser": Object {
+            "createEmail": "",
+            "createName": "",
+            "createPassword": "",
+            "createRole": "CLIENT",
+          },
+          "creatingUserError": Object {
+            "createEmailError": false,
+            "createNameError": false,
+            "createPasswordError": false,
+            "createRoleError": false,
+          },
+          "deletingUser": Object {
+            "email": "",
+            "id": "",
+            "name": "",
+          },
+          "filter": Object {
+            "filterEmail": "",
+            "filterName": "",
+            "filterRole": "ALL",
+            "pageSize": 10,
+            "requestingPage": 1,
+          },
+          "loading": true,
+          "pages": 0,
+          "showCreateModal": false,
+          "showDeleteModal": false,
+          "showUpdateModal": false,
+          "updatingUser": Object {
+            "id": "",
+            "updateEmail": "",
+            "updateName": "",
+            "updateRole": "",
+            "updateSuspendStatus": "",
+          },
+          "users": Array [],
+        }
+      }
+      filterUsers={[Function]}
+      getUsers={[Function]}
+      handleAddChange={[Function]}
+      handleFilteringChange={[Function]}
+      handleUpdateChange={[Function]}
+      isEmailValid={[Function]}
+      launchCreateModal={[Function]}
+      launchDeleteModal={[Function]}
+      launchUpdateModal={[Function]}
+      onCloseAddUserModal={[Function]}
+      onCloseDeleteModal={[Function]}
+      onCloseUpdateUserModal={[Function]}
+      onConfirmAddUserModal={[Function]}
+      onConfirmDeleteModal={[Function]}
+      onConfirmUpdateUserModal={[Function]}
+      resetFilter={[Function]}
+      validateCreateEmail={[Function]}
+      validateCreateName={[Function]}
+      validateCreatePassword={[Function]}
+      validateCreateRole={[Function]}
+    >
+      <div>
+        <Title
+          value="Users"
+        >
+          <h1
+            className="page-header"
+            style={
+              Object {
+                "margin": "20px 0",
+              }
+            }
+          >
+            Users
+          </h1>
+        </Title>
+        <div
+          className="row"
+        >
+          <div
+            className="col-md-3 offset-md-9"
+            style={
+              Object {
+                "paddingRight": "4em",
+                "textAlign": "right",
+              }
+            }
+          >
+            <button
+              className="btn btn-md btn-success"
+              id="createUserBtn"
+              onClick={[Function]}
+            >
+              <i
+                className="fa fa-plus"
+              />
+               Create User
+            </button>
+          </div>
+          <form
+            className="filtering-form row"
+            onSubmit={[Function]}
+          >
+            <div
+              className="col-md-3 offset-md-1"
+            >
+              <label
+                htmlFor="filterName"
+              >
+                NAME
+              </label>
+              <input
+                className="form-control"
+                id="filterName"
+                name="filterName"
+                onChange={[Function]}
+                placeholder="name"
+                value=""
+              />
+            </div>
+            <div
+              className="col-md-3"
+            >
+              <label
+                htmlFor="filterEmail"
+              >
+                EMAIL
+              </label>
+              <input
+                className="form-control"
+                id="filterEmail"
+                name="filterEmail"
+                onChange={[Function]}
+                placeholder="email"
+                value=""
+              />
+            </div>
+            <div
+              className="col-md-2"
+            >
+              <label
+                htmlFor="filterRole"
+              >
+                ROLE
+              </label>
+              <select
+                id="filterRole"
+                name="filterRole"
+                onChange={[Function]}
+                value="ALL"
+              >
+                <option
+                  value="ALL"
+                >
+                  ALL
+                </option>
+                <option
+                  value="ADMIN"
+                >
+                  ADMIN
+                </option>
+                <option
+                  value="REALTOR"
+                >
+                  REALTOR
+                </option>
+                <option
+                  value="CLIENT"
+                >
+                  CLIENT
+                </option>
+              </select>
+            </div>
+            <div
+              className="col-md-2"
+            >
+              <button
+                className="btn btn-md btn-info filtering-form-button"
+                onClick={[Function]}
+              >
+                Search
+              </button>
+              <button
+                className="btn btn-md btn-danger filtering-form-button"
+                onClick={[Function]}
+              >
+                Reset
+              </button>
+            </div>
+          </form>
+        </div>
+        <div
+          className="row center-content"
+        >
+          <ReactTable
+            AggregatedComponent={[Function]}
+            ExpanderComponent={[Function]}
+            FilterComponent={[Function]}
+            LoadingComponent={[Function]}
+            NoDataComponent={[Function]}
+            PadRowComponent={[Function]}
+            PaginationComponent={[Function]}
+            PivotValueComponent={[Function]}
+            ResizerComponent={[Function]}
+            TableComponent={[Function]}
+            TbodyComponent={[Function]}
+            TdComponent={[Function]}
+            TfootComponent={[Function]}
+            ThComponent={[Function]}
+            TheadComponent={[Function]}
+            TrComponent={[Function]}
+            TrGroupComponent={[Function]}
+            aggregatedKey="_aggregated"
+            className=""
+            collapseOnDataChange={true}
+            collapseOnPageChange={true}
+            collapseOnSortingChange={true}
+            column={
+              Object {
+                "Aggregated": undefined,
+                "Cell": undefined,
+                "Expander": undefined,
+                "Filter": undefined,
+                "Footer": undefined,
+                "Header": undefined,
+                "Pivot": undefined,
+                "PivotValue": undefined,
+                "Placeholder": undefined,
+                "aggregate": undefined,
+                "className": "",
+                "filterAll": false,
+                "filterMethod": undefined,
+                "filterable": undefined,
+                "footerClassName": "",
+                "footerStyle": Object {},
+                "getFooterProps": [Function],
+                "getHeaderProps": [Function],
+                "getProps": [Function],
+                "headerClassName": "",
+                "headerStyle": Object {},
+                "minResizeWidth": 11,
+                "minWidth": 100,
+                "resizable": undefined,
+                "show": true,
+                "sortMethod": undefined,
+                "sortable": undefined,
+                "style": Object {},
+              }
+            }
+            columns={
+              Array [
+                Object {
+                  "Cell": [Function],
+                  "Header": "S/N",
+                  "filterable": false,
+                  "id": "row",
+                  "resizable": false,
+                  "style": Object {
+                    "textAlign": "right",
+                  },
+                  "width": 60,
+                },
+                Object {
+                  "Header": "NAME",
+                  "accessor": "name",
+                  "resizable": false,
+                  "width": 250,
+                },
+                Object {
+                  "Header": "EMAIL",
+                  "accessor": "email",
+                  "resizable": false,
+                  "width": 280,
+                },
+                Object {
+                  "Header": "ROLE",
+                  "accessor": "role",
+                  "resizable": false,
+                },
+                Object {
+                  "Header": "VERIFIED",
+                  "accessor": "status",
+                  "resizable": false,
+                  "width": 160,
+                },
+                Object {
+                  "Cell": [Function],
+                  "Header": "STATUS",
+                  "accessor": "isSuspended",
+                },
+              ]
+            }
+            data={Array []}
+            defaultExpanded={Object {}}
+            defaultFilterMethod={[Function]}
+            defaultFiltered={Array []}
+            defaultPage={0}
+            defaultPageSize={10}
+            defaultResized={Array []}
+            defaultSortDesc={false}
+            defaultSortMethod={[Function]}
+            defaultSorted={Array []}
+            expanderDefaults={
+              Object {
+                "filterable": false,
+                "resizable": false,
+                "sortable": false,
+                "width": 35,
+              }
+            }
+            filterable={false}
+            freezeWhenExpanded={false}
+            getLoadingProps={[Function]}
+            getNoDataProps={[Function]}
+            getPaginationProps={[Function]}
+            getProps={[Function]}
+            getResizerProps={[Function]}
+            getTableProps={[Function]}
+            getTbodyProps={[Function]}
+            getTdProps={[Function]}
+            getTfootProps={[Function]}
+            getTfootTdProps={[Function]}
+            getTfootTrProps={[Function]}
+            getTheadFilterProps={[Function]}
+            getTheadFilterThProps={[Function]}
+            getTheadFilterTrProps={[Function]}
+            getTheadGroupProps={[Function]}
+            getTheadGroupThProps={[Function]}
+            getTheadGroupTrProps={[Function]}
+            getTheadProps={[Function]}
+            getTheadThProps={[Function]}
+            getTheadTrProps={[Function]}
+            getTrGroupProps={[Function]}
+            getTrProps={[Function]}
+            groupedByPivotKey="_groupedByPivot"
+            indexKey="_index"
+            loading={true}
+            loadingText="Loading..."
+            manual={true}
+            minRows="2"
+            multiSort={true}
+            nestingLevelKey="_nestingLevel"
+            nextText="Next"
+            noDataText="No rows found"
+            ofText="of"
+            onFetchData={[Function]}
+            originalKey="_original"
+            pageJumpText="jump to page"
+            pageSizeOptions={
+              Array [
+                5,
+                10,
+                20,
+                25,
+                50,
+                100,
+              ]
+            }
+            pageText="Page"
+            pages={0}
+            pivotDefaults={Object {}}
+            pivotIDKey="_pivotID"
+            pivotValKey="_pivotVal"
+            previousText="Previous"
+            resizable={true}
+            resolveData={[Function]}
+            rowsSelectorText="rows per page"
+            rowsText="rows"
+            showPageJump={true}
+            showPageSizeOptions={true}
+            showPagination={true}
+            showPaginationBottom={true}
+            showPaginationTop={false}
+            sortable={false}
+            style={Object {}}
+            subRowsKey="_subRows"
+          >
+            <div
+              className="ReactTable"
+              style={Object {}}
+            >
+              <TableComponent
+                className=""
+              >
+                <div
+                  className="rt-table"
+                  role="grid"
+                >
+                  <Thead
+                    className="-header"
+                    style={
+                      Object {
+                        "minWidth": "950px",
+                      }
+                    }
+                  >
+                    <div
+                      className="rt-thead -header"
+                      style={
+                        Object {
+                          "minWidth": "950px",
+                        }
+                      }
+                    >
+                      <TrComponent>
+                        <div
+                          className="rt-tr"
+                          role="row"
+                        >
+                          <ThComponent
+                            className=""
+                            key="0-row"
+                            style={
+                              Object {
+                                "flex": "60 0 auto",
+                                "maxWidth": "60px",
+                                "width": "60px",
+                              }
+                            }
+                            toggleSort={[Function]}
+                          >
+                            <div
+                              className="rt-th"
+                              onClick={[Function]}
+                              role="columnheader"
+                              style={
+                                Object {
+                                  "flex": "60 0 auto",
+                                  "maxWidth": "60px",
+                                  "width": "60px",
+                                }
+                              }
+                              tabIndex="-1"
+                            >
+                              <div
+                                className=""
+                              >
+                                S/N
+                              </div>
+                            </div>
+                          </ThComponent>
+                          <ThComponent
+                            className=""
+                            key="1-name"
+                            style={
+                              Object {
+                                "flex": "250 0 auto",
+                                "maxWidth": "250px",
+                                "width": "250px",
+                              }
+                            }
+                            toggleSort={[Function]}
+                          >
+                            <div
+                              className="rt-th"
+                              onClick={[Function]}
+                              role="columnheader"
+                              style={
+                                Object {
+                                  "flex": "250 0 auto",
+                                  "maxWidth": "250px",
+                                  "width": "250px",
+                                }
+                              }
+                              tabIndex="-1"
+                            >
+                              <div
+                                className=""
+                              >
+                                NAME
+                              </div>
+                            </div>
+                          </ThComponent>
+                          <ThComponent
+                            className=""
+                            key="2-email"
+                            style={
+                              Object {
+                                "flex": "280 0 auto",
+                                "maxWidth": "280px",
+                                "width": "280px",
+                              }
+                            }
+                            toggleSort={[Function]}
+                          >
+                            <div
+                              className="rt-th"
+                              onClick={[Function]}
+                              role="columnheader"
+                              style={
+                                Object {
+                                  "flex": "280 0 auto",
+                                  "maxWidth": "280px",
+                                  "width": "280px",
+                                }
+                              }
+                              tabIndex="-1"
+                            >
+                              <div
+                                className=""
+                              >
+                                EMAIL
+                              </div>
+                            </div>
+                          </ThComponent>
+                          <ThComponent
+                            className=""
+                            key="3-role"
+                            style={
+                              Object {
+                                "flex": "100 0 auto",
+                                "maxWidth": null,
+                                "width": "100px",
+                              }
+                            }
+                            toggleSort={[Function]}
+                          >
+                            <div
+                              className="rt-th"
+                              onClick={[Function]}
+                              role="columnheader"
+                              style={
+                                Object {
+                                  "flex": "100 0 auto",
+                                  "maxWidth": null,
+                                  "width": "100px",
+                                }
+                              }
+                              tabIndex="-1"
+                            >
+                              <div
+                                className=""
+                              >
+                                ROLE
+                              </div>
+                            </div>
+                          </ThComponent>
+                          <ThComponent
+                            className=""
+                            key="4-status"
+                            style={
+                              Object {
+                                "flex": "160 0 auto",
+                                "maxWidth": "160px",
+                                "width": "160px",
+                              }
+                            }
+                            toggleSort={[Function]}
+                          >
+                            <div
+                              className="rt-th"
+                              onClick={[Function]}
+                              role="columnheader"
+                              style={
+                                Object {
+                                  "flex": "160 0 auto",
+                                  "maxWidth": "160px",
+                                  "width": "160px",
+                                }
+                              }
+                              tabIndex="-1"
+                            >
+                              <div
+                                className=""
+                              >
+                                VERIFIED
+                              </div>
+                            </div>
+                          </ThComponent>
+                          <ThComponent
+                            className="rt-resizable-header"
+                            key="5-isSuspended"
+                            style={
+                              Object {
+                                "flex": "100 0 auto",
+                                "maxWidth": null,
+                                "width": "100px",
+                              }
+                            }
+                            toggleSort={[Function]}
+                          >
+                            <div
+                              className="rt-th rt-resizable-header"
+                              onClick={[Function]}
+                              role="columnheader"
+                              style={
+                                Object {
+                                  "flex": "100 0 auto",
+                                  "maxWidth": null,
+                                  "width": "100px",
+                                }
+                              }
+                              tabIndex="-1"
+                            >
+                              <div
+                                className="rt-resizable-header-content"
+                              >
+                                STATUS
+                              </div>
+                              <Resizer
+                                onMouseDown={[Function]}
+                                onTouchStart={[Function]}
+                              >
+                                <div
+                                  className="rt-resizer"
+                                  onMouseDown={[Function]}
+                                  onTouchStart={[Function]}
+                                />
+                              </Resizer>
+                            </div>
+                          </ThComponent>
+                        </div>
+                      </TrComponent>
+                    </div>
+                  </Thead>
+                  <Tbody
+                    className=""
+                    style={
+                      Object {
+                        "minWidth": "950px",
+                      }
+                    }
+                  >
+                    <div
+                      className="rt-tbody"
+                      style={
+                        Object {
+                          "minWidth": "950px",
+                        }
+                      }
+                    >
+                      <TrGroupComponent
+                        key="pad-0"
+                      >
+                        <div
+                          className="rt-tr-group"
+                          role="rowgroup"
+                        >
+                          <TrComponent
+                            className="-padRow -odd"
+                            style={Object {}}
+                          >
+                            <div
+                              className="rt-tr -padRow -odd"
+                              role="row"
+                              style={Object {}}
+                            >
+                              <TdComponent
+                                className=""
+                                key="0-row"
+                                onClick={[Function]}
+                                style={
+                                  Object {
+                                    "cursor": "pointer",
+                                    "flex": "60 0 auto",
+                                    "maxWidth": "60px",
+                                    "textAlign": "right",
+                                    "width": "60px",
+                                  }
+                                }
+                              >
+                                <div
+                                  className="rt-td"
+                                  onClick={[Function]}
+                                  role="gridcell"
+                                  style={
+                                    Object {
+                                      "cursor": "pointer",
+                                      "flex": "60 0 auto",
+                                      "maxWidth": "60px",
+                                      "textAlign": "right",
+                                      "width": "60px",
+                                    }
+                                  }
+                                >
+                                  <PadRowComponent>
+                                    <span>
+                                       
+                                    </span>
+                                  </PadRowComponent>
+                                </div>
+                              </TdComponent>
+                              <TdComponent
+                                className=""
+                                key="1-name"
+                                onClick={[Function]}
+                                style={
+                                  Object {
+                                    "cursor": "pointer",
+                                    "flex": "250 0 auto",
+                                    "maxWidth": "250px",
+                                    "width": "250px",
+                                  }
+                                }
+                              >
+                                <div
+                                  className="rt-td"
+                                  onClick={[Function]}
+                                  role="gridcell"
+                                  style={
+                                    Object {
+                                      "cursor": "pointer",
+                                      "flex": "250 0 auto",
+                                      "maxWidth": "250px",
+                                      "width": "250px",
+                                    }
+                                  }
+                                >
+                                  <PadRowComponent>
+                                    <span>
+                                       
+                                    </span>
+                                  </PadRowComponent>
+                                </div>
+                              </TdComponent>
+                              <TdComponent
+                                className=""
+                                key="2-email"
+                                onClick={[Function]}
+                                style={
+                                  Object {
+                                    "cursor": "pointer",
+                                    "flex": "280 0 auto",
+                                    "maxWidth": "280px",
+                                    "width": "280px",
+                                  }
+                                }
+                              >
+                                <div
+                                  className="rt-td"
+                                  onClick={[Function]}
+                                  role="gridcell"
+                                  style={
+                                    Object {
+                                      "cursor": "pointer",
+                                      "flex": "280 0 auto",
+                                      "maxWidth": "280px",
+                                      "width": "280px",
+                                    }
+                                  }
+                                >
+                                  <PadRowComponent>
+                                    <span>
+                                       
+                                    </span>
+                                  </PadRowComponent>
+                                </div>
+                              </TdComponent>
+                              <TdComponent
+                                className=""
+                                key="3-role"
+                                onClick={[Function]}
+                                style={
+                                  Object {
+                                    "cursor": "pointer",
+                                    "flex": "100 0 auto",
+                                    "maxWidth": null,
+                                    "width": "100px",
+                                  }
+                                }
+                              >
+                                <div
+                                  className="rt-td"
+                                  onClick={[Function]}
+                                  role="gridcell"
+                                  style={
+                                    Object {
+                                      "cursor": "pointer",
+                                      "flex": "100 0 auto",
+                                      "maxWidth": null,
+                                      "width": "100px",
+                                    }
+                                  }
+                                >
+                                  <PadRowComponent>
+                                    <span>
+                                       
+                                    </span>
+                                  </PadRowComponent>
+                                </div>
+                              </TdComponent>
+                              <TdComponent
+                                className=""
+                                key="4-status"
+                                onClick={[Function]}
+                                style={
+                                  Object {
+                                    "cursor": "pointer",
+                                    "flex": "160 0 auto",
+                                    "maxWidth": "160px",
+                                    "width": "160px",
+                                  }
+                                }
+                              >
+                                <div
+                                  className="rt-td"
+                                  onClick={[Function]}
+                                  role="gridcell"
+                                  style={
+                                    Object {
+                                      "cursor": "pointer",
+                                      "flex": "160 0 auto",
+                                      "maxWidth": "160px",
+                                      "width": "160px",
+                                    }
+                                  }
+                                >
+                                  <PadRowComponent>
+                                    <span>
+                                       
+                                    </span>
+                                  </PadRowComponent>
+                                </div>
+                              </TdComponent>
+                              <TdComponent
+                                className=""
+                                key="5-isSuspended"
+                                onClick={[Function]}
+                                style={
+                                  Object {
+                                    "cursor": "pointer",
+                                    "flex": "100 0 auto",
+                                    "maxWidth": null,
+                                    "width": "100px",
+                                  }
+                                }
+                              >
+                                <div
+                                  className="rt-td"
+                                  onClick={[Function]}
+                                  role="gridcell"
+                                  style={
+                                    Object {
+                                      "cursor": "pointer",
+                                      "flex": "100 0 auto",
+                                      "maxWidth": null,
+                                      "width": "100px",
+                                    }
+                                  }
+                                >
+                                  <PadRowComponent>
+                                    <span>
+                                       
+                                    </span>
+                                  </PadRowComponent>
+                                </div>
+                              </TdComponent>
+                            </div>
+                          </TrComponent>
+                        </div>
+                      </TrGroupComponent>
+                      <TrGroupComponent
+                        key="pad-1"
+                      >
+                        <div
+                          className="rt-tr-group"
+                          role="rowgroup"
+                        >
+                          <TrComponent
+                            className="-padRow -even"
+                            style={Object {}}
+                          >
+                            <div
+                              className="rt-tr -padRow -even"
+                              role="row"
+                              style={Object {}}
+                            >
+                              <TdComponent
+                                className=""
+                                key="0-row"
+                                onClick={[Function]}
+                                style={
+                                  Object {
+                                    "cursor": "pointer",
+                                    "flex": "60 0 auto",
+                                    "maxWidth": "60px",
+                                    "textAlign": "right",
+                                    "width": "60px",
+                                  }
+                                }
+                              >
+                                <div
+                                  className="rt-td"
+                                  onClick={[Function]}
+                                  role="gridcell"
+                                  style={
+                                    Object {
+                                      "cursor": "pointer",
+                                      "flex": "60 0 auto",
+                                      "maxWidth": "60px",
+                                      "textAlign": "right",
+                                      "width": "60px",
+                                    }
+                                  }
+                                >
+                                  <PadRowComponent>
+                                    <span>
+                                       
+                                    </span>
+                                  </PadRowComponent>
+                                </div>
+                              </TdComponent>
+                              <TdComponent
+                                className=""
+                                key="1-name"
+                                onClick={[Function]}
+                                style={
+                                  Object {
+                                    "cursor": "pointer",
+                                    "flex": "250 0 auto",
+                                    "maxWidth": "250px",
+                                    "width": "250px",
+                                  }
+                                }
+                              >
+                                <div
+                                  className="rt-td"
+                                  onClick={[Function]}
+                                  role="gridcell"
+                                  style={
+                                    Object {
+                                      "cursor": "pointer",
+                                      "flex": "250 0 auto",
+                                      "maxWidth": "250px",
+                                      "width": "250px",
+                                    }
+                                  }
+                                >
+                                  <PadRowComponent>
+                                    <span>
+                                       
+                                    </span>
+                                  </PadRowComponent>
+                                </div>
+                              </TdComponent>
+                              <TdComponent
+                                className=""
+                                key="2-email"
+                                onClick={[Function]}
+                                style={
+                                  Object {
+                                    "cursor": "pointer",
+                                    "flex": "280 0 auto",
+                                    "maxWidth": "280px",
+                                    "width": "280px",
+                                  }
+                                }
+                              >
+                                <div
+                                  className="rt-td"
+                                  onClick={[Function]}
+                                  role="gridcell"
+                                  style={
+                                    Object {
+                                      "cursor": "pointer",
+                                      "flex": "280 0 auto",
+                                      "maxWidth": "280px",
+                                      "width": "280px",
+                                    }
+                                  }
+                                >
+                                  <PadRowComponent>
+                                    <span>
+                                       
+                                    </span>
+                                  </PadRowComponent>
+                                </div>
+                              </TdComponent>
+                              <TdComponent
+                                className=""
+                                key="3-role"
+                                onClick={[Function]}
+                                style={
+                                  Object {
+                                    "cursor": "pointer",
+                                    "flex": "100 0 auto",
+                                    "maxWidth": null,
+                                    "width": "100px",
+                                  }
+                                }
+                              >
+                                <div
+                                  className="rt-td"
+                                  onClick={[Function]}
+                                  role="gridcell"
+                                  style={
+                                    Object {
+                                      "cursor": "pointer",
+                                      "flex": "100 0 auto",
+                                      "maxWidth": null,
+                                      "width": "100px",
+                                    }
+                                  }
+                                >
+                                  <PadRowComponent>
+                                    <span>
+                                       
+                                    </span>
+                                  </PadRowComponent>
+                                </div>
+                              </TdComponent>
+                              <TdComponent
+                                className=""
+                                key="4-status"
+                                onClick={[Function]}
+                                style={
+                                  Object {
+                                    "cursor": "pointer",
+                                    "flex": "160 0 auto",
+                                    "maxWidth": "160px",
+                                    "width": "160px",
+                                  }
+                                }
+                              >
+                                <div
+                                  className="rt-td"
+                                  onClick={[Function]}
+                                  role="gridcell"
+                                  style={
+                                    Object {
+                                      "cursor": "pointer",
+                                      "flex": "160 0 auto",
+                                      "maxWidth": "160px",
+                                      "width": "160px",
+                                    }
+                                  }
+                                >
+                                  <PadRowComponent>
+                                    <span>
+                                       
+                                    </span>
+                                  </PadRowComponent>
+                                </div>
+                              </TdComponent>
+                              <TdComponent
+                                className=""
+                                key="5-isSuspended"
+                                onClick={[Function]}
+                                style={
+                                  Object {
+                                    "cursor": "pointer",
+                                    "flex": "100 0 auto",
+                                    "maxWidth": null,
+                                    "width": "100px",
+                                  }
+                                }
+                              >
+                                <div
+                                  className="rt-td"
+                                  onClick={[Function]}
+                                  role="gridcell"
+                                  style={
+                                    Object {
+                                      "cursor": "pointer",
+                                      "flex": "100 0 auto",
+                                      "maxWidth": null,
+                                      "width": "100px",
+                                    }
+                                  }
+                                >
+                                  <PadRowComponent>
+                                    <span>
+                                       
+                                    </span>
+                                  </PadRowComponent>
+                                </div>
+                              </TdComponent>
+                            </div>
+                          </TrComponent>
+                        </div>
+                      </TrGroupComponent>
+                    </div>
+                  </Tbody>
+                </div>
+              </TableComponent>
+              <div
+                className="pagination-bottom"
+              >
+                <ReactTablePagination
+                  AggregatedComponent={[Function]}
+                  ExpanderComponent={[Function]}
+                  FilterComponent={[Function]}
+                  LoadingComponent={[Function]}
+                  NextComponent={[Function]}
+                  NoDataComponent={[Function]}
+                  PadRowComponent={[Function]}
+                  PaginationComponent={[Function]}
+                  PivotValueComponent={[Function]}
+                  PreviousComponent={[Function]}
+                  ResizerComponent={[Function]}
+                  TableComponent={[Function]}
+                  TbodyComponent={[Function]}
+                  TdComponent={[Function]}
+                  TfootComponent={[Function]}
+                  ThComponent={[Function]}
+                  TheadComponent={[Function]}
+                  TrComponent={[Function]}
+                  TrGroupComponent={[Function]}
+                  aggregatedKey="_aggregated"
+                  allDecoratedColumns={
+                    Array [
+                      Object {
+                        "Aggregated": undefined,
+                        "Cell": [Function],
+                        "Expander": undefined,
+                        "Filter": undefined,
+                        "Footer": undefined,
+                        "Header": "S/N",
+                        "Pivot": undefined,
+                        "PivotValue": undefined,
+                        "Placeholder": undefined,
+                        "accessor": [Function],
+                        "aggregate": undefined,
+                        "className": "",
+                        "filterAll": false,
+                        "filterMethod": undefined,
+                        "filterable": false,
+                        "footerClassName": "",
+                        "footerStyle": Object {},
+                        "getFooterProps": [Function],
+                        "getHeaderProps": [Function],
+                        "getProps": [Function],
+                        "headerClassName": "",
+                        "headerStyle": Object {},
+                        "id": "row",
+                        "minResizeWidth": 11,
+                        "minWidth": 100,
+                        "resizable": false,
+                        "show": true,
+                        "sortMethod": undefined,
+                        "sortable": undefined,
+                        "style": Object {
+                          "textAlign": "right",
+                        },
+                        "width": 60,
+                      },
+                      Object {
+                        "Aggregated": undefined,
+                        "Cell": undefined,
+                        "Expander": undefined,
+                        "Filter": undefined,
+                        "Footer": undefined,
+                        "Header": "NAME",
+                        "Pivot": undefined,
+                        "PivotValue": undefined,
+                        "Placeholder": undefined,
+                        "accessor": [Function],
+                        "aggregate": undefined,
+                        "className": "",
+                        "filterAll": false,
+                        "filterMethod": undefined,
+                        "filterable": undefined,
+                        "footerClassName": "",
+                        "footerStyle": Object {},
+                        "getFooterProps": [Function],
+                        "getHeaderProps": [Function],
+                        "getProps": [Function],
+                        "headerClassName": "",
+                        "headerStyle": Object {},
+                        "id": "name",
+                        "minResizeWidth": 11,
+                        "minWidth": 100,
+                        "resizable": false,
+                        "show": true,
+                        "sortMethod": undefined,
+                        "sortable": undefined,
+                        "style": Object {},
+                        "width": 250,
+                      },
+                      Object {
+                        "Aggregated": undefined,
+                        "Cell": undefined,
+                        "Expander": undefined,
+                        "Filter": undefined,
+                        "Footer": undefined,
+                        "Header": "EMAIL",
+                        "Pivot": undefined,
+                        "PivotValue": undefined,
+                        "Placeholder": undefined,
+                        "accessor": [Function],
+                        "aggregate": undefined,
+                        "className": "",
+                        "filterAll": false,
+                        "filterMethod": undefined,
+                        "filterable": undefined,
+                        "footerClassName": "",
+                        "footerStyle": Object {},
+                        "getFooterProps": [Function],
+                        "getHeaderProps": [Function],
+                        "getProps": [Function],
+                        "headerClassName": "",
+                        "headerStyle": Object {},
+                        "id": "email",
+                        "minResizeWidth": 11,
+                        "minWidth": 100,
+                        "resizable": false,
+                        "show": true,
+                        "sortMethod": undefined,
+                        "sortable": undefined,
+                        "style": Object {},
+                        "width": 280,
+                      },
+                      Object {
+                        "Aggregated": undefined,
+                        "Cell": undefined,
+                        "Expander": undefined,
+                        "Filter": undefined,
+                        "Footer": undefined,
+                        "Header": "ROLE",
+                        "Pivot": undefined,
+                        "PivotValue": undefined,
+                        "Placeholder": undefined,
+                        "accessor": [Function],
+                        "aggregate": undefined,
+                        "className": "",
+                        "filterAll": false,
+                        "filterMethod": undefined,
+                        "filterable": undefined,
+                        "footerClassName": "",
+                        "footerStyle": Object {},
+                        "getFooterProps": [Function],
+                        "getHeaderProps": [Function],
+                        "getProps": [Function],
+                        "headerClassName": "",
+                        "headerStyle": Object {},
+                        "id": "role",
+                        "minResizeWidth": 11,
+                        "minWidth": 100,
+                        "resizable": false,
+                        "show": true,
+                        "sortMethod": undefined,
+                        "sortable": undefined,
+                        "style": Object {},
+                      },
+                      Object {
+                        "Aggregated": undefined,
+                        "Cell": undefined,
+                        "Expander": undefined,
+                        "Filter": undefined,
+                        "Footer": undefined,
+                        "Header": "VERIFIED",
+                        "Pivot": undefined,
+                        "PivotValue": undefined,
+                        "Placeholder": undefined,
+                        "accessor": [Function],
+                        "aggregate": undefined,
+                        "className": "",
+                        "filterAll": false,
+                        "filterMethod": undefined,
+                        "filterable": undefined,
+                        "footerClassName": "",
+                        "footerStyle": Object {},
+                        "getFooterProps": [Function],
+                        "getHeaderProps": [Function],
+                        "getProps": [Function],
+                        "headerClassName": "",
+                        "headerStyle": Object {},
+                        "id": "status",
+                        "minResizeWidth": 11,
+                        "minWidth": 100,
+                        "resizable": false,
+                        "show": true,
+                        "sortMethod": undefined,
+                        "sortable": undefined,
+                        "style": Object {},
+                        "width": 160,
+                      },
+                      Object {
+                        "Aggregated": undefined,
+                        "Cell": [Function],
+                        "Expander": undefined,
+                        "Filter": undefined,
+                        "Footer": undefined,
+                        "Header": "STATUS",
+                        "Pivot": undefined,
+                        "PivotValue": undefined,
+                        "Placeholder": undefined,
+                        "accessor": [Function],
+                        "aggregate": undefined,
+                        "className": "",
+                        "filterAll": false,
+                        "filterMethod": undefined,
+                        "filterable": undefined,
+                        "footerClassName": "",
+                        "footerStyle": Object {},
+                        "getFooterProps": [Function],
+                        "getHeaderProps": [Function],
+                        "getProps": [Function],
+                        "headerClassName": "",
+                        "headerStyle": Object {},
+                        "id": "isSuspended",
+                        "minResizeWidth": 11,
+                        "minWidth": 100,
+                        "resizable": undefined,
+                        "show": true,
+                        "sortMethod": undefined,
+                        "sortable": undefined,
+                        "style": Object {},
+                      },
+                    ]
+                  }
+                  allVisibleColumns={
+                    Array [
+                      Object {
+                        "Aggregated": undefined,
+                        "Cell": [Function],
+                        "Expander": undefined,
+                        "Filter": undefined,
+                        "Footer": undefined,
+                        "Header": "S/N",
+                        "Pivot": undefined,
+                        "PivotValue": undefined,
+                        "Placeholder": undefined,
+                        "accessor": [Function],
+                        "aggregate": undefined,
+                        "className": "",
+                        "filterAll": false,
+                        "filterMethod": undefined,
+                        "filterable": false,
+                        "footerClassName": "",
+                        "footerStyle": Object {},
+                        "getFooterProps": [Function],
+                        "getHeaderProps": [Function],
+                        "getProps": [Function],
+                        "headerClassName": "",
+                        "headerStyle": Object {},
+                        "id": "row",
+                        "minResizeWidth": 11,
+                        "minWidth": 100,
+                        "resizable": false,
+                        "show": true,
+                        "sortMethod": undefined,
+                        "sortable": undefined,
+                        "style": Object {
+                          "textAlign": "right",
+                        },
+                        "width": 60,
+                      },
+                      Object {
+                        "Aggregated": undefined,
+                        "Cell": undefined,
+                        "Expander": undefined,
+                        "Filter": undefined,
+                        "Footer": undefined,
+                        "Header": "NAME",
+                        "Pivot": undefined,
+                        "PivotValue": undefined,
+                        "Placeholder": undefined,
+                        "accessor": [Function],
+                        "aggregate": undefined,
+                        "className": "",
+                        "filterAll": false,
+                        "filterMethod": undefined,
+                        "filterable": undefined,
+                        "footerClassName": "",
+                        "footerStyle": Object {},
+                        "getFooterProps": [Function],
+                        "getHeaderProps": [Function],
+                        "getProps": [Function],
+                        "headerClassName": "",
+                        "headerStyle": Object {},
+                        "id": "name",
+                        "minResizeWidth": 11,
+                        "minWidth": 100,
+                        "resizable": false,
+                        "show": true,
+                        "sortMethod": undefined,
+                        "sortable": undefined,
+                        "style": Object {},
+                        "width": 250,
+                      },
+                      Object {
+                        "Aggregated": undefined,
+                        "Cell": undefined,
+                        "Expander": undefined,
+                        "Filter": undefined,
+                        "Footer": undefined,
+                        "Header": "EMAIL",
+                        "Pivot": undefined,
+                        "PivotValue": undefined,
+                        "Placeholder": undefined,
+                        "accessor": [Function],
+                        "aggregate": undefined,
+                        "className": "",
+                        "filterAll": false,
+                        "filterMethod": undefined,
+                        "filterable": undefined,
+                        "footerClassName": "",
+                        "footerStyle": Object {},
+                        "getFooterProps": [Function],
+                        "getHeaderProps": [Function],
+                        "getProps": [Function],
+                        "headerClassName": "",
+                        "headerStyle": Object {},
+                        "id": "email",
+                        "minResizeWidth": 11,
+                        "minWidth": 100,
+                        "resizable": false,
+                        "show": true,
+                        "sortMethod": undefined,
+                        "sortable": undefined,
+                        "style": Object {},
+                        "width": 280,
+                      },
+                      Object {
+                        "Aggregated": undefined,
+                        "Cell": undefined,
+                        "Expander": undefined,
+                        "Filter": undefined,
+                        "Footer": undefined,
+                        "Header": "ROLE",
+                        "Pivot": undefined,
+                        "PivotValue": undefined,
+                        "Placeholder": undefined,
+                        "accessor": [Function],
+                        "aggregate": undefined,
+                        "className": "",
+                        "filterAll": false,
+                        "filterMethod": undefined,
+                        "filterable": undefined,
+                        "footerClassName": "",
+                        "footerStyle": Object {},
+                        "getFooterProps": [Function],
+                        "getHeaderProps": [Function],
+                        "getProps": [Function],
+                        "headerClassName": "",
+                        "headerStyle": Object {},
+                        "id": "role",
+                        "minResizeWidth": 11,
+                        "minWidth": 100,
+                        "resizable": false,
+                        "show": true,
+                        "sortMethod": undefined,
+                        "sortable": undefined,
+                        "style": Object {},
+                      },
+                      Object {
+                        "Aggregated": undefined,
+                        "Cell": undefined,
+                        "Expander": undefined,
+                        "Filter": undefined,
+                        "Footer": undefined,
+                        "Header": "VERIFIED",
+                        "Pivot": undefined,
+                        "PivotValue": undefined,
+                        "Placeholder": undefined,
+                        "accessor": [Function],
+                        "aggregate": undefined,
+                        "className": "",
+                        "filterAll": false,
+                        "filterMethod": undefined,
+                        "filterable": undefined,
+                        "footerClassName": "",
+                        "footerStyle": Object {},
+                        "getFooterProps": [Function],
+                        "getHeaderProps": [Function],
+                        "getProps": [Function],
+                        "headerClassName": "",
+                        "headerStyle": Object {},
+                        "id": "status",
+                        "minResizeWidth": 11,
+                        "minWidth": 100,
+                        "resizable": false,
+                        "show": true,
+                        "sortMethod": undefined,
+                        "sortable": undefined,
+                        "style": Object {},
+                        "width": 160,
+                      },
+                      Object {
+                        "Aggregated": undefined,
+                        "Cell": [Function],
+                        "Expander": undefined,
+                        "Filter": undefined,
+                        "Footer": undefined,
+                        "Header": "STATUS",
+                        "Pivot": undefined,
+                        "PivotValue": undefined,
+                        "Placeholder": undefined,
+                        "accessor": [Function],
+                        "aggregate": undefined,
+                        "className": "",
+                        "filterAll": false,
+                        "filterMethod": undefined,
+                        "filterable": undefined,
+                        "footerClassName": "",
+                        "footerStyle": Object {},
+                        "getFooterProps": [Function],
+                        "getHeaderProps": [Function],
+                        "getProps": [Function],
+                        "headerClassName": "",
+                        "headerStyle": Object {},
+                        "id": "isSuspended",
+                        "minResizeWidth": 11,
+                        "minWidth": 100,
+                        "resizable": undefined,
+                        "show": true,
+                        "sortMethod": undefined,
+                        "sortable": undefined,
+                        "style": Object {},
+                      },
+                    ]
+                  }
+                  canNext={false}
+                  canPrevious={false}
+                  collapseOnDataChange={true}
+                  collapseOnPageChange={true}
+                  collapseOnSortingChange={true}
+                  column={
+                    Object {
+                      "Aggregated": undefined,
+                      "Cell": undefined,
+                      "Expander": undefined,
+                      "Filter": undefined,
+                      "Footer": undefined,
+                      "Header": undefined,
+                      "Pivot": undefined,
+                      "PivotValue": undefined,
+                      "Placeholder": undefined,
+                      "aggregate": undefined,
+                      "className": "",
+                      "filterAll": false,
+                      "filterMethod": undefined,
+                      "filterable": undefined,
+                      "footerClassName": "",
+                      "footerStyle": Object {},
+                      "getFooterProps": [Function],
+                      "getHeaderProps": [Function],
+                      "getProps": [Function],
+                      "headerClassName": "",
+                      "headerStyle": Object {},
+                      "minResizeWidth": 11,
+                      "minWidth": 100,
+                      "resizable": undefined,
+                      "show": true,
+                      "sortMethod": undefined,
+                      "sortable": undefined,
+                      "style": Object {},
+                    }
+                  }
+                  columns={
+                    Array [
+                      Object {
+                        "Cell": [Function],
+                        "Header": "S/N",
+                        "filterable": false,
+                        "id": "row",
+                        "resizable": false,
+                        "style": Object {
+                          "textAlign": "right",
+                        },
+                        "width": 60,
+                      },
+                      Object {
+                        "Header": "NAME",
+                        "accessor": "name",
+                        "resizable": false,
+                        "width": 250,
+                      },
+                      Object {
+                        "Header": "EMAIL",
+                        "accessor": "email",
+                        "resizable": false,
+                        "width": 280,
+                      },
+                      Object {
+                        "Header": "ROLE",
+                        "accessor": "role",
+                        "resizable": false,
+                      },
+                      Object {
+                        "Header": "VERIFIED",
+                        "accessor": "status",
+                        "resizable": false,
+                        "width": 160,
+                      },
+                      Object {
+                        "Cell": [Function],
+                        "Header": "STATUS",
+                        "accessor": "isSuspended",
+                      },
+                    ]
+                  }
+                  currentlyResizing={false}
+                  data={Array []}
+                  defaultExpanded={Object {}}
+                  defaultFilterMethod={[Function]}
+                  defaultFiltered={Array []}
+                  defaultPage={0}
+                  defaultPageSize={10}
+                  defaultResized={Array []}
+                  defaultSortDesc={false}
+                  defaultSortMethod={[Function]}
+                  defaultSorted={Array []}
+                  expanded={Object {}}
+                  expanderDefaults={
+                    Object {
+                      "filterable": false,
+                      "resizable": false,
+                      "sortable": false,
+                      "width": 35,
+                    }
+                  }
+                  filterable={false}
+                  filtered={Array []}
+                  freezeWhenExpanded={false}
+                  frozen={false}
+                  getLoadingProps={[Function]}
+                  getNoDataProps={[Function]}
+                  getPaginationProps={[Function]}
+                  getProps={[Function]}
+                  getResizerProps={[Function]}
+                  getTableProps={[Function]}
+                  getTbodyProps={[Function]}
+                  getTdProps={[Function]}
+                  getTfootProps={[Function]}
+                  getTfootTdProps={[Function]}
+                  getTfootTrProps={[Function]}
+                  getTheadFilterProps={[Function]}
+                  getTheadFilterThProps={[Function]}
+                  getTheadFilterTrProps={[Function]}
+                  getTheadGroupProps={[Function]}
+                  getTheadGroupThProps={[Function]}
+                  getTheadGroupTrProps={[Function]}
+                  getTheadProps={[Function]}
+                  getTheadThProps={[Function]}
+                  getTheadTrProps={[Function]}
+                  getTrGroupProps={[Function]}
+                  getTrProps={[Function]}
+                  groupedByPivotKey="_groupedByPivot"
+                  hasHeaderGroups={false}
+                  headerGroups={Array []}
+                  indexKey="_index"
+                  isTop={false}
+                  loading={true}
+                  loadingText="Loading..."
+                  manual={true}
+                  minRows="2"
+                  multiSort={true}
+                  nestingLevelKey="_nestingLevel"
+                  nextText="Next"
+                  noDataText="No rows found"
+                  ofText="of"
+                  onFetchData={[Function]}
+                  onPageChange={[Function]}
+                  onPageSizeChange={[Function]}
+                  originalKey="_original"
+                  page={0}
+                  pageJumpText="jump to page"
+                  pageSize={10}
+                  pageSizeOptions={
+                    Array [
+                      5,
+                      10,
+                      20,
+                      25,
+                      50,
+                      100,
+                    ]
+                  }
+                  pageText="Page"
+                  pages={0}
+                  pivotDefaults={Object {}}
+                  pivotIDKey="_pivotID"
+                  pivotValKey="_pivotVal"
+                  previousText="Previous"
+                  renderCurrentPage={[Function]}
+                  renderPageJump={[Function]}
+                  renderPageSizeOptions={[Function]}
+                  renderTotalPagesCount={[Function]}
+                  resizable={true}
+                  resized={Array []}
+                  resolveData={[Function]}
+                  resolvedData={Array []}
+                  rowsSelectorText="rows per page"
+                  rowsText="rows"
+                  showPageJump={true}
+                  showPageSizeOptions={true}
+                  showPagination={true}
+                  showPaginationBottom={true}
+                  showPaginationTop={false}
+                  skipNextSort={false}
+                  sortable={false}
+                  sorted={Array []}
+                  sortedData={Array []}
+                  subRowsKey="_subRows"
+                >
+                  <div
+                    className="-pagination"
+                  >
+                    <div
+                      className="-previous"
+                    >
+                      <defaultButton
+                        disabled={true}
+                        onClick={[Function]}
+                      >
+                        <button
+                          className="-btn"
+                          disabled={true}
+                          onClick={[Function]}
+                          type="button"
+                        >
+                          Previous
+                        </button>
+                      </defaultButton>
+                    </div>
+                    <div
+                      className="-center"
+                    >
+                      <span
+                        className="-pageInfo"
+                      >
+                        Page
+                         
+                        <div
+                          className="-pageJump"
+                        >
+                          <input
+                            aria-label="jump to page"
+                            onBlur={[Function]}
+                            onChange={[Function]}
+                            onKeyPress={[Function]}
+                            type="number"
+                            value={1}
+                          />
+                        </div>
+                         
+                        of
+                         
+                        <span
+                          className="-totalPages"
+                        >
+                          1
+                        </span>
+                      </span>
+                      <span
+                        className="select-wrap -pageSizeOptions"
+                      >
+                        <select
+                          aria-label="rows per page"
+                          onChange={[Function]}
+                          value={10}
+                        >
+                          <option
+                            key="0"
+                            value={5}
+                          >
+                            5 rows
+                          </option>
+                          <option
+                            key="1"
+                            value={10}
+                          >
+                            10 rows
+                          </option>
+                          <option
+                            key="2"
+                            value={20}
+                          >
+                            20 rows
+                          </option>
+                          <option
+                            key="3"
+                            value={25}
+                          >
+                            25 rows
+                          </option>
+                          <option
+                            key="4"
+                            value={50}
+                          >
+                            50 rows
+                          </option>
+                          <option
+                            key="5"
+                            value={100}
+                          >
+                            100 rows
+                          </option>
+                        </select>
+                      </span>
+                    </div>
+                    <div
+                      className="-next"
+                    >
+                      <defaultButton
+                        disabled={true}
+                        onClick={[Function]}
+                      >
+                        <button
+                          className="-btn"
+                          disabled={true}
+                          onClick={[Function]}
+                          type="button"
+                        >
+                          Next
+                        </button>
+                      </defaultButton>
+                    </div>
+                  </div>
+                </ReactTablePagination>
+              </div>
+              <NoData>
+                <div
+                  className="rt-noData"
+                >
+                  No rows found
+                </div>
+              </NoData>
+              <LoadingComponent
+                loading={true}
+                loadingText="Loading..."
+              >
+                <div
+                  className="-loading -active"
+                >
+                  <div
+                    className="-loading-inner"
+                  >
+                    Loading...
+                  </div>
+                </div>
+              </LoadingComponent>
+            </div>
+          </ReactTable>
+        </div>
+        <Modal
+          action={
+            Object {
+              "close": [Function],
+              "confirm": [Function],
+            }
+          }
+          id="DeleteUserModal"
+          show={false}
+          title="Delete User"
+        >
+          <div
+            aria-labelledby="ModalLabel"
+            className="modal fade"
+            id="DeleteUserModal"
+            role="dialog"
+            style={
+              Object {
+                "bottom": "",
+                "visibility": "hidden",
+              }
+            }
+            tabIndex="-1"
+          >
+            <div
+              className="modal-dialog"
+              role="document"
+              style={
+                Object {
+                  "width": "80%",
+                }
+              }
+            >
+              <div
+                className="modal-content"
+                style={Object {}}
+              >
+                <div
+                  className="modal-header"
+                >
+                  <h4
+                    className="modal-title"
+                    id="ModalLabel"
+                    style={
+                      Object {
+                        "lineHeight": "0.5",
+                      }
+                    }
+                  >
+                    Delete User
+                  </h4>
+                  <button
+                    aria-label="Close"
+                    className="close"
+                    data-dismiss="modal"
+                    onClick={[Function]}
+                    type="button"
+                  >
+                    <i
+                      className="fa fa-times"
+                      style={
+                        Object {
+                          "fontSize": "14px",
+                        }
+                      }
+                    />
+                  </button>
+                </div>
+                <div
+                  className="modal-body"
+                >
+                  <div
+                    className="row"
+                  >
+                    <span>
+                      Are you sure you want to delete user 
+                      <span
+                        style={
+                          Object {
+                            "fontWeight": "bold",
+                          }
+                        }
+                      />
+                       (email: 
+                      <span
+                        style={
+                          Object {
+                            "fontWeight": "bold",
+                          }
+                        }
+                      />
+                      )?
+                    </span>
+                  </div>
+                </div>
+                <div
+                  className="modal-footer"
+                >
+                  <button
+                    className="btn btn-success"
+                    disabled={false}
+                    onClick={[Function]}
+                    type="button"
+                  >
+                    Confirm
+                  </button>
+                  <button
+                    className="btn btn-link"
+                    data-dismiss="modal"
+                    onClick={[Function]}
+                    style={
+                      Object {
+                        "color": "#333",
+                      }
+                    }
+                    type="button"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Modal>
+        <Modal
+          action={
+            Object {
+              "close": [Function],
+              "confirm": [Function],
+            }
+          }
+          id="UpdateUserModal"
+          show={false}
+          title="Update User"
+        >
+          <div
+            aria-labelledby="ModalLabel"
+            className="modal fade"
+            id="UpdateUserModal"
+            role="dialog"
+            style={
+              Object {
+                "bottom": "",
+                "visibility": "hidden",
+              }
+            }
+            tabIndex="-1"
+          >
+            <div
+              className="modal-dialog"
+              role="document"
+              style={
+                Object {
+                  "width": "80%",
+                }
+              }
+            >
+              <div
+                className="modal-content"
+                style={Object {}}
+              >
+                <div
+                  className="modal-header"
+                >
+                  <h4
+                    className="modal-title"
+                    id="ModalLabel"
+                    style={
+                      Object {
+                        "lineHeight": "0.5",
+                      }
+                    }
+                  >
+                    Update User
+                  </h4>
+                  <button
+                    aria-label="Close"
+                    className="close"
+                    data-dismiss="modal"
+                    onClick={[Function]}
+                    type="button"
+                  >
+                    <i
+                      className="fa fa-times"
+                      style={
+                        Object {
+                          "fontSize": "14px",
+                        }
+                      }
+                    />
+                  </button>
+                </div>
+                <div
+                  className="modal-body"
+                >
+                  <form>
+                    <div
+                      className="row form-group"
+                    >
+                      <label
+                        htmlFor="updateUserName"
+                      >
+                        NAME
+                      </label>
+                      <input
+                        className="form-control"
+                        id="updateUserName"
+                        name="updateName"
+                        onChange={[Function]}
+                        value=""
+                      />
+                    </div>
+                    <div
+                      className="row form-group"
+                    >
+                      <label
+                        htmlFor="updateEmail"
+                      >
+                        EMAIL
+                      </label>
+                      <input
+                        className="form-control"
+                        id="updateUserEmail"
+                        name="updateEmail"
+                        onChange={[Function]}
+                        value=""
+                      />
+                    </div>
+                    <div
+                      className="row form-group"
+                    >
+                      <label>
+                        ROLE
+                      </label>
+                      <select
+                        className="form-control"
+                        id="updateUserRole"
+                        name="updateRole"
+                        onChange={[Function]}
+                        value=""
+                      >
+                        <option
+                          value="ADMIN"
+                        >
+                          ADMIN
+                        </option>
+                        <option
+                          value="REALTOR"
+                        >
+                          REALTOR
+                        </option>
+                        <option
+                          value="CLIENT"
+                        >
+                          CLIENT
+                        </option>
+                      </select>
+                    </div>
+                    <div
+                      className="row form-group"
+                    >
+                      <label>
+                        SUSPEND STATUS
+                      </label>
+                      <select
+                        className="form-control"
+                        id="updateUserSuspendStatus"
+                        name="updateSuspendStatus"
+                        onChange={[Function]}
+                        value=""
+                      >
+                        <option
+                          value="true"
+                        >
+                          SUSPENDED
+                        </option>
+                        <option
+                          value="false"
+                        >
+                          ACTIVE
+                        </option>
+                      </select>
+                    </div>
+                  </form>
+                </div>
+                <div
+                  className="modal-footer"
+                >
+                  <button
+                    className="btn btn-success"
+                    disabled={false}
+                    onClick={[Function]}
+                    type="button"
+                  >
+                    Confirm
+                  </button>
+                  <button
+                    className="btn btn-link"
+                    data-dismiss="modal"
+                    onClick={[Function]}
+                    style={
+                      Object {
+                        "color": "#333",
+                      }
+                    }
+                    type="button"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Modal>
+        <Modal
+          action={
+            Object {
+              "close": [Function],
+              "confirm": [Function],
+            }
+          }
+          id="CreateUserModal"
+          show={false}
+          title="Create User"
+        >
+          <div
+            aria-labelledby="ModalLabel"
+            className="modal fade"
+            id="CreateUserModal"
+            role="dialog"
+            style={
+              Object {
+                "bottom": "",
+                "visibility": "hidden",
+              }
+            }
+            tabIndex="-1"
+          >
+            <div
+              className="modal-dialog"
+              role="document"
+              style={
+                Object {
+                  "width": "80%",
+                }
+              }
+            >
+              <div
+                className="modal-content"
+                style={Object {}}
+              >
+                <div
+                  className="modal-header"
+                >
+                  <h4
+                    className="modal-title"
+                    id="ModalLabel"
+                    style={
+                      Object {
+                        "lineHeight": "0.5",
+                      }
+                    }
+                  >
+                    Create User
+                  </h4>
+                  <button
+                    aria-label="Close"
+                    className="close"
+                    data-dismiss="modal"
+                    onClick={[Function]}
+                    type="button"
+                  >
+                    <i
+                      className="fa fa-times"
+                      style={
+                        Object {
+                          "fontSize": "14px",
+                        }
+                      }
+                    />
+                  </button>
+                </div>
+                <div
+                  className="modal-body"
+                >
+                  <form>
+                    <div
+                      className="row form-group"
+                    >
+                      <label
+                        className="react-label"
+                        htmlFor="createName"
+                      >
+                        NAME 
+                        <span
+                          className="help-block text-danger"
+                        >
+                          *
+                        </span>
+                      </label>
+                      <input
+                        className="form-control"
+                        id="createName"
+                        name="createName"
+                        onBlur={[Function]}
+                        onChange={[Function]}
+                        placeholder="name"
+                        required={true}
+                        type="text"
+                        value=""
+                      />
+                    </div>
+                    <div
+                      className="row form-group"
+                    >
+                      <label
+                        htmlFor="createEmail"
+                      >
+                        EMAIL 
+                        <span
+                          className="help-block text-danger"
+                        >
+                          *
+                        </span>
+                      </label>
+                      <input
+                        className="form-control"
+                        id="createEmail"
+                        name="createEmail"
+                        onBlur={[Function]}
+                        onChange={[Function]}
+                        value=""
+                      />
+                    </div>
+                    <div
+                      className="row form-group"
+                    >
+                      <label
+                        htmlFor="createPassword"
+                      >
+                        PASSWORD 
+                        <span
+                          className="help-block text-danger"
+                        >
+                          *
+                        </span>
+                      </label>
+                      <input
+                        className="form-control"
+                        id="createPassword"
+                        name="createPassword"
+                        onBlur={[Function]}
+                        onChange={[Function]}
+                        type="password"
+                        value=""
+                      />
+                    </div>
+                    <div
+                      className="row form-group"
+                    >
+                      <label>
+                        ROLE 
+                        <span
+                          className="help-block text-danger"
+                        >
+                          *
+                        </span>
+                      </label>
+                      <select
+                        className="form-control"
+                        id="createRole"
+                        name="createRole"
+                        onBlur={[Function]}
+                        onChange={[Function]}
+                        value="CLIENT"
+                      >
+                        <option
+                          value="ADMIN"
+                        >
+                          ADMIN
+                        </option>
+                        <option
+                          value="REALTOR"
+                        >
+                          REALTOR
+                        </option>
+                        <option
+                          value="CLIENT"
+                        >
+                          CLIENT
+                        </option>
+                      </select>
+                    </div>
+                  </form>
+                </div>
+                <div
+                  className="modal-footer"
+                >
+                  <button
+                    className="btn btn-success"
+                    disabled={false}
+                    onClick={[Function]}
+                    type="button"
+                  >
+                    Confirm
+                  </button>
+                  <button
+                    className="btn btn-link"
+                    data-dismiss="modal"
+                    onClick={[Function]}
+                    style={
+                      Object {
+                        "color": "#333",
+                      }
+                    }
+                    type="button"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Modal>
+        <NotificationContainer
+          enterTimeout={400}
+          leaveTimeout={400}
+        >
+          <Notifications
+            enterTimeout={400}
+            leaveTimeout={400}
+            notifications={Array []}
+            onRequestHide={[Function]}
+          >
+            <div
+              className="notification-container notification-container-empty"
+            >
+              <TransitionGroup
+                childFactory={[Function]}
+                component="div"
+              >
+                <div />
+              </TransitionGroup>
+            </div>
+          </Notifications>
+        </NotificationContainer>
+      </div>
+    </UserUI>
+  </div>
+</User>
+`;
