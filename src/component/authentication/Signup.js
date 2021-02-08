@@ -6,6 +6,7 @@ import {NotificationContainer} from "react-notifications"
 import Http from "../../service/Http"
 import {Redirect} from "react-router-dom"
 import {notifySuccess, notifyFailure, notifyInfo} from "../../service/Util"
+import Overlay from "../common/Overlay"
 
 class Signup extends Component {
 
@@ -22,7 +23,8 @@ class Signup extends Component {
                 password: '',
                 role: ''
             },
-            redirectTo: false
+            redirectTo: false,
+            showOverlay: false
         }
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
@@ -33,6 +35,13 @@ class Signup extends Component {
         this.onFailureGoogleResponse = this.onFailureGoogleResponse.bind(this)
         this.facebookCallbackResponse = this.facebookCallbackResponse.bind(this)
         this.submit = this.submit.bind(this)
+        this.setOverlay = this.setOverlay.bind(this)
+    }
+
+    setOverlay() {
+        this.setState({
+            showOverlay: true
+        })
     }
 
     onSuccessGoogleResponse(response) {
@@ -47,7 +56,10 @@ class Signup extends Component {
 
     onFailureGoogleResponse(response) {
 
-        notifyFailure('Google signup failed')
+        this.setState({
+            showOverlay: false
+        }, () => notifyFailure('Google signup failed'))
+
     }
 
     submit(uri, reqBody) {
@@ -65,6 +77,11 @@ class Signup extends Component {
                 } else {
                     notifyFailure('Could not connect to server')
                 }
+            })
+            .finally(() => {
+                this.setState({
+                    showOverlay: false
+                })
             })
     }
 
@@ -116,6 +133,8 @@ class Signup extends Component {
 
         console.log('reqBody: ', reqBody)
 
+        this.setOverlay()
+
         Http.POST('signup', reqBody)
             .then((response) => {
 
@@ -129,6 +148,11 @@ class Signup extends Component {
                 } else {
                     notifyFailure('Could not connect to server')
                 }
+            })
+            .finally(() => {
+                this.setState({
+                    showOverlay: false
+                })
             })
 
     }
@@ -240,6 +264,7 @@ class Signup extends Component {
                                 <div className="col-md-6" style={{paddingLeft: 0}}>
                                     <GoogleLogin
                                         clientId={"758898908443-kvlhgb8bpbtfs0jam1kq6i9m4bc1vst5.apps.googleusercontent.com"}
+                                        onRequest={this.setOverlay}
                                         onSuccess={this.onSuccessGoogleResponse}
                                         onFailure={this.onFailureGoogleResponse}
                                         buttonText={"Login with Google"}
@@ -262,6 +287,7 @@ class Signup extends Component {
                                         fields="name,email"
                                         callback={this.facebookCallbackResponse}
                                         icon={<i className="fa fa-facebook-square"></i>}
+                                        onClick={this.setOverlay}
                                         textButton="SIGNUP"/>
                                 </div>
                             </div>
@@ -272,6 +298,8 @@ class Signup extends Component {
                         </form>
                     </div>
                 </div>
+
+                <Overlay active={this.state.showOverlay}/>
 
                 <NotificationContainer/>
             </div>
