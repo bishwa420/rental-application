@@ -116,8 +116,7 @@ class Login extends Component {
                 localStorage.removeItem('token')
                 localStorage.setItem('token', JSON.stringify(response.data.token))
                 this.setState({
-                    redirectTo: response.data.role === 'ADMIN' ? '/app/users' : '/app/apartments',
-                    showOverlay: false
+                    redirectTo: response.data.role === 'ADMIN' ? '/app/users' : '/app/apartments'
                 })
             })
             .catch(error => {
@@ -127,7 +126,8 @@ class Login extends Component {
                 } else {
                     notifyFailure('Could not connect to server')
                 }
-
+            })
+            .finally(() => {
                 this.setState({
                     showOverlay: false
                 })
@@ -146,8 +146,11 @@ class Login extends Component {
 
         console.log('facebook callback response: ', response)
         if(!response.accessToken) {
-           notifyFailure("Facebook login failed")
-           return
+            this.setState({
+                showOverlay: false
+            })
+            notifyFailure("Facebook login failed")
+            return
         }
 
         let reqBody = {
@@ -169,6 +172,11 @@ class Login extends Component {
                 } else {
                     notifyFailure('Could not connect to server')
                 }
+            })
+            .finally(() => {
+                this.setState({
+                    showOverlay: false
+                })
             })
     }
 
@@ -266,6 +274,7 @@ class Login extends Component {
                                         fields="name,email"
                                         callback={this.facebookCallbackResponse}
                                         icon={<i className="fa fa-facebook-square"></i>}
+                                        onClick={this.setOverlay}
                                         textButton="Login"/>
                                 </div>
                             </div>
