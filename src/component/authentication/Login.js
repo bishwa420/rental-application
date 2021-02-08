@@ -5,7 +5,8 @@ import {NotificationContainer} from 'react-notifications'
 import {Redirect} from "react-router-dom"
 import {GoogleLogin} from "react-google-login"
 import FacebookLogin from "react-facebook-login"
-import {notifyFailure} from "../../service/Util";
+import {notifyFailure} from "../../service/Util"
+import Overlay from "../common/Overlay"
 
 class Login extends Component {
 
@@ -18,7 +19,8 @@ class Login extends Component {
                 email: false,
                 password: false
             },
-            redirectTo: false
+            redirectTo: false,
+            showOverlay: false
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleValidation = this.handleValidation.bind(this)
@@ -27,6 +29,14 @@ class Login extends Component {
         this.onSuccessGoogleResponse = this.onSuccessGoogleResponse.bind(this)
         this.onFailureGoogleResponse = this.onFailureGoogleResponse.bind(this)
         this.facebookCallbackResponse = this.facebookCallbackResponse.bind(this)
+        this.facebookCallbackResponse = this.facebookCallbackResponse.bind(this)
+        this.setOverlay = this.setOverlay.bind(this)
+    }
+
+    setOverlay() {
+        this.setState({
+            showOverlay: true
+        })
     }
 
     handleChange(event) {
@@ -72,12 +82,15 @@ class Login extends Component {
             password: password
         }
 
+        this.setOverlay()
+
         Http.POST('login', reqBody).then(({data}) => {
                 localStorage.removeItem('token')
                 localStorage.setItem('token', JSON.stringify(data.token))
                 console.log('user role: ', data.role)
                 this.setState({
-                    redirectTo: data.role === 'ADMIN' ? '/app/users' : '/app/apartments'
+                    redirectTo: data.role === 'ADMIN' ? '/app/users' : '/app/apartments',
+                    showOverlay: false
                 })
             }).catch((error) => {
 
@@ -86,11 +99,13 @@ class Login extends Component {
                 } else {
                     notifyFailure('Could not connect to server')
                 }
+                this.setState({
+                    showOverlay: false
+                })
             })
     }
 
     onSuccessGoogleResponse(response) {
-        console.log('response: ', response)
 
         let reqBody = {
             token: response.tokenId
@@ -101,7 +116,8 @@ class Login extends Component {
                 localStorage.removeItem('token')
                 localStorage.setItem('token', JSON.stringify(response.data.token))
                 this.setState({
-                    redirectTo: response.data.role === 'ADMIN' ? '/app/users' : '/app/apartments'
+                    redirectTo: response.data.role === 'ADMIN' ? '/app/users' : '/app/apartments',
+                    showOverlay: false
                 })
             })
             .catch(error => {
@@ -111,12 +127,19 @@ class Login extends Component {
                 } else {
                     notifyFailure('Could not connect to server')
                 }
+
+                this.setState({
+                    showOverlay: false
+                })
             })
     }
 
     onFailureGoogleResponse(response) {
 
-        notifyFailure('Could not proceed with Google login')
+        this.setState({
+            showOverlay: false
+        }, () => notifyFailure('Could not proceed with Google login'))
+
     }
 
     facebookCallbackResponse(response) {
@@ -220,6 +243,7 @@ class Login extends Component {
                                 <div className="col-md-6" style={{paddingLeft: 0}}>
                                     <GoogleLogin
                                         clientId={"758898908443-kvlhgb8bpbtfs0jam1kq6i9m4bc1vst5.apps.googleusercontent.com"}
+                                        onRequest={this.setOverlay}
                                         onSuccess={this.onSuccessGoogleResponse}
                                         onFailure={this.onFailureGoogleResponse}
                                         buttonText={"Login with Google"}
@@ -252,6 +276,9 @@ class Login extends Component {
                         </form>
                     </div>
                 </div>
+
+                <Overlay active={this.state.showOverlay}/>
+
 
                 <NotificationContainer/>
             </div>
